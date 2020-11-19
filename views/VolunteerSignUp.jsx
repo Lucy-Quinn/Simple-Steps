@@ -4,7 +4,7 @@ const Layout = require('./Layout');
 function Signup(props) {
     return (
         <Layout>
-            <form action="/auth/signup" method="POST">
+            <form action="/auth/signup/volunteer" method="POST">
                 <label>Name</label>
                 <input type="text" name="name" placeholder="Your full name"></input>
 
@@ -30,6 +30,7 @@ function Signup(props) {
                 <input type="password" name="repeat-password" placeholder="Password"></input> */}
 
                 {/* photo */}
+                <button type="submit">Sign Up</button>
 
                 {
                     props.errorMessage ?

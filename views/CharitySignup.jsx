@@ -4,7 +4,7 @@ const Layout = require('./Layout');
 function Signup(props) {
     return (
         <Layout>
-            <form action="/auth/signup" method="POST">
+            <form action="/auth/signup/charity" method="POST">
                 <label>Name</label>
                 <input type="text" name="name" placeholder="Your full name"></input>
 
@@ -25,6 +25,7 @@ function Signup(props) {
 
                 {/* photo */}
 
+                <button type="submit">Sign Up</button>
                 {
                     props.errorMessage ?
                         (<div className="error-message">{
