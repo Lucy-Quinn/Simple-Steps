@@ -4,6 +4,7 @@ const Layout = require('./Layout');
 function Signup(props) {
     return (
         <Layout>
+            <h1>Volunteer Signup</h1>
             <form action="/auth/signup/volunteer" method="POST">
                 <label>Name</label>
                 <input type="text" name="name" placeholder="Your full name"></input>
