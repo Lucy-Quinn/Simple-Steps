@@ -54,40 +54,38 @@ mongoose
     })
     .then((createdCharityUsers) => {
         // 4. WHEN .create() OPERATION IS DONE, CLOSE DB CONNECTION
-        const jobId = String(createdCharityUsers[0].jobsCreated[0]);
+        //const jobId = String(createdCharityUsers[0].jobsCreated[0]);
 
-        console.log('string', Job)
+        createdCharityUsers.forEach((charityUser) => {
+            const jobId = String(charityUser.jobsCreated[0]);
+            const charityUserId = charityUser._id;
+            // console.log('charityuser', charityUserId)
+            Job.findByIdAndUpdate(jobId, { charity: charityUserId }, { new: true })
+                .then((d) => {
+                    console.log('d', d)
+                })
+                .catch((error) => {
+                    console.log('error', error)
+                })
+            // const pr = Job.findByIdAndUpdate(jobId)
+            //     const pr = Job.findByIdAndUpdate(jobId, { $set: { title: 'a' } }, { new: true })
+            //     return pr
+            // })
+            // // Job.findByIdAndUpdate(jobId, { $set: { title: 'a' } }, { new: true })
+            // .then((d) => {
+            //     console.log('dddddddddddddddd', d)
+            // })
+            // .catch((error) => {
+            //     console.log('error', error)
+            // })
+            const oneJobId = String(createdCharityUsers[0].jobsCreated[0]);
+            const pr = Job.findById(oneJobId)
+            return pr;
+        }).then(() => {
 
-        // const pr = Job.findByIdAndUpdate(jobId)
+            console.log(`Inserted ${createdCharityUsers} charities`);
+            mongoose.connection.close();
+        })
 
-        const pr = Job.findByIdAndUpdate(jobId, { $set: { title: 'a' } }, { new: true })
-        return pr
     })
-    // Job.findByIdAndUpdate(jobId, { $set: { title: 'a' } }, { new: true })
-    .then((d) => {
-        console.log('dddddddddddddddd', d)
-        mongoose.connection.close();
-
-    })
-    .catch((error) => {
-        console.log('error', error)
-    })
-
-        // createdCharityUsers.forEach((charityUser) => {
-
-        //     const jobId = String(charityUser.jobsCreated[0]);
-        //     const charityUserId = charityUser._id;
-        //     // console.log('charityuser', charityUserId)
-        //     Job.findByIdAndUpdate(jobId, { title: 'a' }, { new: true })
-        //     // .then((d) => {
-        //     //     console.log('d', d)
-        //     // })
-        //     // .catch((error) => {
-        //     //     console.log('error', error)
-        //     // })
-
-        // })
-        // console.log(`Inserted ${createdCharityUsers} charities`);
-    // })
-    // .catch((err) => console.log(err));
-
+    .catch((err) => console.log(err));
