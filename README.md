@@ -128,15 +128,21 @@ Job Model
 
 [Trello](https://trello.com/b/mlRVDGZU/simple-steps)
 
+
+
 ### Git
 
 The URL to the repository and the deployed project
 
 [Repository Link](https://github.com/Lucy-Quinn/Simple-Steps)
 
-[Deploy Link]()
+[Deploy Link]() //need to add link
 
 
+
+### Wireframes
+
+[Wireframes]() //need to add link
 
 ### Slides
 

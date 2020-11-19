@@ -3,10 +3,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-    name: String,
+    name: { type: String },
     username: { type: String, unique: true, required: true },
-    password: { type: String, required: true },
     email: { type: String, unique: true, required: true },
+    password: { type: String, required: true },
     description: { type: String, maxlength: 280 },
     photo: { type: String, default: 'https://www.dovercourt.org/wp-content/uploads/2019/11/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.jpg' },
     location: {

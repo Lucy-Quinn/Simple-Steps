@@ -14,6 +14,7 @@ const jobSchema = new Schema(
             },
             coordinates: [Number]
         },
+        skillsRequired: [String], //only for volunteer
         charity: { type: Schema.Types.ObjectId, ref: "User" },
         volunteers: [{
             volunteer: { type: Schema.Types.ObjectId, ref: "User" },
