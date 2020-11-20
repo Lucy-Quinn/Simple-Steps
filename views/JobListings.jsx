@@ -12,7 +12,7 @@ function JobListings(props) {
                             <div className="card-body">
                                 <h5 className="card-title">{foundJob.title}</h5>
                                 <p className="card-text">{foundJob.date.toLocaleString()}</p>
-                                <a href="/" className="card-text">{foundJob.charity.name}</a>
+                                <a href={`/private/charity-profile/${foundJob.charity._id}`} className="card-text">{foundJob.charity.name}</a>
                                 <p className="card-text">{foundJob.description}</p>
                                 <p className="card-text">{foundJob.skillsRequired}</p>
                                 <a href="#" className="btn btn-primary">Join Now</a>

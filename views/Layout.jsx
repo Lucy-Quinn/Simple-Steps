@@ -26,7 +26,7 @@ function Layout(props) {
                 <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Join Us & Login
         </a>
-                <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div id="dropdown" className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a className="dropdown-item" href="/auth/signup/volunteer">Sign Up Volunteer</a>
                   <a className="dropdown-item" href="/auth/signup/charity">Sign Up Charity</a>
                   <div className="dropdown-divider"></div>

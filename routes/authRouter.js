@@ -135,9 +135,10 @@ authRouter.post('/login', (req, res, next) => {
                 req.session.currentUser = user;
 
                 if (user.userType === 'charity') {
-                    res.redirect('/signup/charity');
+                    res.redirect(`/private/charity-profile/${user._id}`)
 
                 } else {
+
                     res.redirect('/')
                 }
 

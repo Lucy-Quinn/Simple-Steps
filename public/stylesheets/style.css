@@ -16,3 +16,8 @@ a {
   width: 18rem;
   margin: 10px;
 }
+
+#dropdown {
+  position: absolute;
+  left: 10px;
+}
