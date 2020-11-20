@@ -17,6 +17,4 @@ function JobListings(props) {
         </Layout>
     )
 }
-
-
 module.exports = JobListings;

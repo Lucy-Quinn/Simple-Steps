@@ -14,8 +14,9 @@ privateRouter.get('/job-listings', isLoggedIn, (req, res, next) => {
 
     const user = req.session.currentUser;
 
-    Job.find().populate('charity')
+    Job.find().populate('charity').populate('volunteers.volunteer')
         .then((foundJobs) => {
+            console.log(foundJobs)
             const props = { foundJobs, user };
             res.render('JobListings', props);
         });
