@@ -12,9 +12,11 @@ const isVolunteerAdmin = require("../utils/isVolunteerAdmin");
 
 privateRouter.get('/job-listings', isLoggedIn, (req, res, next) => {
 
+    const user = req.session.currentUser;
+
     Job.find().populate('charity')
         .then((foundJobs) => {
-            const props = { foundJobs }
+            const props = { foundJobs, user };
             res.render('JobListings', props);
         });
 });

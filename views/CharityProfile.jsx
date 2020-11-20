@@ -5,7 +5,7 @@ const Layout = require("./Layout")
 function CharityProfile(props) {
 
     return (
-        <Layout>
+        <Layout title="Charity Profile">
             <div>
                 <h1>{props.charity.name}</h1>
 

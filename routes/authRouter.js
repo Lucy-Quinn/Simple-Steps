@@ -133,15 +133,11 @@ authRouter.post('/login', (req, res, next) => {
 
             if (passwordCorrect) {
                 req.session.currentUser = user;
-
                 if (user.userType === 'charity') {
                     res.redirect(`/private/charity-profile/${user._id}`)
-
                 } else {
-
-                    res.redirect('/')
+                    res.redirect('/private/job-listings')
                 }
-
             } else {
                 res.render('Login', { errorMessage: 'Incorrect password' });
             }
