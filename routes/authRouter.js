@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const User = require('./../models/User.model');
 const zxcvbn = require('zxcvbn');
 
-// const isLoggedIn = require('./../utils/isLoggedIn')
+const isLoggedIn = require('./../utils/isLoggedIn')
 const saltRounds = 10;
 
 
@@ -145,6 +145,20 @@ authRouter.post('/login', (req, res, next) => {
                 res.render('Login', { errorMessage: 'Incorrect password' });
             }
         })
+})
+
+/********************* Logout **********************/
+
+
+authRouter.get("/logout", isLoggedIn, (req, res, next) => {
+    req.session.destroy((err) => {
+        if (err) {
+            res.render("Error")
+        } else {
+            res.redirect('/auth/login')
+        }
+    })
+
 })
 
 

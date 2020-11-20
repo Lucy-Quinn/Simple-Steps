@@ -1,4 +1,4 @@
-const volunteerUserCollection = [
+const charityUserCollection = [
 
     {
         name: "Concern",
@@ -58,4 +58,4 @@ const volunteerUserCollection = [
     // }
 ]
 
-module.exports = volunteerUserCollection;
+module.exports = charityUserCollection;
