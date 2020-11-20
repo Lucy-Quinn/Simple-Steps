@@ -78,9 +78,14 @@ mongoose
             // .catch((error) => {
             //     console.log('error', error)
             // })
-            const oneJobId = String(createdCharityUsers[0].jobsCreated[0]);
-            const pr = Job.findById(oneJobId)
-            return pr;
+
+            setTimeout(function(){ 
+                mongoose.connection.close()
+            }, 3000);
+
+            // const oneJobId = String(createdCharityUsers[0].jobsCreated[0]);
+            // const pr = Job.findById(oneJobId)
+            // return pr;
         }).then(() => {
 
             console.log(`Inserted ${createdCharityUsers} charities`);
