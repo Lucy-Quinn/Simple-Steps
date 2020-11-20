@@ -38,7 +38,7 @@ mongoose
         return pr; // forwards the promise to next `then`
     })
     .then((createdJobs) => {
-        // console.log(`Created ${createdJobs.length} jobs`);
+        console.log(`Created ${createdJobs.length} jobs`);
 
         // 3. WHEN .create() OPERATION IS DONE
         // UPDATE THE OBJECTS IN THE ARRAY OF user charities
@@ -58,6 +58,7 @@ mongoose
         return pr; // forwards the promise to next `then`
     })
     .then((createdCharityUsers) => {
+        console.log(`Created ${createdCharityUsers.length} charities`);
 
         const promiseArr = createdCharityUsers.map((charityUser) => {
             const jobId = String(charityUser.jobsCreated[0]);
@@ -68,8 +69,35 @@ mongoose
         return pr
     }).then((updatedJobs) => {
 
-        console.log(`Inserted ${updatedJobs.length} updatedJobs`);
+        const updatedVolunteerUser = userVolunteers.map((userVolunteer, i) => {
+            // Update the userCharity and set the corresponding job id
+            // to create the reference
+            const job = updatedJobs[i];
+            const jobId = job._id;
+            userVolunteer.jobsApplied = [jobId];
+
+            const salt = bcrypt.genSaltSync(saltRounds);
+            userVolunteer.password = bcrypt.hashSync(userVolunteer.password, salt);
+            return userVolunteer; // return the updated userCharity
+        });
+
+        const pr = User.create(updatedVolunteerUser)
+        return pr
+    }).then((createdVolunteerUsers) => {
+        console.log(`Created ${createdVolunteerUsers.length} Volunteers`)
+
+        const promiseArr = createdVolunteerUsers.map((volunteerUser) => {
+            const jobId = String(volunteerUser.jobsApplied[0]);
+            const volunteerUserId = volunteerUser._id;
+            const volunteerObj = { volunteer: volunteerUserId, accepted: false }
+            return Job.findByIdAndUpdate(jobId, { $push: { volunteers: volunteerObj } }, { new: true });
+        })
+        const pr = Promise.all(promiseArr); //makes one big promise around all promises coming from array
+        return pr
+    }).then(() => {
         mongoose.connection.close();
+
     })
 
     .catch((err) => console.log(err));
+
