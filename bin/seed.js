@@ -3,6 +3,9 @@ const mongoose = require('mongoose');
 //requiring the schema
 const User = require('./../models/User.model');
 const Job = require('./../models/Job.model');
+const saltRounds = 10;
+const bcrypt = require('bcrypt');
+
 
 
 //requiring the 'fake' objects
@@ -46,6 +49,8 @@ mongoose
             const jobId = job._id;
             userCharity.jobsCreated = [jobId];
 
+            const salt = bcrypt.genSaltSync(saltRounds);
+            userCharity.password = bcrypt.hashSync(userCharity.password, salt);
             return userCharity; // return the updated userCharity
         });
 
@@ -54,24 +59,16 @@ mongoose
     })
     .then((createdCharityUsers) => {
 
-        createdCharityUsers.forEach((charityUser) => {
+        const promiseArr = createdCharityUsers.map((charityUser) => {
             const jobId = String(charityUser.jobsCreated[0]);
             const charityUserId = charityUser._id;
-            Job.findByIdAndUpdate(jobId, { charity: charityUserId }, { new: true })
-                .then((d) => {
-                    console.log('d', d)
-                })
-                .catch((error) => {
-                    console.log('error', error)
-                })
-
+            return Job.findByIdAndUpdate(jobId, { charity: charityUserId }, { new: true });
         })
-        setTimeout(function () {
-            mongoose.connection.close()
-        }, 3000);
-    }).then(() => {
+        const pr = Promise.all(promiseArr); //makes one big promise around all promises coming from array
+        return pr
+    }).then((updatedJobs) => {
 
-        console.log(`Inserted ${createdCharityUsers} charities`);
+        console.log(`Inserted ${updatedJobs.length} updatedJobs`);
         mongoose.connection.close();
     })
 
