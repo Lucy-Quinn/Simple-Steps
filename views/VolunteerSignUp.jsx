@@ -3,7 +3,7 @@ const Layout = require('./Layout');
 
 function Signup(props) {
     return (
-        <Layout>
+        <Layout title="Volunteer Sign Up">
             <h1>Volunteer Signup</h1>
             <form action="/auth/signup/volunteer" method="POST">
                 <label>Name</label>
@@ -35,9 +35,7 @@ function Signup(props) {
 
                 {
                     props.errorMessage ?
-                        (<div className="error-message">{
-                            props.errorMessage
-                        }</div>)
+                        (<div className="error-message">{props.errorMessage}</div>)
                         :
                         null
                 }

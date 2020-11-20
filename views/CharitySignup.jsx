@@ -3,7 +3,7 @@ const Layout = require('./Layout');
 
 function Signup(props) {
     return (
-        <Layout>
+        <Layout title="Charity Sign Up">
             <h1>Charity Signup</h1>
             <form action="/auth/signup/charity" method="POST">
                 <label>Name</label>

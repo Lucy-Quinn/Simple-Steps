@@ -35,7 +35,7 @@ mongoose
         return pr; // forwards the promise to next `then`
     })
     .then((createdJobs) => {
-        console.log(`Created ${createdJobs.length} jobs`);
+        // console.log(`Created ${createdJobs.length} jobs`);
 
         // 3. WHEN .create() OPERATION IS DONE
         // UPDATE THE OBJECTS IN THE ARRAY OF user charities
@@ -53,13 +53,10 @@ mongoose
         return pr; // forwards the promise to next `then`
     })
     .then((createdCharityUsers) => {
-        // 4. WHEN .create() OPERATION IS DONE, CLOSE DB CONNECTION
-        //const jobId = String(createdCharityUsers[0].jobsCreated[0]);
 
         createdCharityUsers.forEach((charityUser) => {
             const jobId = String(charityUser.jobsCreated[0]);
             const charityUserId = charityUser._id;
-            // console.log('charityuser', charityUserId)
             Job.findByIdAndUpdate(jobId, { charity: charityUserId }, { new: true })
                 .then((d) => {
                     console.log('d', d)
@@ -67,25 +64,15 @@ mongoose
                 .catch((error) => {
                     console.log('error', error)
                 })
-            // const pr = Job.findByIdAndUpdate(jobId)
-            //     const pr = Job.findByIdAndUpdate(jobId, { $set: { title: 'a' } }, { new: true })
-            //     return pr
-            // })
-            // // Job.findByIdAndUpdate(jobId, { $set: { title: 'a' } }, { new: true })
-            // .then((d) => {
-            //     console.log('dddddddddddddddd', d)
-            // })
-            // .catch((error) => {
-            //     console.log('error', error)
-            // })
-            const oneJobId = String(createdCharityUsers[0].jobsCreated[0]);
-            const pr = Job.findById(oneJobId)
-            return pr;
-        }).then(() => {
 
-            console.log(`Inserted ${createdCharityUsers} charities`);
-            mongoose.connection.close();
         })
+        setTimeout(function () {
+            mongoose.connection.close()
+        }, 3000);
+    }).then(() => {
 
+        console.log(`Inserted ${createdCharityUsers} charities`);
+        mongoose.connection.close();
     })
+
     .catch((err) => console.log(err));

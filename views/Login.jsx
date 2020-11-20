@@ -3,7 +3,7 @@ const Layout = require('./Layout');
 
 function Login(props) {
     return (
-        <Layout>
+        <Layout title="Login In">
             <form id="form" action="/auth/login" method="POST">
                 <label>Username</label>
                 <br />
@@ -17,9 +17,10 @@ function Login(props) {
             </form>
 
             {
-                props.errorMessage
-                    ? <div className="error-message"> {props.errorMessage}</div>
-                    : null
+                props.errorMessage ?
+                    (<div className="error-message"> {props.errorMessage}</div>)
+                    :
+                    null
             }
 
             <p className="account-message">
