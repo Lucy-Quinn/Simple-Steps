@@ -2,7 +2,7 @@ const React = require("react");
 const Layout = require("./Layout");
 
 
-function CharityProfileEdit(props) {
+function VolunteerProfileEdit(props) {
 
     return (
         <Layout title="Edit Your Profile" isLoggedIn={true} userProfile={props.charity}>

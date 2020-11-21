@@ -6,7 +6,7 @@ const JobCard = require('./components/JobCard');
 function CharityProfile(props) {
 
     return (
-        <Layout title="Charity Profile">
+        <Layout title={`${props.charity.name} Profile`} isLoggedIn={true} userProfile={props.charity}>
             <div>
                 <h1>{props.charity.name}</h1>
                 <img src = {props.charity.photo} />

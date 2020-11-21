@@ -3,7 +3,7 @@ const Layout = require('./Layout');
 
 function Login(props) {
     return (
-        <Layout title="Login In">
+        <Layout title="Login In" isLoggedIn={false}>
             <form id="form" action="/auth/login" method="POST">
                 <label>Username</label>
                 <br />

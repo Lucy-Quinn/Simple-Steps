@@ -85,6 +85,8 @@ privateRouter.post("/charity-profile/edit", isCharityAdmin, (req, res, next) => 
 
 })
 
+// POST       /private/charity-profile/edit/add-job
+
 privateRouter.post("/charity-profile/edit/add-job",isCharityAdmin, (req, res, next) =>{
     const { charityid } = req.query;
 
@@ -112,5 +114,31 @@ privateRouter.post("/charity-profile/edit/add-job",isCharityAdmin, (req, res, ne
     })
 
 } )
+
+
+
+// GET       /private/volunteer-profile/edit/add-job
+privateRouter.get("/volunteer-profile/:volunteerid",isVolunteerAdmin, (req, res, next) =>{
+    
+    const volunteerId = req.params.volunteerid;
+
+    User.findById(volunteerId).populate("jobsApplied")            ///.populate('jobsCreated.volunteer')
+        .then((volunteer) => {
+           // console.log("Volunteer Object When on Volunteer Profile Page", volunteer)
+            if (req.isAdmin) {
+                const props = { volunteer: volunteer, admin: true }
+                res.render("VolunteerProfile", props)
+            } else {
+                const props = { volunteer: volunteer, admin: false }
+                res.render("VolunteerProfile", props)
+            }
+        })
+        .catch((error) => {
+            console.log('Error retrieving charity', error);
+        })
+
+})
+
+
 module.exports = privateRouter;
 

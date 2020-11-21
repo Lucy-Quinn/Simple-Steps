@@ -1,6 +1,7 @@
 const React = require("react");
 
 function Layout(props) {
+  console.log('props.userProfile', props)
   return (
     <html lang="en">
       <head>
@@ -11,13 +12,38 @@ function Layout(props) {
       </head>
       <body>
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          <a className="navbar-brand" href="#">Simple Steps</a>
+          {props.isLoggedIn 
+          ? <p>Simple Steps</p>
+          : <a className="navbar-brand" href="/">Simple Steps</a>
+          }
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
-
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav ml-auto">
+
+           
+              {props.isLoggedIn 
+              ? 
+
+              <ul className="navbar-nav ml-auto">
+              <li className="nav-item">
+                <a className="nav-link" href="/private/job-listings">Job Listings</a>
+              </li>
+              {props.userType === 'volunteer' 
+              ? <li className="nav-item">
+                <a className="nav-link" href={`/private/volunteer-profile/${props.userProfile._id}`}>Profile</a>
+              </li>
+              :<li className="nav-item">
+                <a className="nav-link" href={`/private/charity-profile/${props.userProfile._id}`}>Profile</a>
+              </li>
+              }
+              
+              <li className="nav-item">
+                <a className="nav-link" href="/auth/logout">Logout</a>
+              </li>
+              </ul>
+              : 
+              <ul className="navbar-nav ml-auto">
 
               <li className="nav-item">
                 <a className="nav-link" href="/">Home</a>
@@ -25,7 +51,7 @@ function Layout(props) {
               <li className="nav-item dropdown">
                 <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Join Us & Login
-        </a>
+               </a>
                 <div id="dropdown" className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a className="dropdown-item" href="/auth/signup/volunteer">Sign Up Volunteer</a>
                   <a className="dropdown-item" href="/auth/signup/charity">Sign Up Charity</a>
@@ -35,7 +61,8 @@ function Layout(props) {
                 </div>
               </li>
             </ul>
-          </div>
+              }   
+              </div>         
         </nav>
         {props.children}
 

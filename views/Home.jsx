@@ -4,7 +4,7 @@ const Layout = require("./Layout");
 
 function Home() {
   return (
-    <Layout title="Home Page">
+    <Layout title="Home Page" isLoggedIn={false}>
       <h1>Home Page</h1>
       <button>To Volunteer</button>
       <button>To Find Volunteers</button>
