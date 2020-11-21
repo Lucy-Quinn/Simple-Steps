@@ -7,19 +7,19 @@ function Signup(props) {
             <h1>Charity Signup</h1>
             <form action="/auth/signup/charity" method="POST">
                 <label>Name</label>
-                <input type="text" name="name" placeholder="Your full name"></input>
+                <input type="text" name="name" placeholder="Your full name" required></input>
 
                 <label>Username</label>
-                <input type="text" name="username" placeholder="Your username"></input>
+                <input type="text" name="username" placeholder="Your username" required></input>
 
                 <label>Email</label>
-                <input type="email" name="email" placeholder="Your full name"></input>
+                <input type="email" name="email" placeholder="Your email address" required></input>
 
                 <label>Description</label>
-                <textarea name="description" rows="4" cols="50" placeholder="A brief description about yourself"/>
+                <textarea name="description" rows="4" cols="50" placeholder="A brief description about yourself" required/>
 
                 <label>Password</label>
-                <input type="password" name="password" placeholder="Password"></input>
+                <input type="password" name="password" placeholder="Password" required></input>
                 {/* 
                 <label>Repeat Password</label>
                 <input type="password" name="repeat-password" placeholder="Password"></input> */}

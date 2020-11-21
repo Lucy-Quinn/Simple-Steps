@@ -6,14 +6,13 @@ function Home() {
   return (
     <Layout title="Home Page">
       <h1>Home Page</h1>
-      {/* <Card
-        text="smaller component example"
-        image="https://i.imgur.com/OH7dtc0.png"
-      /> */}
-      {/* <Card
-        text="second example of component use"
-        image="https://i.imgur.com/dHdzhWn.png"
-      /> */}
+      <button>To Volunteer</button>
+      <button>To Find Volunteers</button>
+      <p className="account-message">
+        Don't have an account?
+        <a href="/auth/signup/volunteer">Sign up as Volunteer</a>
+        <a href="/auth/signup/charity">Sign up as Charity</a>
+      </p>
     </Layout>
   );
 }

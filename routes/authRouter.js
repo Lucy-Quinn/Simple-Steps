@@ -49,8 +49,8 @@ authRouter.post('/signup/charity', (req, res, next) => {
             User.create({ name: name, username: username, email: email, description: description, password: hashedPassword, userType: 'charity' })
                 .then((createdUser) => {
                     createdUser.password = "******";
-                    // req.session.currentUser = createdUser;
-                    res.redirect('/'); //change route to charity profile
+                     req.session.currentUser = createdUser;
+                    res.redirect(`/private/charity-profile/${createdUser._id}`); //change route to charity profile
                 })
                 .catch((err) => console.log(err));
         })
@@ -86,7 +86,7 @@ authRouter.post('/signup/volunteer', (req, res, next) => {
         .then((user) => {
             if (user) {
                 const props = { errorMessage: 'The username already exists' };
-                res.render('CharitySignup', props);
+                res.render('VolunteerSignup', props);
                 return;
             };
 
@@ -95,9 +95,10 @@ authRouter.post('/signup/volunteer', (req, res, next) => {
 
             User.create({ name: name, username: username, email: email, description: description, age: age, skills: skills, password: hashedPassword, userType: 'volunteer' })
                 .then((createdUser) => {
+                    console.log("createdUser",createdUser)
                     createdUser.password = "******";
-                    // req.session.currentUser = createdUser;
-                    res.redirect('/'); //change route to job-listings
+                    req.session.currentUser = createdUser;
+                    res.redirect('/private/job-listings'); //change route to job-listings
                 })
                 .catch((err) => console.log(err));
         })
