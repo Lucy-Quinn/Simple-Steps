@@ -6,13 +6,9 @@ function Home() {
   return (
     <Layout title="Home Page" isLoggedIn={false}>
       <h1>Home Page</h1>
-      <button>To Volunteer</button>
-      <button>To Find Volunteers</button>
-      <p className="account-message">
-        Don't have an account?
-        <a href="/auth/signup/volunteer">Sign up as Volunteer</a>
-        <a href="/auth/signup/charity">Sign up as Charity</a>
-      </p>
+      <button> <a href="/auth/signup/volunteer">To Volunteer</a></button>
+      <button><a href="/auth/signup/charity">To Find Volunteers</a></button>
+      
     </Layout>
   );
 }
