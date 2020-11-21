@@ -29,7 +29,7 @@ function Layout(props) {
               <li className="nav-item">
                 <a className="nav-link" href="/private/job-listings">Job Listings</a>
               </li>
-              {props.userType === 'volunteer' 
+              {props.userProfile.userType === 'volunteer' 
               ? <li className="nav-item">
                 <a className="nav-link" href={`/private/volunteer-profile/${props.userProfile._id}`}>Profile</a>
               </li>

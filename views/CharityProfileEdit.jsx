@@ -5,7 +5,7 @@ const Layout = require("./Layout");
 function CharityProfileEdit(props) {
 
     return (
-        <Layout title="Edit Your Profile" isLoggedIn={true} userProfile={props.charity}>
+        <Layout title="Edit Your Profile" isLoggedIn={true} userProfile={props.foundCharity}>
             <form action={`/private/charity-profile/edit?charityid=${props.foundCharity._id}`} method="POST">
 
                 <label>Name:</label>

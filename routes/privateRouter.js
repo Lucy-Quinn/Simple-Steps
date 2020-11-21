@@ -117,7 +117,7 @@ privateRouter.post("/charity-profile/edit/add-job",isCharityAdmin, (req, res, ne
 
 
 
-// GET       /private/volunteer-profile/edit/add-job
+// GET       /private/volunteer-profile/:volunteerid
 privateRouter.get("/volunteer-profile/:volunteerid",isVolunteerAdmin, (req, res, next) =>{
     
     const volunteerId = req.params.volunteerid;
@@ -135,10 +135,48 @@ privateRouter.get("/volunteer-profile/:volunteerid",isVolunteerAdmin, (req, res,
         })
         .catch((error) => {
             console.log('Error retrieving charity', error);
-        })
+        });
+
+});
+
+// GET       /private/volunteer-profile/edit/:volunteerid
+
+privateRouter.get("/volunteer-profile/edit/:volunteerid", isVolunteerAdmin, (req, res, next) => {
+    const volunteerid = req.params.volunteerid;
+    User.findById(volunteerid)
+    .then((foundVolunteer) => {
+        const props = {foundVolunteer};
+        res.render('VolunteerProfileEdit', props);
+
+
+    })
+    .catch((error) => {
+        console.log('Error retrieving edit charity profile', error);
+
+    })
 
 })
 
+// POST       /private/volunteer-profile/edit
+privateRouter.post("/volunteer-profile/edit",isVolunteerAdmin, (req, res, next) =>{
+
+    const { volunteerid } = req.query;
+    const {name, email, age, skills, description} = req.body;    
+    
+    User.findByIdAndUpdate(volunteerid, {name, email, age, skills, description})
+       .then((updatedVolunteer)=>{
+
+        console.log("updatedVolunteer", updatedVolunteer);
+        res.redirect(`/private/volunteer-profile/${volunteerid}`);
+
+        })
+    .catch((error)=> {
+
+        console.log("Could not update volunteer profile", error);
+
+    });
+
+});
 
 module.exports = privateRouter;
 

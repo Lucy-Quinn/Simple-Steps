@@ -12,7 +12,7 @@ function VolunteerProfile(props) {
                 <img src = {props.volunteer.photo} />
                 <p>Age: {props.volunteer.age}</p>
                 <p>Skills: {props.volunteer.skills}</p>
-                <h3>Description</h3>
+                <h3>About Me:</h3>
                 <p>{props.volunteer.description}</p>
                 {
                     props.admin 
