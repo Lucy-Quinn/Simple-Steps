@@ -21,7 +21,7 @@ privateRouter.get('/job-listings', isLoggedIn, (req, res, next) => {
         });
 });
 
-// GET       /private/job-listing
+// GET       /private/charity-profile/:charityid
 
 
 privateRouter.get("/charity-profile/:charityid", isCharityAdmin, (req, res, next) => {
@@ -30,7 +30,6 @@ privateRouter.get("/charity-profile/:charityid", isCharityAdmin, (req, res, next
 
     User.findById(charityId).populate("jobsCreated")            ///.populate('jobsCreated.charity')
         .then((charity) => {
-            console.log("Charity: ", charity)
             if (req.isAdmin) {
                 const props = { charity: charity, admin: true }
                 res.render("CharityProfile", props)
@@ -45,5 +44,43 @@ privateRouter.get("/charity-profile/:charityid", isCharityAdmin, (req, res, next
 })
 
 
+// GET       /private/charity-profile/edit/:charityid
+
+privateRouter.get("/charity-profile/edit/:charityid", isCharityAdmin, (req, res, next) => {
+    const charityId = req.params.charityid;
+    User.findById(charityId)
+    .then((foundCharity) => {
+        const props = {foundCharity};
+        res.render('CharityProfileEdit', props);
+
+
+    })
+    .catch((error) => {
+        console.log('Error retrieving edit charity profile', error);
+
+    })
+
+})
+
+// POST       /private/charity-profile/edit/:charityid
+
+
+privateRouter.post("/charity-profile/edit", isCharityAdmin, (req, res, next) => {
+
+    const { charityid } = req.query;
+    console.log("charity document after the update", charityid);
+
+    const {name, email, description} = req.body
+
+    User.findByIdAndUpdate(charityid, {
+        name, email, description},{new:true})
+        .then(()=>{
+            res.redirect(`/private/charity-profile/${charityid}`);
+
+        }).catch((error)=>{
+            console.log('Error retrieving updated charity', error);
+        })
+
+})
 module.exports = privateRouter;
 
