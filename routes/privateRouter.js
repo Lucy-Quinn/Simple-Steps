@@ -16,7 +16,6 @@ privateRouter.get('/job-listings', isLoggedIn, (req, res, next) => {
 
     Job.find().populate('charity').populate('volunteers.volunteer')
         .then((foundJobs) => {
-            console.log(foundJobs)
             const props = { foundJobs, user };
             res.render('JobListings', props);
         });
@@ -29,8 +28,9 @@ privateRouter.get("/charity-profile/:charityid", isCharityAdmin, (req, res, next
 
     const charityId = req.params.charityid;
 
-    User.findById(charityId)
+    User.findById(charityId).populate("jobsCreated")            ///.populate('jobsCreated.charity')
         .then((charity) => {
+            console.log("Charity: ", charity)
             if (req.isAdmin) {
                 const props = { charity: charity, admin: true }
                 res.render("CharityProfile", props)

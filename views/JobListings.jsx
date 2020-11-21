@@ -9,7 +9,7 @@ function JobListings(props) {
             <div id="cards">{props.foundJobs.map((foundJob, i) => {
                 return (
                     <div key={i}>
-                        <JobCard foundJob={foundJob}></JobCard>
+                        <JobCard foundJob={foundJob} isCharityProfile={false}></JobCard>
                     </div>
                 )
             })}
