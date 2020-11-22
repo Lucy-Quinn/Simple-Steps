@@ -206,8 +206,6 @@ privateRouter.get("/join-job/:jobid", isLoggedIn, (req, res, next) => {
         volunteer: userLoggedIn._id,
         accepted: false,
     };
-
-
     Job.findByIdAndUpdate(jobId, { $push: { volunteers: volunteerAddToJob } })
         .then(() => {
             const pr = User.findByIdAndUpdate(userLoggedIn._id, { $push: { jobsApplied: jobId } });
@@ -223,6 +221,17 @@ privateRouter.get("/join-job/:jobid", isLoggedIn, (req, res, next) => {
         })
 
 })
+
+
+// GET       /private/charity-locations
+privateRouter.get("/charity-locations", isLoggedIn, (req, res, next) => {
+
+    const userLoggedIn = req.session.currentUser;
+    const props = { userLoggedIn: userLoggedIn }
+    res.render('CharityLocations', props);
+
+});
+
 
 
 

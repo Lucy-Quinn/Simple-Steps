@@ -14,6 +14,8 @@ const Job = require('./models/Job.model');
 const authRouter = require("./routes/authRouter");
 const siteRouter = require("./routes/siteRouter");
 const privateRouter = require("./routes/privateRouter");
+const apiRouter = require("./routes/apiRouter");
+
 
 
 const app = express();
@@ -59,6 +61,7 @@ app.use(
 app.use("/auth", authRouter);
 app.use("/", siteRouter);
 app.use("/private", privateRouter);
+app.use("/api", apiRouter);
 
 
 /* GET home page. */

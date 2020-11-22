@@ -193,3 +193,18 @@ h1 {
   display: flex;
   justify-content: space-evenly;
 }
+
+/* Charity locations page  */
+
+.map-popup {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0px 10px;
+  width: 250px;
+}
+.popup-logo {
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+}

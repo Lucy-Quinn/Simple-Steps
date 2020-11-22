@@ -122,7 +122,6 @@ authRouter.post('/signup/volunteer', parser.single('profilepic'), (req, res, nex
 
             User.create(newUser)
                 .then((createdUser) => {
-                    console.log("createdUser", createdUser)
                     createdUser.password = "******";
                     req.session.currentUser = createdUser;
                     res.redirect('/private/job-listings'); //change route to job-listings
