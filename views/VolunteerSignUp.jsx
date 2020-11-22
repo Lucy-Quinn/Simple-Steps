@@ -5,7 +5,7 @@ function Signup(props) {
     return (
         <Layout title="Volunteer Sign Up" isLoggedIn={false}>
             <h1>Volunteer Signup</h1>
-            <form action="/auth/signup/volunteer" method="POST">
+            <form action="/auth/signup/volunteer" method="POST" encType="multipart/form-data">
                 <label>Name</label>
                 <input type="text" name="name" placeholder="Your full name" required></input>
 
@@ -16,7 +16,7 @@ function Signup(props) {
                 <input type="email" name="email" placeholder="Your full name" required></input>
 
                 <label>Description</label>
-                <textarea name="description" rows="4" cols="50" placeholder="A brief description about yourself" required/>
+                <textarea name="description" rows="4" cols="50" placeholder="A brief description about yourself" required />
 
                 <label>Age</label>
                 <input type="number" name="age" placeholder="Your age" required></input>
@@ -30,7 +30,11 @@ function Signup(props) {
                 <label>Repeat Password</label>
                 <input type="password" name="repeat-password" placeholder="Password"></input> */}
 
-                {/* photo */}
+
+                <label>Profile Picture</label>
+                <input type='file' name='profilepic' />
+
+
                 <button type="submit">Sign Up</button>
 
                 {

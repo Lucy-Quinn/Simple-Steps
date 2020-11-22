@@ -165,7 +165,7 @@ privateRouter.post("/volunteer-profile/edit", isVolunteerAdmin, (req, res, next)
     const { name, email, age, skills, description } = req.body;
 
     User.findByIdAndUpdate(volunteerid, { name, email, age, skills, description })
-        .then((updatedVolunteer) => {
+        .then(() => {
 
             res.redirect(`/private/volunteer-profile/${volunteerid}`);
 
