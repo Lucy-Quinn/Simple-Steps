@@ -11,58 +11,68 @@ function Layout(props) {
         <link rel="stylesheet" href="/stylesheets/style.css" />
       </head>
       <body>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-          {props.isLoggedIn 
-          ? <p>Simple Steps</p>
-          : <a className="navbar-brand" href="/">Simple Steps</a>
+        <nav className="navbar navbar-custom navbar-expand-lg navbar-light">
+          {props.isLoggedIn
+            //if logged in
+            ? <p>Simple Steps</p>
+            //if logged out
+            : (<a className="navbar-brand" href="/">Simple Steps</a>)
           }
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
-           
-              {props.isLoggedIn 
-              ? 
-
-              <ul className="navbar-nav ml-auto">
-              <li className="nav-item">
-                <a className="nav-link" href="/private/job-listings">Job Listings</a>
-              </li>
-              {props.userProfile.userType === 'volunteer' 
-              ? <li className="nav-item">
-                <a className="nav-link" href={`/private/volunteer-profile/${props.userProfile._id}`}>Profile</a>
-              </li>
-              :<li className="nav-item">
-                <a className="nav-link" href={`/private/charity-profile/${props.userProfile._id}`}>Profile</a>
-              </li>
-              }
-              
-              <li className="nav-item">
-                <a className="nav-link" href="/auth/logout">Logout</a>
-              </li>
+            {props.isLoggedIn
+              //if logged in
+              ? <ul className="navbar-nav ml-auto">
+                <li className="nav-item">
+                  <a className="nav-link" href="/private/job-listings">Job Listings</a>
+                </li>
+                {props.userProfile.userType === 'volunteer'
+                  //if userType is volunteer
+                  ? <li className="nav-item">
+                    <a className="nav-link" href={`/private/volunteer-profile/${props.userProfile._id}`}>Profile</a>
+                  </li>
+                  //if userType is charity
+                  : <li className="nav-item">
+                    <a className="nav-link" href={`/private/charity-profile/${props.userProfile._id}`}>Profile</a>
+                  </li>
+                }
+                <li className="nav-item">
+                  <a className="nav-link" href="/auth/logout">Logout</a>
+                </li>
               </ul>
-              : 
-              <ul className="navbar-nav ml-auto">
-
-              <li className="nav-item">
-                <a className="nav-link" href="/">Home</a>
-              </li>
-              <li className="nav-item dropdown">
-                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Join Us & Login
-               </a>
-                <div id="dropdown" className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a className="dropdown-item" href="/auth/signup/volunteer">Sign Up Volunteer</a>
-                  <a className="dropdown-item" href="/auth/signup/charity">Sign Up Charity</a>
-                  <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="/auth/login">Login</a>
-                  <a className="dropdown-item" href="/auth/logout">Logout</a>
-                </div>
-              </li>
-            </ul>
-              }   
-              </div>         
+              :
+              //if logged out
+              <ul className="navbar-nav ml-auto float-right text-right">
+                <li className="nav-item">
+                  <a className="nav-link" href="/">Home</a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="/auth/signup/volunteer">Sign Up as a Volunteer</a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="/auth/signup/charity">Sign Up as a Charity</a>
+                </li>
+                <li className="nav-item">
+                  <a className="nav-link" href="/auth/login">Login</a>
+                </li>
+                {/* <li className="nav-item dropdown ">
+                  <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Join Us & Login
+                  </a>
+                  <div id="dropdown" className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                    <a className="dropdown-item" href="/auth/signup/volunteer">Sign Up Volunteer</a>
+                    <a className="dropdown-item" href="/auth/signup/charity">Sign Up Charity</a>
+                    <div className="dropdown-divider"></div>
+                    <a className="dropdown-item" href="/auth/login">Login</a> */}
+                {/* <a className="dropdown-item" href="/auth/logout">Logout</a> */}
+                {/* </div>
+                </li> */}
+              </ul>
+            }
+          </div>
         </nav>
         {props.children}
 

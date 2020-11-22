@@ -8,6 +8,8 @@ const mongoose = require("mongoose");
 const erv = require("express-react-views");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
+const Job = require('./models/Job.model');
+
 
 const authRouter = require("./routes/authRouter");
 const siteRouter = require("./routes/siteRouter");
@@ -61,7 +63,12 @@ app.use("/private", privateRouter);
 
 /* GET home page. */
 app.get("/", (req, res, next) => {
-  res.render("Home");
+  Job.find().populate('charity')
+    .then((foundJobs) => {
+      const props = { foundJobs: foundJobs }
+      res.render("Home", props);
+
+    })
 });
 
 module.exports = app;
