@@ -19,7 +19,7 @@ function JobCard(props) { //props = job document and isUserTypeCharity = boolean
 
         <br />
         {/* If usertype === 'charity' do not show join button */}
-        {props.isUserTypeCharity ? null : <a href="#" className="btn btn-primary">Join Now</a>}
+        {props.userLoggedIn.userType === "charity" ? null : <a href={`/private/join-job/${props.foundJob._id}`} className="btn btn-primary">Join Now</a>}
 
       </div>
     </div>

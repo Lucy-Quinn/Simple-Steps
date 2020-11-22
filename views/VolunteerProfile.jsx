@@ -5,10 +5,10 @@ const Layout = require("./Layout");
 function VolunteerProfile(props) {
     console.log('props.volunteer', props.volunteer)
     return (
-        <Layout title={`${props.volunteer.name}`} isLoggedIn={true} userProfile={props.volunteer}>
+        <Layout title={`${props.volunteer.name}`} isLoggedIn={true} userLoggedIn={props.userLoggedIn}>
             <div>
                 <h1>{props.volunteer.name}</h1>
-                {/* <img src={props.volunteer.photo} /> */}
+                <img src={props.volunteer.photo} />
                 <p>Age: {props.volunteer.age}</p>
                 <p>Skills: {props.volunteer.skills}</p>
                 <h3>About Me:</h3>
@@ -31,7 +31,7 @@ function VolunteerProfile(props) {
 
                             <div className="card">
                                 <div class="card-header">
-                                    <img src={props.volunteer.photo} className="card-img-top" />
+                                    {/* <img src={props.volunteer.photo} className="card-img-top" /> */}
                                     <h5 className="card-title">{jobs.title}</h5>
                                 </div>
 

@@ -23,19 +23,19 @@ function Layout(props) {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
             {props.isLoggedIn
-              //if logged in
+              //if logged in as either charity or volunteer
               ? <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
                   <a className="nav-link" href="/private/job-listings">Job Listings</a>
                 </li>
-                {props.userProfile.userType === 'volunteer'
-                  //if userType is volunteer
+                {props.userLoggedIn.userType === 'volunteer'
+                  //if user logged is a volunteer
                   ? <li className="nav-item">
-                    <a className="nav-link" href={`/private/volunteer-profile/${props.userProfile._id}`}>Profile</a>
+                    <a className="nav-link" href={`/private/volunteer-profile/${props.userLoggedIn._id}`}>Profile</a>
                   </li>
-                  //if userType is charity
+                  //if user logged is a charity
                   : <li className="nav-item">
-                    <a className="nav-link" href={`/private/charity-profile/${props.userProfile._id}`}>Profile</a>
+                    <a className="nav-link" href={`/private/charity-profile/${props.userLoggedIn._id}`}>Profile</a>
                   </li>
                 }
                 <li className="nav-item">
@@ -43,7 +43,7 @@ function Layout(props) {
                 </li>
               </ul>
               :
-              //if logged out
+              //if logged out as either charity or volunteer
               <ul className="navbar-nav ml-auto float-right text-right">
                 <li className="nav-item">
                   <a className="nav-link" href="/">Home</a>

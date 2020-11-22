@@ -6,7 +6,7 @@ function CharityProfile(props) {
     // console.log('jobscreated', props.charity.jobsCreated)
 
     return (
-        <Layout title={`${props.charity.name} Profile`} isLoggedIn={true} userProfile={props.charity}>
+        <Layout title={`${props.charity.name} Profile`} isLoggedIn={true} userLoggedIn={props.userLoggedIn}>
             <div>
                 <h1>{props.charity.name}</h1>
                 <img src={props.charity.photo} />
@@ -53,7 +53,7 @@ function CharityProfile(props) {
                                     {/* If user logged in is usertype === 'charity' do not show join now button */}
                                     {props.userLoggedIn.userType === 'charity'
                                         ? null
-                                        : (<a href="#" className="btn btn-primary">Join Now</a>)}
+                                        : (<a href={`/private/join-job/${jobs._id}`} className="btn btn-primary">Join Now</a>)}
                                 </div>
                             </div>
 

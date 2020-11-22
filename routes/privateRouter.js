@@ -12,12 +12,12 @@ const isVolunteerAdmin = require("../utils/isVolunteerAdmin");
 
 privateRouter.get('/job-listings', isLoggedIn, (req, res, next) => {
 
-    const user = req.session.currentUser;
+    const userLoggedIn = req.session.currentUser;
 
     Job.find().populate('charity').populate('volunteers.volunteer')
         .then((foundJobs) => {
             //console.log("Job Object When On Job Listing Page",foundJobs[0] )
-            const props = { foundJobs, user };
+            const props = { foundJobs: foundJobs, userLoggedIn: userLoggedIn };
             res.render('JobListings', props);
         });
 });
@@ -104,7 +104,7 @@ privateRouter.post("/charity-profile/edit/add-job", isCharityAdmin, (req, res, n
             const pr = User.findByIdAndUpdate(charityid, { $push: { jobsCreated: createdJob._id } });
             return pr;
 
-        }).then((updatedCharity) => {
+        }).then(() => {
             res.redirect(`/private/charity-profile/${charityid}`)
         })
         .catch((err) => {
@@ -120,15 +120,17 @@ privateRouter.post("/charity-profile/edit/add-job", isCharityAdmin, (req, res, n
 privateRouter.get("/volunteer-profile/:volunteerid", isVolunteerAdmin, (req, res, next) => {
 
     const volunteerId = req.params.volunteerid;
+    const userLoggedIn = req.session.currentUser;
+
 
     User.findById(volunteerId).populate("jobsApplied").populate("jobsApplied.charity")            ///.populate('jobsCreated.volunteer')
         .then((volunteer) => {
             // console.log("Volunteer Object When on Volunteer Profile Page", volunteer)
             if (req.isAdmin) {
-                const props = { volunteer: volunteer, admin: true }
+                const props = { volunteer: volunteer, admin: true, userLoggedIn: userLoggedIn }
                 res.render("VolunteerProfile", props)
             } else {
-                const props = { volunteer: volunteer, admin: false }
+                const props = { volunteer: volunteer, admin: false, userLoggedIn: userLoggedIn }
                 res.render("VolunteerProfile", props)
             }
         })
@@ -180,10 +182,10 @@ privateRouter.post("/volunteer-profile/edit", isVolunteerAdmin, (req, res, next)
 // GET       /private/charity-profile/delete/:jobid
 privateRouter.get("/charity-profile/delete/:jobid", isCharityAdmin, (req, res, next) => {
     const jobId = req.params.jobid;
-    const currentUser = req.session.currentUser;
+    const userLoggedIn = req.session.currentUser;
     Job.deleteOne({ "_id": jobId })
         .then(() => {
-            res.redirect(`/private/charity-profile/${currentUser._id}`)
+            res.redirect(`/private/charity-profile/${userLoggedIn._id}`)
         })
         .catch((error) => {
             console.log("Could not delete job", error);
@@ -191,6 +193,38 @@ privateRouter.get("/charity-profile/delete/:jobid", isCharityAdmin, (req, res, n
         })
 
 })
+
+
+// GET       /private/join-job/:jobid
+
+privateRouter.get("/join-job/:jobid", isLoggedIn, (req, res, next) => {
+
+    const jobId = req.params.jobid;
+    const userLoggedIn = req.session.currentUser;
+
+    const volunteerAddToJob = {
+        volunteer: userLoggedIn._id,
+        accepted: false,
+    };
+
+
+    Job.findByIdAndUpdate(jobId, { $push: { volunteers: volunteerAddToJob } })
+        .then(() => {
+            const pr = User.findByIdAndUpdate(userLoggedIn._id, { $push: { jobsApplied: jobId } });
+            return pr;
+        })
+        .then(() => {
+
+            res.redirect(`/private/volunteer-profile/${userLoggedIn._id}`);
+
+        })
+        .catch((error) => {
+            console.log("Error for volunteer joining job", error)
+        })
+
+})
+
+
 
 module.exports = privateRouter;
 
