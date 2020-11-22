@@ -148,7 +148,7 @@ body {
 }
 a,
 .navbar-light .navbar-nav .nav-link {
-  color: var(--white-color);
+  color: var(--black-color);
 
   font-size: 1.2rem;
   text-decoration: none;
@@ -182,6 +182,9 @@ h1 {
 .card {
   width: 18rem;
   margin: 10px;
+}
+.card-header {
+  display: flex;
 }
 .carousel-item {
   height: 500px;

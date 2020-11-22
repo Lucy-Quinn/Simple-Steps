@@ -23,27 +23,27 @@ function Home(props) {
           <div className="carousel-inner">
             <div className="carousel-item active">
               <div className="carousel-row">
+                <JobCard foundJob={props.foundJobs[0]} ></JobCard>
+                <JobCard foundJob={props.foundJobs[0]} ></JobCard>
+                <JobCard foundJob={props.foundJobs[0]} ></JobCard>
+              </div>
+            </div>
+
+
+            <div className="carousel-item">
+              <div className="carousel-row">
+
+                <JobCard foundJob={props.foundJobs[0]} ></JobCard>
+                <JobCard foundJob={props.foundJobs[0]} ></JobCard>
+                <JobCard foundJob={props.foundJobs[0]} ></JobCard>
+              </div>
+            </div>
+            <div className="carousel-item">
+              <div className="carousel-row">
+
                 <JobCard foundJob={props.foundJobs[0]} isCharityProfilePage={false}></JobCard>
-                <JobCard foundJob={props.foundJobs[1]} isCharityProfilePage={false}></JobCard>
-                <JobCard foundJob={props.foundJobs[2]} isCharityProfilePage={false}></JobCard>
-              </div>
-            </div>
-
-
-            <div className="carousel-item">
-              <div className="carousel-row">
-
-                <JobCard foundJob={props.foundJobs[3]} isCharityProfilePage={false}></JobCard>
-                <JobCard foundJob={props.foundJobs[4]} isCharityProfilePage={false}></JobCard>
-                <JobCard foundJob={props.foundJobs[5]} isCharityProfilePage={false}></JobCard>
-              </div>
-            </div>
-            <div className="carousel-item">
-              <div className="carousel-row">
-
-                <JobCard foundJob={props.foundJobs[5]} isCharityProfilePage={false}></JobCard>
-                <JobCard foundJob={props.foundJobs[5]} isCharityProfilePage={false}></JobCard>
-                <JobCard foundJob={props.foundJobs[5]} isCharityProfilePage={false}></JobCard>
+                <JobCard foundJob={props.foundJobs[0]} isCharityProfilePage={false}></JobCard>
+                <JobCard foundJob={props.foundJobs[0]} isCharityProfilePage={false}></JobCard>
               </div>
             </div>
           </div>

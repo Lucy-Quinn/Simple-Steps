@@ -28,15 +28,16 @@ privateRouter.get('/job-listings', isLoggedIn, (req, res, next) => {
 privateRouter.get("/charity-profile/:charityid", isCharityAdmin, (req, res, next) => {
 
     const charityId = req.params.charityid;
+    const userLoggedIn = req.session.currentUser;
 
     User.findById(charityId).populate("jobsCreated")            ///.populate('jobsCreated.charity')
         .then((charity) => {
             // console.log("Charity Object When on Charity Profile Page", charity)
             if (req.isAdmin) {
-                const props = { charity: charity, admin: true }
+                const props = { charity: charity, admin: true, userLoggedIn: userLoggedIn }
                 res.render("CharityProfile", props)
             } else {
-                const props = { charity: charity, admin: false }
+                const props = { charity: charity, admin: false, userLoggedIn: userLoggedIn }
                 res.render("CharityProfile", props)
             }
         })
@@ -120,7 +121,7 @@ privateRouter.get("/volunteer-profile/:volunteerid", isVolunteerAdmin, (req, res
 
     const volunteerId = req.params.volunteerid;
 
-    User.findById(volunteerId).populate("jobsApplied")            ///.populate('jobsCreated.volunteer')
+    User.findById(volunteerId).populate("jobsApplied").populate("jobsApplied.charity")            ///.populate('jobsCreated.volunteer')
         .then((volunteer) => {
             // console.log("Volunteer Object When on Volunteer Profile Page", volunteer)
             if (req.isAdmin) {
@@ -181,7 +182,7 @@ privateRouter.get("/charity-profile/delete/:jobid", isCharityAdmin, (req, res, n
     const jobId = req.params.jobid;
     const currentUser = req.session.currentUser;
     Job.deleteOne({ "_id": jobId })
-        .then((deletedJob) => {
+        .then(() => {
             res.redirect(`/private/charity-profile/${currentUser._id}`)
         })
         .catch((error) => {

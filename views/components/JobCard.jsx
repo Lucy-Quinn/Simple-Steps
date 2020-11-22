@@ -1,17 +1,9 @@
 const React = require("react");
 
-function JobCard(props) {
-
-  // console.log("props.isCharityProfilePage", props.isCharityProfilePage)
-
+function JobCard(props) { //props = job document and isUserTypeCharity = boolean
   return (
     <div className="card">
-
-      {
-        props.isCharityProfilePage
-          ? <img src={props.charity.photo} className="card-img-top" alt="..." />
-          : <img src={props.foundJob.charity.photo} className="card-img-top" alt="..." />
-      }
+      <img src={props.foundJob.charity.photo} className="card-img-top" alt="..." />
 
       <div className="card-body">
         <h5 className="card-title">{props.foundJob.title}</h5>
@@ -26,7 +18,8 @@ function JobCard(props) {
         })}
 
         <br />
-        {props.isCharityProfilePage ? null : <a href="#" className="btn btn-primary">Join Now</a>}
+        {/* If usertype === 'charity' do not show join button */}
+        {props.isUserTypeCharity ? null : <a href="#" className="btn btn-primary">Join Now</a>}
 
       </div>
     </div>
