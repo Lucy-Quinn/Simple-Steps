@@ -131,15 +131,25 @@ table {
 /************** End of css reset  ***************/
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
 
+/* CSS variables */
+
+:root {
+  --background-color: #fff;
+  --white-color: #fff;
+  --black-color: black;
+  /* color: var(--black-color); */
+}
+
 body {
   font-family: "Roboto", sans-serif;
   /* font: "Lucida Grande", Helvetica, Arial, sans-serif; */
   font-size: 10px;
-  background-color: #edf5e1;
+  background-color: #fff;
 }
 a,
 .navbar-light .navbar-nav .nav-link {
-  color: #edf5e1;
+  color: var(--white-color);
+
   font-size: 1.2rem;
   text-decoration: none;
 }

@@ -2,7 +2,7 @@ const React = require("react");
 
 function JobCard(props) {
 
-  console.log("props.isCharityProfilePage", props.isCharityProfilePage)
+  // console.log("props.isCharityProfilePage", props.isCharityProfilePage)
 
   return (
     <div className="card">

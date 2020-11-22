@@ -5,11 +5,10 @@ const JobCard = require('./components/JobCard');
 function JobListings(props) {
     return (
         <Layout title="Job Listings" isLoggedIn={true} userProfile={props.user}>
-            {props.user.userType==="charity" 
-            ? <h1>Jobs Available</h1>
-            : <h1>Jobs for you {props.user.name}!</h1>
+            {props.user.userType === "charity"
+                ? <h1>Jobs Available</h1>
+                : <h1>Jobs for you {props.user.name}!</h1>
             }
-
 
             <div id="cards">{props.foundJobs.map((foundJob, i) => {
                 return (

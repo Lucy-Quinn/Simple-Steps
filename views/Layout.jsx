@@ -1,7 +1,6 @@
 const React = require("react");
 
 function Layout(props) {
-  console.log('props.userProfile', props)
   return (
     <html lang="en">
       <head>

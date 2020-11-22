@@ -9,28 +9,31 @@ function CharityProfile(props) {
         <Layout title={`${props.charity.name} Profile`} isLoggedIn={true} userProfile={props.charity}>
             <div>
                 <h1>{props.charity.name}</h1>
-                <img src = {props.charity.photo} />
+                <img src={props.charity.photo} />
                 <h3>Description</h3>
                 <p>{props.charity.description}</p>
                 {
-                    props.admin 
-                    ?   (<button>
+                    props.admin
+                        ? (<button>
                             <a href={`/private/charity-profile/edit/${props.charity._id}`}>Edit</a>
                         </button>)
-                    : null
+                        : null
                 }
-                
+
             </div>
             <div>
-                {props.charity.jobsCreated.map((jobs, i)=>{
-                    return(
+                {props.charity.jobsCreated.map((jobs, i) => {
+                    return (
                         <div key={i}>
-                        <JobCard foundJob={jobs} charity={props.charity} isCharityProfilePage={true}></JobCard>
+                            <JobCard foundJob={jobs} charity={props.charity} isCharityProfilePage={true}></JobCard>
+                            <button>
+                                <a href={`/private/charity-profile/delete/${jobs._id}`}>Delete</a>
+                            </button>
                         </div>
                     )
                 })}
 
-              
+
             </div>
         </Layout>
 
