@@ -247,20 +247,21 @@ privateRouter.get("/join-job/:jobid", isLoggedIn, (req, res, next) => {
         accepted: false,
     };
 
+    //find all volunteers that have applied for the job
     User.find({ jobsApplied: jobId })
-        .then((volunteers) => {
-            console.log('volunteers', volunteers)
+        .then((foundVolunteers) => {
 
-            const userAlreadyJoined = false;
-            volunteers.forEach((volunteer) => {
-                console.log("volunteer found plus current user", typeof volunteer._id, typeof userLoggedIn._id)
+            const userAlreadyJoinedJob = false;
+            //check if any of the volunteers have the same id as the current user's id
+            foundVolunteers.forEach((volunteer) => {
                 if (String(volunteer._id) === String(userLoggedIn._id)) {
                     res.redirect('/private/job-listings');
-                    userAlreadyJoined = true
+                    userAlreadyJoinedJob = true;
                 };
             })
-            if (userAlreadyJoined === true) {
-                return
+            //if volunteer does have same id do not continue
+            if (userAlreadyJoinedJob === true) {
+                return;
             }
 
             Job.findByIdAndUpdate(jobId, { $push: { volunteers: volunteerAddToJob } })
@@ -269,9 +270,7 @@ privateRouter.get("/join-job/:jobid", isLoggedIn, (req, res, next) => {
                     return pr;
                 })
                 .then(() => {
-
                     res.redirect(`/private/volunteer-profile/${userLoggedIn._id}`);
-
                 })
                 .catch((error) => {
                     console.log("Error for volunteer joining job", error)
@@ -279,7 +278,6 @@ privateRouter.get("/join-job/:jobid", isLoggedIn, (req, res, next) => {
         })
         .catch((error) => {
             console.log("Error for finding volunteer", error)
-
         })
 
 })
