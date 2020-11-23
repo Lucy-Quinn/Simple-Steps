@@ -17,7 +17,7 @@ function Layout(props) {
         <nav className="navbar navbar-custom navbar-expand-lg navbar-light">
           {props.isLoggedIn
             //if logged in
-            ? <p>Simple Steps</p>
+            ? <p className="navbar-brand">Simple Steps</p>
             //if logged out
             : (<a className="navbar-brand" href="/">Simple Steps</a>)
           }
