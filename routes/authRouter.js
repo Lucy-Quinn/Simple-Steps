@@ -99,7 +99,7 @@ authRouter.post('/signup/volunteer', parser.single('profilepic'), (req, res, nex
     User.findOne({ username })
         .then((user) => {
             if (user) {
-                const props = { errorMessage: 'The username already exists' };
+                const props = { errorMessage: 'Try with another username or email' };
                 res.render('VolunteerSignup', props);
                 return;
             };

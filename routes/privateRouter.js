@@ -31,7 +31,6 @@ privateRouter.get("/charity-profile/:charityid", isCharityAdmin, (req, res, next
     const userLoggedIn = req.session.currentUser;
 
     User.findById(charityId)
-        // .populate("jobsCreated")
         .populate({
             path: 'jobsCreated',
             model: 'Job',
@@ -39,10 +38,8 @@ privateRouter.get("/charity-profile/:charityid", isCharityAdmin, (req, res, next
                 path: 'volunteers.volunteer',
                 model: 'User'
             }
-        })            ///.populate('jobsCreated.charity')
+        })
         .then((charity) => {
-            console.log("charity.jobsCreated.volunteers", charity.jobsCreated[0].volunteers)
-            // console.log("Charity Object When on Charity Profile Page", charity)
             if (req.isAdmin) {
                 const props = { charity: charity, admin: true, userLoggedIn: userLoggedIn }
                 res.render("CharityProfile", props)
@@ -132,10 +129,22 @@ privateRouter.get("/volunteer-profile/:volunteerid", isVolunteerAdmin, (req, res
     const volunteerId = req.params.volunteerid;
     const userLoggedIn = req.session.currentUser;
 
-
-    User.findById(volunteerId).populate("jobsApplied").populate("jobsApplied.charity")            ///.populate('jobsCreated.volunteer')
+    //populateQuery => use nested populate with an array of paths
+    const populateQuery = {
+        path: 'jobsApplied',
+        model: 'Job',
+        populate: [{
+            path: 'volunteers.volunteer',
+            model: 'User'
+        }, {
+            path: 'charity',
+            model: 'User'
+        }]
+    }
+    User.findById(volunteerId)
+        .populate(populateQuery)
         .then((volunteer) => {
-            // console.log("Volunteer Object When on Volunteer Profile Page", volunteer)
+            console.log("Volunteer Object When on Volunteer Profile Page", volunteer.jobsApplied[0].volunteers)
             if (req.isAdmin) {
                 const props = { volunteer: volunteer, admin: true, userLoggedIn: userLoggedIn }
                 res.render("VolunteerProfile", props)
