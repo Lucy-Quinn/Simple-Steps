@@ -23,7 +23,7 @@ function CharityProfile(props) {
             </div>
 
             <div>
-                {props.charity.jobsCreated.map((jobs, i) => {
+                {props.foundJob.map((jobs, i) => {
                     return (
                         <div key={i}>
 

@@ -25,26 +25,49 @@ privateRouter.get('/job-listings', isLoggedIn, (req, res, next) => {
 // GET       /private/charity-profile/:charityid
 
 
-privateRouter.get("/charity-profile/:charityid", isCharityAdmin, (req, res, next) => {
+// privateRouter.get("/charity-profile/:charityid", isCharityAdmin, (req, res, next) => {
 
+//     const charityId = req.params.charityid;
+//     const userLoggedIn = req.session.currentUser;
+
+//     User.findById(charityId).populate("jobsCreated")            ///.populate('jobsCreated.charity')
+//         .then((charity) => {
+//             // console.log("Charity Object When on Charity Profile Page", charity)
+//             if (req.isAdmin) {
+//                 const props = { charity: charity, admin: true, userLoggedIn: userLoggedIn }
+//                 res.render("CharityProfile", props)
+//             } else {
+//                 const props = { charity: charity, admin: false, userLoggedIn: userLoggedIn }
+//                 res.render("CharityProfile", props)
+//             }
+//         })
+//         .catch((error) => {
+//             console.log('Error retrieving charity', error);
+//         })
+// })
+
+
+
+
+privateRouter.get("/charity-profile/:charityid", (req, res, next) =>{
     const charityId = req.params.charityid;
     const userLoggedIn = req.session.currentUser;
 
-    User.findById(charityId).populate("jobsCreated")            ///.populate('jobsCreated.charity')
-        .then((charity) => {
-            // console.log("Charity Object When on Charity Profile Page", charity)
-            if (req.isAdmin) {
-                const props = { charity: charity, admin: true, userLoggedIn: userLoggedIn }
-                res.render("CharityProfile", props)
-            } else {
-                const props = { charity: charity, admin: false, userLoggedIn: userLoggedIn }
-                res.render("CharityProfile", props)
-            }
+    Job.find({charity: charityId}).populate("charity").populate("volunteers.volunteer")
+        .then((foundJob) => {
+            const props = { charity: foundJob[0].charity, foundJob: foundJob, userLoggedIn: userLoggedIn};
+            res.render('CharityProfileEdit', props);
+
+
         })
         .catch((error) => {
-            console.log('Error retrieving charity', error);
+            console.log('Error retrieving edit charity profile', error);
+
         })
+
 })
+
+
 
 
 // GET       /private/charity-profile/edit/:charityid
