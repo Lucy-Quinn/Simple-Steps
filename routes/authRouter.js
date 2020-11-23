@@ -4,6 +4,8 @@ const authRouter = express.Router();
 const bcrypt = require('bcrypt');
 const User = require('./../models/User.model');
 const zxcvbn = require('zxcvbn');
+const parser = require('./../config/cloudinary');
+
 
 const isLoggedIn = require('./../utils/isLoggedIn')
 const saltRounds = 10;
@@ -18,7 +20,8 @@ authRouter.get('/signup/charity', (req, res, next) => {
 
 
 // POST       /auth/signup/charity
-authRouter.post('/signup/charity', (req, res, next) => {
+authRouter.post('/signup/charity', parser.single('profilepic'), (req, res, next) => {
+    const imageUrl = req.file.secure_url;
 
     const { name, username, email, description, password } = req.body;
     if (username === '' || password === '') {
@@ -46,10 +49,20 @@ authRouter.post('/signup/charity', (req, res, next) => {
             const salt = bcrypt.genSaltSync(saltRounds);
             const hashedPassword = bcrypt.hashSync(password, salt);
 
-            User.create({ name: name, username: username, email: email, description: description, password: hashedPassword, userType: 'charity' })
+            const newUser = {
+                name: name,
+                username: username,
+                email: email,
+                description: description,
+                password: hashedPassword,
+                photo: imageUrl,
+                userType: 'charity'
+            }
+
+            User.create(newUser)
                 .then((createdUser) => {
                     createdUser.password = "******";
-                     req.session.currentUser = createdUser;
+                    req.session.currentUser = createdUser;
                     res.redirect(`/private/charity-profile/${createdUser._id}`); //change route to charity profile
                 })
                 .catch((err) => console.log(err));
@@ -65,7 +78,8 @@ authRouter.get('/signup/volunteer', (req, res, next) => {
 
 
 // POST       /auth/signup/volunteer
-authRouter.post('/signup/volunteer', (req, res, next) => {
+authRouter.post('/signup/volunteer', parser.single('profilepic'), (req, res, next) => {
+    const imageUrl = req.file.secure_url;
 
     const { name, username, email, description, age, skills, password } = req.body;
     if (username === '' || password === '') {
@@ -93,9 +107,21 @@ authRouter.post('/signup/volunteer', (req, res, next) => {
             const salt = bcrypt.genSaltSync(saltRounds);
             const hashedPassword = bcrypt.hashSync(password, salt);
 
-            User.create({ name: name, username: username, email: email, description: description, age: age, skills: skills, password: hashedPassword, userType: 'volunteer' })
+            const newUser = {
+                name: name,
+                username: username,
+                email: email,
+                description: description,
+                age: age,
+                skills: skills,
+                password: hashedPassword,
+                photo: imageUrl,
+                userType: 'volunteer'
+            }
+
+
+            User.create(newUser)
                 .then((createdUser) => {
-                    console.log("createdUser",createdUser)
                     createdUser.password = "******";
                     req.session.currentUser = createdUser;
                     res.redirect('/private/job-listings'); //change route to job-listings
