@@ -1,6 +1,6 @@
 const React = require("react");
 const Layout = require("./Layout");
-const JobCardHomePage = require("./components/JobCardHomepage");
+const JobCardHomePage = require("./components/JobCardHomePage");
 
 
 function Home(props) {

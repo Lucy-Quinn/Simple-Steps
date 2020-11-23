@@ -207,6 +207,7 @@ h1 {
   flex-direction: column;
   align-items: center;
 }
+
 /* Job cards  */
 #cards {
   display: flex;
