@@ -30,8 +30,18 @@ privateRouter.get("/charity-profile/:charityid", isCharityAdmin, (req, res, next
     const charityId = req.params.charityid;
     const userLoggedIn = req.session.currentUser;
 
-    User.findById(charityId).populate("jobsCreated")            ///.populate('jobsCreated.charity')
+    User.findById(charityId)
+        // .populate("jobsCreated")
+        .populate({
+            path: 'jobsCreated',
+            model: 'Job',
+            populate: {
+                path: 'volunteers.volunteer',
+                model: 'User'
+            }
+        })            ///.populate('jobsCreated.charity')
         .then((charity) => {
+            console.log("charity.jobsCreated.volunteers", charity.jobsCreated[0].volunteers)
             // console.log("Charity Object When on Charity Profile Page", charity)
             if (req.isAdmin) {
                 const props = { charity: charity, admin: true, userLoggedIn: userLoggedIn }
