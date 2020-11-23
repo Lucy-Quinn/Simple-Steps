@@ -128,7 +128,16 @@ authRouter.post('/signup/volunteer', parser.single('profilepic'), (req, res, nex
                 })
                 .catch((err) => console.log(err));
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.log(err))
+        
+        
+        
+        
+        
+        
+        
+        
+        ;
 });
 
 

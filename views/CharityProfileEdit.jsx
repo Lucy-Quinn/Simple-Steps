@@ -34,7 +34,7 @@ function CharityProfileEdit(props) {
                 <br />
 
                 <label>Date:</label>
-                <input type="date" name="date" required />
+                <input type="datetime" name="date" required />
                 <br />
 
                 <label>Description:</label>

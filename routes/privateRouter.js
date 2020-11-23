@@ -53,14 +53,6 @@ privateRouter.get("/charity-profile/:charityid", (req, res, next) =>{
     const charityId = req.params.charityid;
     const userLoggedIn = req.session.currentUser;
 
-<<<<<<< HEAD
-    Job.find({charity: charityId}).populate("charity").populate("volunteers.volunteer")
-        .then((foundJob) => {
-            const props = { charity: foundJob[0].charity, foundJob: foundJob, userLoggedIn: userLoggedIn};
-            res.render('CharityProfileEdit', props);
-
-
-=======
     User.findById(charityId)
         .populate({
             path: 'jobsCreated',
@@ -78,7 +70,6 @@ privateRouter.get("/charity-profile/:charityid", (req, res, next) =>{
                 const props = { charity: charity, admin: false, userLoggedIn: userLoggedIn }
                 res.render("CharityProfile", props)
             }
->>>>>>> ab4a7111f9c91212bbb55b40dd6435641ce92f4a
         })
         .catch((error) => {
             console.log('Error retrieving edit charity profile', error);
