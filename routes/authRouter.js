@@ -79,6 +79,7 @@ authRouter.get('/signup/volunteer', (req, res, next) => {
 
 // POST       /auth/signup/volunteer
 authRouter.post('/signup/volunteer', parser.single('profilepic'), (req, res, next) => {
+
     const imageUrl = req.file.secure_url;
 
     const { name, username, email, description, age, skills, password } = req.body;
@@ -96,9 +97,10 @@ authRouter.post('/signup/volunteer', parser.single('profilepic'), (req, res, nex
     //     return;
     // }
 
-    User.findOne({ username })
+    User
+        .find({ $or: [{ username }, { email }] })
         .then((user) => {
-            if (user) {
+            if (user.length !== 0) {
                 const props = { errorMessage: 'Try with another username or email' };
                 res.render('VolunteerSignup', props);
                 return;

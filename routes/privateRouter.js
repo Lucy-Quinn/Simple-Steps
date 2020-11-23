@@ -144,7 +144,6 @@ privateRouter.get("/volunteer-profile/:volunteerid", isVolunteerAdmin, (req, res
     User.findById(volunteerId)
         .populate(populateQuery)
         .then((volunteer) => {
-            console.log("Volunteer Object When on Volunteer Profile Page", volunteer.jobsApplied[0].volunteers)
             if (req.isAdmin) {
                 const props = { volunteer: volunteer, admin: true, userLoggedIn: userLoggedIn }
                 res.render("VolunteerProfile", props)
