@@ -8,15 +8,38 @@ function Home(props) {
     <Layout title="Home Page" isLoggedIn={false}>
 
       <div>
+        <div className="header-img">
+          <div className="header-title">
+            <h1>Taking Simple Steps to Making The World a Better Place</h1>
+          </div>
+          <div className="button-header">
+            <button className="btn btn-info"> <a href="/auth/signup/volunteer">I want to volunteer: Find opportunities</a></button>
+            <button className="btn btn-info"><a href="/auth/signup/charity">I'm a charity: Find volunteers</a></button>
+          </div>
+        </div>
+        <section id="steps-section">
+          <h1>Get Involved</h1>
+          <div className="steps">
+            <div className="step-card">
+              <p>Step One: </p>
+              <p>Sign up as a volunter or charity</p>
+            </div>
+            <div className="step-card">
+              <p>Step Two: </p>
+              <p>Sign up as a volunter or charity</p>
+            </div>
+            <div className="step-card">
+              <p>Step Three: </p>
+              <p>Sign up as a volunter or charity</p>
+            </div>
+            <div className="step-card">
+              <p>Step Four: </p>
+              <p>Sign up as a volunter or charity</p>
+            </div>
+          </div>
 
-        <button> <a href="/auth/signup/volunteer">I want to volunteer: Find opportunities</a></button>
-        <button><a href="/auth/signup/charity">I'm a charity: Find volunteers</a></button>
-        <h1>Get Involved</h1>
-        <p>Step One: </p>
-        <p>Step Two</p>
-        <p>Step Three</p>
-        <p>Step Four</p>
 
+        </section>
         <h2>Volunteer Projects Near You:</h2>
         <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
           <div className="carousel-inner">

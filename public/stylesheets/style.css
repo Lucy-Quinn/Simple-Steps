@@ -173,6 +173,40 @@ h1 {
   /* height: 70px; */
 }
 
+/* Home Page */
+
+.header-img {
+  background: center url("../images/header-image.jpg") no-repeat;
+  background-size: cover;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+}
+.header-title {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  color: var(--white-color);
+}
+.button-header {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+.button-header button {
+  margin: 10px;
+}
+.steps {
+  display: flex;
+  justify-content: space-around;
+}
+.step-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 /* Job cards  */
 #cards {
   display: flex;
