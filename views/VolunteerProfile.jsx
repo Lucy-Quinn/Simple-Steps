@@ -43,6 +43,7 @@ function VolunteerProfile(props) {
                                     <p>Skills Required:</p>
                                     <p className="card-text">{jobs.skillsRequired}</p>
                                     {jobs.volunteers.map((oneVolunteer, i) => {
+                                        //put ternary in for null 
                                         return (
                                             <a key={i} href={`/private/volunteer-profile/${oneVolunteer.volunteer._id}`} className="card-text">{oneVolunteer.volunteer.name}</a>
                                         )

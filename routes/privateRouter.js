@@ -5,6 +5,7 @@ const privateRouter = express.Router();
 const Job = require('./../models/Job.model');
 const isCharityAdmin = require("../utils/isCharityAdmin");
 const isVolunteerAdmin = require("../utils/isVolunteerAdmin");
+const { findByIdAndDelete } = require("../models/User.model");
 
 
 
@@ -201,9 +202,30 @@ privateRouter.post("/volunteer-profile/edit", isVolunteerAdmin, (req, res, next)
 privateRouter.get("/charity-profile/delete/:jobid", isCharityAdmin, (req, res, next) => {
     const jobId = req.params.jobid;
     const userLoggedIn = req.session.currentUser;
-    Job.deleteOne({ "_id": jobId })
+    let volunteers;
+    Job.findByIdAndDelete({ "_id": jobId })
+        .then((deletedJob) => {
+            console.log('deletedJob', deletedJob)
+            volunteers = deletedJob.volunteers;
+            const charityId = deletedJob.charity._id;
+            const pr = User.findByIdAndUpdate(charityId, { $pull: { jobsCreated: jobId } });
+            return pr
+        })
         .then(() => {
+            const prArray = volunteers.map((volunteerObj) => {
+                const volunteerId = volunteerObj.volunteer;
+                const pr = User.findByIdAndUpdate(volunteerId, { $pull: { jobsApplied: jobId } }, { new: true });
+                return pr
+            })
+            // console.log('removedJobId', removedJobId)
+            const bigPr = Promise.all(prArray);
+            return bigPr
+
+        })
+        .then((updatedVolunteers) => {
+            console.log('updatedVolunteers', updatedVolunteers)
             res.redirect(`/private/charity-profile/${userLoggedIn._id}`)
+
         })
         .catch((error) => {
             console.log("Could not delete job", error);
@@ -224,18 +246,40 @@ privateRouter.get("/join-job/:jobid", isLoggedIn, (req, res, next) => {
         volunteer: userLoggedIn._id,
         accepted: false,
     };
-    Job.findByIdAndUpdate(jobId, { $push: { volunteers: volunteerAddToJob } })
-        .then(() => {
-            const pr = User.findByIdAndUpdate(userLoggedIn._id, { $push: { jobsApplied: jobId } });
-            return pr;
-        })
-        .then(() => {
 
-            res.redirect(`/private/volunteer-profile/${userLoggedIn._id}`);
+    User.find({ jobsApplied: jobId })
+        .then((volunteers) => {
+            console.log('volunteers', volunteers)
 
+            const userAlreadyJoined = false;
+            volunteers.forEach((volunteer) => {
+                console.log("volunteer found plus current user", typeof volunteer._id, typeof userLoggedIn._id)
+                if (String(volunteer._id) === String(userLoggedIn._id)) {
+                    res.redirect('/private/job-listings');
+                    userAlreadyJoined = true
+                };
+            })
+            if (userAlreadyJoined === true) {
+                return
+            }
+
+            Job.findByIdAndUpdate(jobId, { $push: { volunteers: volunteerAddToJob } })
+                .then(() => {
+                    const pr = User.findByIdAndUpdate(userLoggedIn._id, { $push: { jobsApplied: jobId } });
+                    return pr;
+                })
+                .then(() => {
+
+                    res.redirect(`/private/volunteer-profile/${userLoggedIn._id}`);
+
+                })
+                .catch((error) => {
+                    console.log("Error for volunteer joining job", error)
+                })
         })
         .catch((error) => {
-            console.log("Error for volunteer joining job", error)
+            console.log("Error for finding volunteer", error)
+
         })
 
 })

@@ -1,11 +1,6 @@
 const React = require("react");
 
 function JobCard(props) { //props = job document and isUserTypeCharity = boolean
-  // console.log('propsssss', props.foundJob.volunteers)
-  console.log('onevol', props.foundJob.volunteers)
-  console.log('onevoljoesconsolelog', props.foundJob.volunteers[0].volunteer === null)
-
-
   return (
     <div className="card">
       <img src={props.foundJob.charity.photo} className="card-img-top" alt="..." />
