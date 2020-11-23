@@ -9,16 +9,15 @@ function Home(props) {
 
       <div>
 
-        <button> <a href="/auth/signup/volunteer">To Volunteer</a></button>
-        <button><a href="/auth/signup/charity">To Find Volunteers</a></button>
+        <button> <a href="/auth/signup/volunteer">I want to volunteer: Find opportunities</a></button>
+        <button><a href="/auth/signup/charity">I'm a charity: Find volunteers</a></button>
         <h1>Get Involved</h1>
         <p>Step One: </p>
         <p>Step Two</p>
         <p>Step Three</p>
         <p>Step Four</p>
 
-        <h2>Current Roles:</h2>
-
+        <h2>Volunteer Projects Near You:</h2>
         <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
           <div className="carousel-inner">
             <div className="carousel-item active">
@@ -57,6 +56,10 @@ function Home(props) {
           </a>
         </div>
       </div>
+
+
+
+      {/* The numbers  ******************/}
     </Layout>
   );
 }

@@ -53,12 +53,32 @@ privateRouter.get("/charity-profile/:charityid", (req, res, next) =>{
     const charityId = req.params.charityid;
     const userLoggedIn = req.session.currentUser;
 
+<<<<<<< HEAD
     Job.find({charity: charityId}).populate("charity").populate("volunteers.volunteer")
         .then((foundJob) => {
             const props = { charity: foundJob[0].charity, foundJob: foundJob, userLoggedIn: userLoggedIn};
             res.render('CharityProfileEdit', props);
 
 
+=======
+    User.findById(charityId)
+        .populate({
+            path: 'jobsCreated',
+            model: 'Job',
+            populate: {
+                path: 'volunteers.volunteer',
+                model: 'User'
+            }
+        })
+        .then((charity) => {
+            if (req.isAdmin) {
+                const props = { charity: charity, admin: true, userLoggedIn: userLoggedIn }
+                res.render("CharityProfile", props)
+            } else {
+                const props = { charity: charity, admin: false, userLoggedIn: userLoggedIn }
+                res.render("CharityProfile", props)
+            }
+>>>>>>> ab4a7111f9c91212bbb55b40dd6435641ce92f4a
         })
         .catch((error) => {
             console.log('Error retrieving edit charity profile', error);
@@ -145,10 +165,22 @@ privateRouter.get("/volunteer-profile/:volunteerid", isVolunteerAdmin, (req, res
     const volunteerId = req.params.volunteerid;
     const userLoggedIn = req.session.currentUser;
 
-
-    User.findById(volunteerId).populate("jobsApplied").populate("jobsApplied.charity")            ///.populate('jobsCreated.volunteer')
+    //populateQuery => use nested populate with an array of paths
+    const populateQuery = {
+        path: 'jobsApplied',
+        model: 'Job',
+        populate: [{
+            path: 'volunteers.volunteer',
+            model: 'User'
+        }, {
+            path: 'charity',
+            model: 'User'
+        }]
+    }
+    User.findById(volunteerId)
+        .populate(populateQuery)
         .then((volunteer) => {
-            // console.log("Volunteer Object When on Volunteer Profile Page", volunteer)
+            console.log("Volunteer Object When on Volunteer Profile Page", volunteer.jobsApplied[0].volunteers)
             if (req.isAdmin) {
                 const props = { volunteer: volunteer, admin: true, userLoggedIn: userLoggedIn }
                 res.render("VolunteerProfile", props)

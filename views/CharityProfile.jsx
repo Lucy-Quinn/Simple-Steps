@@ -43,11 +43,11 @@ function CharityProfile(props) {
                                     <p className="card-text">{jobs.description}</p>
                                     <p>Skills Required:</p>
                                     <p className="card-text">{jobs.skillsRequired}</p>
-                                    {/* {jobs.volunteers.map((oneVolunteer, i) => {
+                                    {jobs.volunteers.map((oneVolunteer, i) => {
                                         return (
                                             <a key={i} href={`/private/volunteer-profile/${oneVolunteer.volunteer._id}`} className="card-text">{oneVolunteer.volunteer.name}</a>
                                         )
-                                    })} */}
+                                    })}
 
                                     <br />
                                     {/* If user logged in is usertype === 'charity' do not show join now button */}
