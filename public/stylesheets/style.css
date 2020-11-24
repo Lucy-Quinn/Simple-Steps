@@ -353,11 +353,25 @@ footer p {
 
 /* Signup Form Charity/Volunteer */
 
-.signup-section {
+.signup-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px;
+  justify-content: space-around;
+  height: 1600px;
+  width: 800px;
+  opacity: 0.9;
+  background-color: var(--white);
+  border-radius: 20px;
+}
+.signup-section {
+  background: center url("../images/signup-volunteer.jpg"), no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 .signup-section h1 {
@@ -371,23 +385,34 @@ footer p {
 }
 
 .signup-form input {
-  width: 200px;
-  font-size: 1.1rem;
+  margin: 10px;
+  font-size: 2.5rem;
+  border: 2px solid black;
+  padding: 10px;
+  margin: 20px 0px;
+  width: 500px;
 }
 
 .signup-form textarea {
-  width: 400px;
-  font-size: 1.1rem;
+  margin: 10px 0px;
+  font-size: 2.5rem;
+  border: 2px solid black;
+  width: 500px;
 }
 
 .signup-form label {
-  margin: 15px;
-  font-size: 1.2rem;
+  font-size: 2.5rem;
 }
-.signup-button {
-  padding: 10px;
-  margin-top: 20px;
+
+.signup-form button {
+  margin: 20px;
+  padding: 20px;
+  width: 250px;
+  font-size: 2.5rem;
 }
+/* input[type="file"] {
+  height: 100px;
+} */
 
 /* Login */
 
@@ -400,6 +425,7 @@ footer p {
   justify-content: center;
   height: 100%;
 }
+
 .login-card {
   display: flex;
   flex-direction: column;
@@ -463,6 +489,7 @@ footer p {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  width: 900px;
 }
 .card {
   width: 18rem;
