@@ -10,7 +10,7 @@ function JobCardHomePage(props) { //props = job document and isUserTypeCharity =
                 <p className="card-text">{props.foundJob.date.toLocaleString().slice(0, -3)}</p>
                 <a href={`/private/charity-profile/${props.foundJob.charity._id}`} className="card-text">{props.foundJob.charity.name}</a>
                 <p className="card-text">{props.foundJob.description}</p>
-                <p className="card-text">{props.foundJob.skillsRequired}</p>
+                {/* <p className="card-text">{props.foundJob.skillsRequired}</p> */}
                 {props.foundJob.volunteers.map((oneVolunteer, i) => {
                     return (
                         <a key={i} href={`/private/volunteer-profile/${oneVolunteer.volunteer._id}`} className="card-text">{oneVolunteer.volunteer.name}</a>
