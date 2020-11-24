@@ -143,6 +143,12 @@ table {
   /* color: var(--bright-blue); */
 }
 
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
 body {
   font-family: "Roboto", sans-serif;
   /* font: "Lucida Grande", Helvetica, Arial, sans-serif; */
@@ -307,7 +313,7 @@ a:hover {
 }
 footer {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   padding: 15px;
   width: 100%;
   background-color: #05386b;
@@ -320,10 +326,7 @@ footer p {
   position: relative;
   left: 40px;
 }
-.social-media {
-  position: relative;
-  left: 400px;
-}
+
 #carousel-section {
   margin-bottom: 40px;
 }

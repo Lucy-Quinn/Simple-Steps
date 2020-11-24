@@ -72,6 +72,7 @@ function Layout(props) {
         {props.children}
 
         <footer>
+          <div></div>
           <div className="copyright">
             <p>Copyright © 2020 Simple Steps </p>
           </div>

@@ -19,6 +19,27 @@ function CharityProfileEdit(props) {
 
                 <label>Description: </label>
                 <textarea name="description" rows="4" cols="50" defaultValue={props.foundCharity.description} required />
+
+                <br />
+
+                <label>Address:</label>
+                <label>Building/House:</label>
+                <input type="text" name="building" required />
+
+                <br />
+
+                <label>Street:</label>
+                <input type="text" name="street" required />
+
+                <br />
+
+                <label>City:</label>
+                <input type="text" name="city" required />
+
+                <br />
+
+                <label>Postcode:</label>
+                <input type="text" name="postcode" required />
                 <br />
 
                 <button className="edit-button" type="submit">
@@ -39,26 +60,6 @@ function CharityProfileEdit(props) {
 
                 <label>Description:</label>
                 <textarea name="description" rows="4" cols="50" required />
-                <br />
-
-                <label>Address:</label>
-                <label>Street:</label>
-                <input type="text" name="street" required />
-
-                <br />
-
-                <label>City:</label>
-                <input type="text" name="city" required />
-
-                <br />
-
-                <label>Country:</label>
-                <input type="text" name="country" required />
-
-                <br />
-
-                <label>Postcode:</label>
-                <input type="text" name="postcode" required />
                 <br />
 
                 <label>Skills Required:</label>

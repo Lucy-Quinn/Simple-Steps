@@ -7,13 +7,19 @@ const userSchema = new Schema({
     username: { type: String, unique: true, required: true },
     email: { type: String, unique: true, required: true },
     password: { type: String, required: true },
-    description: { type: String, maxlength: 280 },
+    description: { type: String, maxlength: 600 },
     photo: { type: String, default: 'https://www.dovercourt.org/wp-content/uploads/2019/11/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.jpg' },
     location: {
         type: {
             type: String
         },
         coordinates: [Number]
+    },
+    address: {
+        building: { type: String, default: '' },
+        street: { type: String, default: '' },
+        city: { type: String, default: '' },
+        postcode: { type: String, default: '' }
     },
     age: Number, //only for volunteer
     skills: [String], //only for volunteer
