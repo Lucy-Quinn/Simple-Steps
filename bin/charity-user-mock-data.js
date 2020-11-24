@@ -4,17 +4,30 @@ const charityUserCollection = [
         username: "concern",
         password: "123456",
         email: "concern@mail.com",
+<<<<<<< HEAD
+        description: "With more than 3,900 staff of 50 nationalities, Concern operates in 25 of the world’s poorest countries, helping people to achieve major and long-lasting improvements in their lives.",
+=======
         description: "With more than 3,900 staff of 50 nationalities, Concern operates in 25 of the world's poorest countries, helping people to achieve major and long-lasting improvements in their lives.",
+>>>>>>> 042b82434636af6e05226d7d510d646c138117a8
         location: {
             type: 'Point',
             coordinates: [41.392325, 2.170766] //these coordinates will be reversed
         },
         userType: "charity",
+<<<<<<< HEAD
+        photo:"https://d13kjxnqnhcmn2.cloudfront.net/AcuCustom/Sitename/DAM/004/Concern-Worldwide.png",
+             // location: { type: "Point", "coordinates": [2.174671, 41.382797] },
+        // building: 20,
+        // street: "Carrer dels Banys Nous",
+        // postcode: "08002",
+        // city: "barcelona",
+=======
         photo: "https://d13kjxnqnhcmn2.cloudfront.net/AcuCustom/Sitename/DAM/004/Concern-Worldwide.png",
         building: 20,
         street: "Carrer dels Banys Nous",
         city: "barcelona",
         postcode: "08002"
+>>>>>>> 042b82434636af6e05226d7d510d646c138117a8
     },
     {
         name: "Trocaire",
@@ -28,6 +41,15 @@ const charityUserCollection = [
         },
         userType: "charity",
         photo: "https://www.eurac-network.org/sites/default/files/styles/logo/public/trocaire.png?itok=iAL4FXVj",
+<<<<<<< HEAD
+           // location: { type: "Point", "coordinates": [2.167294, 41.405294] },
+        // building: 12,
+        // street: "Passatge de Llavallol",
+        // postcode: "08025",
+        // city: "barcelona",
+    },
+    
+=======
         building: 12,
         street: "Passatge de Llavallol",
         city: "barcelona",
@@ -35,6 +57,7 @@ const charityUserCollection = [
         postcode: "08025",
     },
 
+>>>>>>> 042b82434636af6e05226d7d510d646c138117a8
     {
         name: "Hacesfalta",
         username: "hacesfalta",
@@ -44,6 +67,17 @@ const charityUserCollection = [
             type: 'Point',
             coordinates: [41.395486, 2.188834] //these coordinates will be reversed
         },
+<<<<<<< HEAD
+
+        description: "Hacesfalta is a website that gathers various volunteering opportunities. You can choose between areas like Humanitarian Help; Sports; Human Rights; Children, Youth and Family; Immigration and Refuge; Senior Citizens; Environment; Women; Minorities; Animal Welfare; and Health. Different organizations and institutions will tell you what kind of volunteers they are looking for (for example, native English speakers or people with childcare experience).",
+        userType: "charity",
+        https:"//www.hacesfalta.org/images/logo-hacesfalta.png",
+           // location: { type: "Point", "coordinates": [2.171519, 41.392156] },
+        // building: 641,
+        // street: "Gran Via de les Corts Catalanes",
+        // postcode: "08010",
+        // city: "barcelona",
+=======
         description: "Hacesfalta is a website that gathers various volunteering opportunities. You can choose between areas like Humanitarian Help; Sports; Human Rights; Children, Youth and Family; Immigration and Refuge; Senior Citizens; Environment; Women; Minorities; Animal Welfare; and Health. Different organizations and institutions will tell you what kind of volunteers they are looking for (for example, native English speakers or people with childcare experience).",
         userType: "charity",
         https: "//www.hacesfalta.org/images/logo-hacesfalta.png",
@@ -52,6 +86,7 @@ const charityUserCollection = [
         street: "Gran Via de les Corts Catalanes",
         city: "barcelona",
         postcode: "08010"
+>>>>>>> 042b82434636af6e05226d7d510d646c138117a8
     },
     {
         name: "Amics de la gent gran",
@@ -65,11 +100,19 @@ const charityUserCollection = [
         },
         userType: "charity",
         photo: "https://scontent-mad1-1.xx.fbcdn.net/v/t1.0-9/106102831_3033134336741957_3724663550886371430_n.png?_nc_cat=102&ccb=2&_nc_sid=09cbfe&_nc_ohc=r75EANwlLTsAX9XW8Jc&_nc_ht=scontent-mad1-1.xx&oh=9d21a1788174c5b95954c53eeab5daa9&oe=5FE105F6",
+<<<<<<< HEAD
+           // location: { type: "Point", "coordinates": [2.153848, 41.387037] },
+        // building: 134,
+        // street: "Carrer de Mallorca",
+        // postcode: "08036",
+        // city: "barcelona",
+=======
         // location: { type: "Point", "coordinates": [2.153848, 41.387037] },
         building: 134,
         street: "Carrer de Mallorca",
         city: "barcelona",
         postcode: "08036"
+>>>>>>> 042b82434636af6e05226d7d510d646c138117a8
     },
     {
         name: "Lifeline",
@@ -83,11 +126,19 @@ const charityUserCollection = [
         },
         userType: "charity",
         photo: "https://upload.wikimedia.org/wikipedia/en/2/21/Lifeline_Australia_Logo.gif",
+<<<<<<< HEAD
+         // location: { type: "Point", "coordinates": [2.153848, 41.387037] },
+        // building: 134,
+        // street: "Carrer de Mallorca",
+        // postcode: "08036",
+        // city: "barcelona",
+=======
         // location: { type: "Point", "coordinates": [2.153848, 41.387037] },
         building: 134,
         street: "Carrer de Mallorca",
         city: "barcelona",
         postcode: "08036"
+>>>>>>> 042b82434636af6e05226d7d510d646c138117a8
     },
     {
         name: "Marie Curie",
@@ -100,12 +151,21 @@ const charityUserCollection = [
             coordinates: [41.391011, 2.176689] //these coordinates will be reversed
         },
         userType: "charity",
+<<<<<<< HEAD
+        photo:"https://upload.wikimedia.org/wikipedia/en/thumb/5/5f/Marie_Curie_logo.png/200px-Marie_Curie_logo.png",
+              // location: { type: "Point", "coordinates": [2.190358, 41.403602] },
+        // building: 205,
+        // street: "Avinguda Diagonal",
+        // postcode: "08018",
+        // city: "barcelona",
+=======
         photo: "https://upload.wikimedia.org/wikipedia/en/thumb/5/5f/Marie_Curie_logo.png/200px-Marie_Curie_logo.png",
         // location: { type: "Point", "coordinates": [2.190358, 41.403602] },
         building: 205,
         street: "Avinguda Diagonal",
         city: "barcelona",
         postcode: "08018"
+>>>>>>> 042b82434636af6e05226d7d510d646c138117a8
     },
     // {
     //     name: 'Oxfam Intermon',
