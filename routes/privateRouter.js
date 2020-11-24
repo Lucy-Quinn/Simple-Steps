@@ -5,6 +5,7 @@ const privateRouter = express.Router();
 const Job = require('./../models/Job.model');
 const isCharityAdmin = require("../utils/isCharityAdmin");
 const isVolunteerAdmin = require("../utils/isVolunteerAdmin");
+const { findByIdAndDelete } = require("../models/User.model");
 
 
 
@@ -171,7 +172,6 @@ privateRouter.get("/volunteer-profile/:volunteerid", isVolunteerAdmin, (req, res
     User.findById(volunteerId)
         .populate(populateQuery)
         .then((volunteer) => {
-            console.log("Volunteer Object When on Volunteer Profile Page", volunteer.jobsApplied[0].volunteers)
             if (req.isAdmin) {
                 const props = { volunteer: volunteer, admin: true, userLoggedIn: userLoggedIn }
                 res.render("VolunteerProfile", props)
@@ -229,9 +229,30 @@ privateRouter.post("/volunteer-profile/edit", isVolunteerAdmin, (req, res, next)
 privateRouter.get("/charity-profile/delete/:jobid", isCharityAdmin, (req, res, next) => {
     const jobId = req.params.jobid;
     const userLoggedIn = req.session.currentUser;
-    Job.deleteOne({ "_id": jobId })
+    let volunteers;
+    Job.findByIdAndDelete({ "_id": jobId })
+        .then((deletedJob) => {
+            console.log('deletedJob', deletedJob)
+            volunteers = deletedJob.volunteers;
+            const charityId = deletedJob.charity._id;
+            const pr = User.findByIdAndUpdate(charityId, { $pull: { jobsCreated: jobId } });
+            return pr
+        })
         .then(() => {
+            const prArray = volunteers.map((volunteerObj) => {
+                const volunteerId = volunteerObj.volunteer;
+                const pr = User.findByIdAndUpdate(volunteerId, { $pull: { jobsApplied: jobId } }, { new: true });
+                return pr
+            })
+            // console.log('removedJobId', removedJobId)
+            const bigPr = Promise.all(prArray);
+            return bigPr
+
+        })
+        .then((updatedVolunteers) => {
+            console.log('updatedVolunteers', updatedVolunteers)
             res.redirect(`/private/charity-profile/${userLoggedIn._id}`)
+
         })
         .catch((error) => {
             console.log("Could not delete job", error);
@@ -252,18 +273,38 @@ privateRouter.get("/join-job/:jobid", isLoggedIn, (req, res, next) => {
         volunteer: userLoggedIn._id,
         accepted: false,
     };
-    Job.findByIdAndUpdate(jobId, { $push: { volunteers: volunteerAddToJob } })
-        .then(() => {
-            const pr = User.findByIdAndUpdate(userLoggedIn._id, { $push: { jobsApplied: jobId } });
-            return pr;
-        })
-        .then(() => {
 
-            res.redirect(`/private/volunteer-profile/${userLoggedIn._id}`);
+    //find all volunteers that have applied for the job
+    User.find({ jobsApplied: jobId })
+        .then((foundVolunteers) => {
 
+            const userAlreadyJoinedJob = false;
+            //check if any of the volunteers have the same id as the current user's id
+            foundVolunteers.forEach((volunteer) => {
+                if (String(volunteer._id) === String(userLoggedIn._id)) {
+                    res.redirect('/private/job-listings');
+                    userAlreadyJoinedJob = true;
+                };
+            })
+            //if volunteer does have same id do not continue
+            if (userAlreadyJoinedJob === true) {
+                return;
+            }
+
+            Job.findByIdAndUpdate(jobId, { $push: { volunteers: volunteerAddToJob } })
+                .then(() => {
+                    const pr = User.findByIdAndUpdate(userLoggedIn._id, { $push: { jobsApplied: jobId } });
+                    return pr;
+                })
+                .then(() => {
+                    res.redirect(`/private/volunteer-profile/${userLoggedIn._id}`);
+                })
+                .catch((error) => {
+                    console.log("Error for volunteer joining job", error)
+                })
         })
         .catch((error) => {
-            console.log("Error for volunteer joining job", error)
+            console.log("Error for finding volunteer", error)
         })
 
 })

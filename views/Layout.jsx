@@ -17,7 +17,7 @@ function Layout(props) {
         <nav className="navbar navbar-custom navbar-expand-lg navbar-light">
           {props.isLoggedIn
             //if logged in
-            ? <p>Simple Steps</p>
+            ? <p className="navbar-brand">Simple Steps</p>
             //if logged out
             : (<a className="navbar-brand" href="/">Simple Steps</a>)
           }
@@ -64,24 +64,21 @@ function Layout(props) {
                 <li className="nav-item">
                   <a className="nav-link" href="/auth/login">Login</a>
                 </li>
-                {/* <li className="nav-item dropdown ">
-                  <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Join Us & Login
-                  </a>
-                  <div id="dropdown" className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a className="dropdown-item" href="/auth/signup/volunteer">Sign Up Volunteer</a>
-                    <a className="dropdown-item" href="/auth/signup/charity">Sign Up Charity</a>
-                    <div className="dropdown-divider"></div>
-                    <a className="dropdown-item" href="/auth/login">Login</a> */}
-                {/* <a className="dropdown-item" href="/auth/logout">Logout</a> */}
-                {/* </div>
-                </li> */}
+
               </ul>
             }
           </div>
         </nav>
         {props.children}
 
+        <footer>
+          <div className="copyright">
+            <p>Copyright © 2020 Simple Steps </p>
+          </div>
+          <div className="social-media">
+            <p>Social Media</p>
+          </div>
+        </footer>
 
       </body>
 

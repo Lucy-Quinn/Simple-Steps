@@ -24,8 +24,7 @@ const jobSchema = new Schema(
         volunteers: [{
             volunteer: { type: Schema.Types.ObjectId, ref: "User" },
             accepted: Boolean
-        }
-        ]
+        }]
     },
     {
         timestamps: {

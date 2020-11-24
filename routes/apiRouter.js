@@ -7,10 +7,10 @@ const User = require('./../models/User.model');
 apiRouter.get('/charities', (req, res, next) => {
     User.find({ userType: 'charity' })
         .then(charities => {
-            console.log('charities', charities)
             res.json(charities)
         })
         .catch((err) => console.log(err));
 });
+
 
 module.exports = apiRouter;
