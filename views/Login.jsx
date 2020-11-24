@@ -5,34 +5,40 @@ function Login(props) {
     return (
         <Layout title="Login In" isLoggedIn={false}>
             <section id="login-section">
-                <form className="login-form" id="form" action="/auth/login" method="POST">
-                    <label>Username</label>
+                <div className="login-card">
+                    <h1>Login</h1>
+                    <form className="login-form" id="form" action="/auth/login" method="POST">
+                        <label>Username</label>
 
-                    <input type="text" name="username" placeholder="Your username" />
+                        <input type="text" name="username" placeholder="Your username" />
 
-                    <label>Password</label>
+                        <label>Password</label>
 
-                    <input type="password" name="password" placeholder="******" />
+                        <input type="password" name="password" placeholder="******" />
 
-                    <button type="submit">Login</button>
-                </form>
+                        <button className="action-btn btn" type="submit">Login</button>
+                    </form>
 
-                {
-                    props.errorMessage ?
-                        (<div className="error-message"> {props.errorMessage}</div>)
-                        :
-                        null
-                }
+                    {
+                        props.errorMessage ?
+                            (<div className="error-message"> {props.errorMessage}</div>)
+                            :
+                            null
+                    }
 
-                <p className="account-message">
-                    Don't have an account?
-                    <br />
-                    <div className="login-redirect-links">
-                        <a href="/auth/signup/volunteer">Sign up as Volunteer</a>
-                        <a href="/auth/signup/charity">Sign up as Charity</a>
+                    <div className="account-message">
+                        <p>Don't have an account?</p>
+                        <br />
+                        <div className="login-redirect-links">
+                            <a href="/auth/signup/volunteer">Sign up as Volunteer</a>
+                            <a href="/auth/signup/charity">Sign up as Charity</a>
+                        </div>
+
                     </div>
+                    <div></div>
+                    <div></div>
 
-                </p>
+                </div>
             </section>
         </Layout>
     )

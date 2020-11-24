@@ -44,7 +44,7 @@ function Home(props) {
               <p>Join a volunteer job and wait for the charity to accept</p>
             </div>
             <div className="step-card">
-              <h3>Make a difference</h3>
+              <h3>Create Change</h3>
               <p>98% of charities say they found amazing volunteers through our website</p>
             </div>
           </div>

@@ -147,12 +147,12 @@ html,
 body {
   height: 100%;
   width: 100%;
+  font-size: 16px;
 }
 
 body {
   font-family: "Roboto", sans-serif;
   /* font: "Lucida Grande", Helvetica, Arial, sans-serif; */
-  font-size: 10px;
   background-color: var(--white);
   display: flex;
   flex-direction: column;
@@ -160,19 +160,19 @@ body {
   min-height: 100vh;
 }
 h1 {
-  font-size: 2.5rem;
+  font-size: 4.5rem;
 }
 h2 {
-  font-size: 2.1rem;
+  font-size: 3.8rem;
 }
 h3 {
-  font-size: 1.9rem;
+  font-size: 2.3rem;
 }
 h4 {
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 p {
-  font-size: 1.4rem;
+  font-size: 1.9rem;
 }
 
 h2,
@@ -189,7 +189,7 @@ li {
 
 .navbar-light .navbar-nav .nav-link {
   color: var(--white);
-  font-size: 1.2rem;
+  font-size: 2rem;
   text-decoration: none;
 }
 a:hover {
@@ -211,6 +211,9 @@ a:hover {
   width: 70px;
   border-radius: 50%;
 }
+button:focus {
+  outline: 1px solid white;
+}
 /* Home Page */
 
 .header-img {
@@ -225,16 +228,15 @@ a:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: -170px;
+  margin-bottom: -300px;
 }
 .header-title {
   display: flex;
   justify-content: center;
   margin: 0 auto;
-  /* filter: brightness(100%); */
   color: var(--white);
   position: relative;
-  bottom: 480px;
+  bottom: 610px;
 }
 
 .header-title > h1 {
@@ -246,15 +248,18 @@ a:hover {
   justify-content: center;
   margin: 0 auto;
   position: relative;
-  bottom: 460px;
+  bottom: 540px;
   height: 120px;
 }
 .button-header button {
   margin: 10px;
 }
 .btn-header {
-  width: 300px;
-  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 350px;
+  height: 140px;
   margin: 10px;
   background-color: var(--white);
   color: var(--blue);
@@ -289,18 +294,28 @@ a:hover {
 .steps {
   display: flex;
   justify-content: space-around;
+
   margin: 0px 10px 20px 10px;
+  flex-wrap: wrap;
 }
 .step-card {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-  width: 300px;
+  width: 400px;
+  height: 300px;
   padding: 40px;
-  background-color: #379683;
+  box-shadow: 3px 3px 5px rgba(150, 148, 148, 0.74);
+  margin: 20px 0;
 }
 .step-card p {
   margin: 5px;
+  font-size: 2rem;
+}
+
+.step-card h3 {
+  font-size: 2.7rem;
 }
 
 .carousel-item {
@@ -319,13 +334,13 @@ a:hover {
 footer {
   display: flex;
   justify-content: space-between;
-  padding: 15px;
+  padding: 40px;
   width: 100%;
   background-color: #05386b;
 }
 footer p {
   color: var(--white);
-  font-size: 1rem;
+  font-size: 2rem;
 }
 .copyright {
   position: relative;
@@ -377,46 +392,70 @@ footer p {
 /* Login */
 
 #login-section {
+  background: center url("../images/login-image.jpg"), no-repeat;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  height: 100%;
 }
-
+.login-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 1200px;
+  width: 900px;
+  opacity: 0.9;
+  background-color: var(--white);
+  border-radius: 20px;
+}
 .login-form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;
+  height: 50%;
 }
 
 .login-form input {
-  width: 200px;
   margin: 10px;
-  font-size: 1.1rem;
+  font-size: 2.5rem;
+  border: 2px solid black;
+  padding: 10px;
 }
 .login-form label {
-  font-size: 1.1rem;
+  font-size: 2.5rem;
 }
 
 .login-form button {
   margin: 20px;
-  width: 80px;
+  padding: 20px;
+  width: 250px;
+  font-size: 2.5rem;
 }
 
 .account-message {
-  font-size: 1.1rem;
-  width: 220px;
+  width: 70%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+.account-message > p {
+  font-size: 2.5rem;
+}
 .login-redirect-links {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .login-redirect-links a {
-  margin: 10px 5px;
-  font-size: 1rem;
+  margin: 10px 0px;
+  font-size: 2rem;
+  width: 320px;
+  color: #05386b;
+  text-align: center;
 }
 
 /* Job cards  */
@@ -467,7 +506,6 @@ footer p {
 .action-btn {
   display: flex;
   justify-content: center;
-  /* justify-content: flex-end; */
   color: var(--white);
   width: 50%;
   margin-left: 120px;
@@ -525,4 +563,26 @@ footer p {
   width: 50px;
   height: 50px;
   margin: 5px;
+}
+
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  h2 {
+    font-size: 2.1rem;
+  }
+  h3 {
+    font-size: 1.9rem;
+  }
+  h4 {
+    font-size: 1.5rem;
+  }
+  p {
+    font-size: 1.4rem;
+  }
+
+  .header {
+    margin-bottom: -120px;
+  }
 }
