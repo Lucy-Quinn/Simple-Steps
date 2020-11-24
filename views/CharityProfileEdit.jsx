@@ -34,7 +34,11 @@ function CharityProfileEdit(props) {
                 <br />
 
                 <label>Date:</label>
+<<<<<<< HEAD
                 <input type="datetime" name="date" required />
+=======
+                <input type="datetime-local" name="date" required />
+>>>>>>> c892eaab913c3e7e8e20aa0fbace798240ba63db
                 <br />
 
                 <label>Description:</label>

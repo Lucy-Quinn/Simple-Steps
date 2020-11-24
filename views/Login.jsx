@@ -4,31 +4,36 @@ const Layout = require('./Layout');
 function Login(props) {
     return (
         <Layout title="Login In" isLoggedIn={false}>
-            <form id="form" action="/auth/login" method="POST">
-                <label>Username</label>
-                <br />
-                <input type="text" name="username" placeholder="Your username" />
+            <section id="login-section">
+                <form className="login-form" id="form" action="/auth/login" method="POST">
+                    <label>Username</label>
 
-                <label>Password</label>
-                <br />
-                <input type="password" name="password" />
+                    <input type="text" name="username" placeholder="Your username" />
 
-                <button type="submit">Login</button>
-            </form>
+                    <label>Password</label>
 
-            {
-                props.errorMessage ?
-                    (<div className="error-message"> {props.errorMessage}</div>)
-                    :
-                    null
-            }
+                    <input type="password" name="password" placeholder="******" />
 
-            <p className="account-message">
-                Don't have an account?
-                <a href="/auth/signup/volunteer">Sign up as Volunteer</a>
-                <a href="/auth/signup/charity">Sign up as Charity</a>
+                    <button type="submit">Login</button>
+                </form>
 
-            </p>
+                {
+                    props.errorMessage ?
+                        (<div className="error-message"> {props.errorMessage}</div>)
+                        :
+                        null
+                }
+
+                <p className="account-message">
+                    Don't have an account?
+                    <br />
+                    <div className="login-redirect-links">
+                        <a href="/auth/signup/volunteer">Sign up as Volunteer</a>
+                        <a href="/auth/signup/charity">Sign up as Charity</a>
+                    </div>
+
+                </p>
+            </section>
         </Layout>
     )
 }

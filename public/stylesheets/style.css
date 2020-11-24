@@ -135,16 +135,23 @@ table {
 
 :root {
   --background-color: #fff;
-  --white-color: #fff;
-  --black-color: black;
+  --white: #fff;
+  --black: black;
+  --bright-blue: #30d8b6;
+  --blue: #05386b;
   /* color: var(--black-color); */
+  /* color: var(--bright-blue); */
 }
 
 body {
   font-family: "Roboto", sans-serif;
   /* font: "Lucida Grande", Helvetica, Arial, sans-serif; */
   font-size: 10px;
-  background-color: #fff;
+  background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
 }
 h1 {
   font-size: 2.5rem;
@@ -155,14 +162,27 @@ h2 {
 h3 {
   font-size: 1.9rem;
 }
+h4 {
+  font-size: 1.5rem;
+}
 p {
   font-size: 1.4rem;
 }
+
+h2,
+h3,
+h4,
+p {
+  color: rgb(34, 33, 33);
+}
+
+li {
+  list-style-type: none;
+}
 /* Navbar */
 
-a,
 .navbar-light .navbar-nav .nav-link {
-  color: #edf5e1;
+  color: var(--white);
   font-size: 1.2rem;
   text-decoration: none;
 }
@@ -170,13 +190,13 @@ a:hover {
   text-decoration: none;
 }
 .navbar-light .navbar-nav .nav-link:hover {
-  color: #379683;
+  color: var(--bright-blue);
 }
 .navbar-light .navbar-brand {
-  color: #edf5e1;
+  color: var(--white);
 }
 .navbar-light .navbar-brand:hover {
-  color: #379683;
+  color: var(--bright-blue);
 }
 .navbar-custom {
   background-color: #05386b;
@@ -185,38 +205,66 @@ a:hover {
 /* Home Page */
 
 .header-img {
-  background: center url("../images/header-image.jpg") no-repeat;
+  background: center, url("../images/header-image.jpg"), no-repeat,
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+  filter: brightness(50%);
   background-size: cover;
-  height: 600px;
+  height: 800px;
+  width: 100%;
+}
+.header {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   justify-content: center;
+  margin-bottom: -170px;
 }
 .header-title {
   display: flex;
   justify-content: center;
   margin: 0 auto;
-  margin: 20px;
-  color: var(--white-color);
+  filter: brightness(100%);
+  color: var(--white);
+  position: relative;
+  bottom: 480px;
 }
 
 .header-title > h1 {
   width: 700px;
   text-align: center;
 }
-.button-header {
+.buttons-header {
   display: flex;
   justify-content: center;
   margin: 0 auto;
+  position: relative;
+  bottom: 460px;
 }
 .button-header button {
   margin: 10px;
 }
 .btn-header {
   width: 300px;
+  height: 100px;
   margin: 10px;
+  background-color: var(--white);
+  color: var(--blue);
+  border-radius: 20px;
 }
+/* .btn-header:hover {
+  border: 5px solid var(--blue);
+  height: 105px;
+  width: 300px;
+  margin: 10px;
+  border-radius: 20px;
+} */
+.btn-header h3 {
+  color: var(--blue);
+}
+
+.btn-header p {
+  color: var(--blue);
+}
+
 #steps-section {
   display: flex;
   flex-direction: column;
@@ -237,12 +285,19 @@ a:hover {
   flex-direction: column;
   align-items: center;
   width: 300px;
-
   padding: 40px;
   background-color: #379683;
 }
 .step-card p {
   margin: 5px;
+}
+
+.carousel-item {
+  height: 500px;
+}
+.carousel-row {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 #carousel-section > h2 {
@@ -253,11 +308,13 @@ a:hover {
 footer {
   display: flex;
   justify-content: center;
-  padding: 20px;
+  padding: 15px;
+  width: 100%;
   background-color: #05386b;
 }
 footer p {
-  color: var(--white-color);
+  color: var(--white);
+  font-size: 1rem;
 }
 .copyright {
   position: relative;
@@ -271,6 +328,89 @@ footer p {
   margin-bottom: 40px;
 }
 
+/* Signup Form Charity/Volunteer */
+
+.signup-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.signup-section h1 {
+  margin: 30px;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signup-form input {
+  width: 200px;
+  font-size: 1.1rem;
+}
+
+.signup-form textarea {
+  width: 400px;
+  font-size: 1.1rem;
+}
+
+.signup-form label {
+  margin: 15px;
+  font-size: 1.2rem;
+}
+.signup-button {
+  padding: 10px;
+  margin-top: 20px;
+}
+
+/* Login */
+
+#login-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-form input {
+  width: 200px;
+  margin: 10px;
+  font-size: 1.1rem;
+}
+.login-form label {
+  font-size: 1.1rem;
+}
+
+.login-form button {
+  margin: 20px;
+  width: 80px;
+}
+
+.account-message {
+  font-size: 1.1rem;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.login-redirect-links {
+  display: flex;
+  justify-content: space-between;
+}
+
+.login-redirect-links a {
+  margin: 10px 5px;
+  font-size: 1rem;
+}
+
 /* Job cards  */
 #cards {
   display: flex;
@@ -279,17 +419,89 @@ footer p {
 }
 .card {
   width: 18rem;
+  height: 400px;
   margin: 10px;
+}
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-links {
+  color: var(--black);
+  font-size: 0.9rem;
+}
+.card-links:hover {
+  color: var(--bright-blue);
+}
+.card p {
+  font-size: 1rem;
+  margin: 5px 0;
 }
 .card-header {
   display: flex;
 }
-.carousel-item {
-  height: 500px;
-}
-.carousel-row {
+.card-top {
   display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 8px;
+}
+.card-top img {
+  width: 30%;
+  height: auto;
+}
+.card-top a {
+  font-size: 1.1rem;
+}
+
+.action-btn {
+  display: flex;
+  justify-content: center;
+  /* justify-content: flex-end; */
+  color: var(--white);
+  width: 50%;
+  margin-left: 120px;
+  background-color: var(--blue);
+}
+.join-now-btn:hover {
+  color: var(--bright-blue);
+}
+
+/* Profile Page  Charity/Volunteer*/
+
+.profile {
+  display: flex;
+
   justify-content: space-evenly;
+  margin: 20px 0;
+}
+
+.profile-img {
+  width: 50%;
+  height: auto;
+}
+
+.profile-job-cards {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 50%;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+.profile-info p {
+  margin: 10px;
+}
+.profile-info a {
+  width: 20%;
+  margin: 0;
 }
 
 /* Charity locations page  */

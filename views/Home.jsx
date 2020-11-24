@@ -8,18 +8,19 @@ function Home(props) {
     <Layout title="Home Page" isLoggedIn={false}>
 
       <div>
-        <div className="header-img">
+        <div className="header">
+          <div className="header-img"></div>
           <div className="header-title">
             <h1>Taking Simple Steps to Making The World a Better Place</h1>
           </div>
-          <div className="button-header">
-            <div className="btn-header btn btn-secondary">
+          <div className="buttons-header">
+            <div className="btn-header btn btn-light">
               <a href="/auth/signup/volunteer">
                 <h3>I want to volunteer</h3>
                 <p>Find opportunities</p>
               </a>
             </div>
-            <div className="btn-header btn btn-secondary">
+            <div className="btn-header btn btn-light">
               <a href="/auth/signup/charity">
                 <h3>I'm a charity</h3>
                 <p>Find volunteers</p>
