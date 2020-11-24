@@ -6,7 +6,7 @@ function JobCard(props) { //props = job document and isUserTypeCharity = boolean
       <img src={props.foundJob.charity.photo} className="card-img-top" alt="..." />
       <div className="card-body">
         <h5 className="card-title">{props.foundJob.title}</h5>
-        {/* <p className="card-text">{props.foundJob.date.toLocaleString()}</p> */}
+        <p className="card-text">{props.foundJob.date.toLocaleString().slice(0, -3)}</p>
         <a href={`/private/charity-profile/${props.foundJob.charity._id}`} className="card-text">{props.foundJob.charity.name}</a>
         <p className="card-text">{props.foundJob.description}</p>
         <p className="card-text">{props.foundJob.skillsRequired}</p>
