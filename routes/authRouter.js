@@ -15,7 +15,7 @@ const saltRounds = 10;
 
 // GET       /auth/signup/charity
 authRouter.get('/signup/charity', (req, res, next) => {
-    res.render('CharitySignUp');
+    res.render('CharitySignup');
 });
 
 
@@ -102,7 +102,7 @@ authRouter.post('/signup/volunteer', parser.single('profilepic'), (req, res, nex
         .then((user) => {
             if (user.length !== 0) {
                 const props = { errorMessage: 'Try with another username or email' };
-                res.render('VolunteerSignup', props);
+                res.render('VolunteerSignUp', props);
                 return;
             };
 
