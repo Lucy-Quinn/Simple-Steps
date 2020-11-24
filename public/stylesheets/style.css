@@ -207,7 +207,10 @@ a:hover {
 .navbar-custom {
   background-color: #05386b;
 }
-
+.navbar img {
+  width: 70px;
+  border-radius: 50%;
+}
 /* Home Page */
 
 .header-img {
@@ -228,7 +231,7 @@ a:hover {
   display: flex;
   justify-content: center;
   margin: 0 auto;
-  filter: brightness(100%);
+  /* filter: brightness(100%); */
   color: var(--white);
   position: relative;
   bottom: 480px;
@@ -244,6 +247,7 @@ a:hover {
   margin: 0 auto;
   position: relative;
   bottom: 460px;
+  height: 120px;
 }
 .button-header button {
   margin: 10px;
@@ -255,14 +259,15 @@ a:hover {
   background-color: var(--white);
   color: var(--blue);
   border-radius: 20px;
+  box-sizing: border-box;
 }
-/* .btn-header:hover {
+.btn-header:hover {
   border: 5px solid var(--blue);
   height: 105px;
   width: 300px;
   margin: 10px;
   border-radius: 20px;
-} */
+}
 .btn-header h3 {
   color: var(--blue);
 }
@@ -476,7 +481,7 @@ footer p {
 
 .profile {
   display: flex;
-
+  flex-wrap: wrap;
   justify-content: space-evenly;
   margin: 20px 0;
 }
