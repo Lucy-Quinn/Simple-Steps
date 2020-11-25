@@ -50,7 +50,7 @@ privateRouter.get('/job-listings', isLoggedIn, (req, res, next) => {
 
 
 
-privateRouter.get("/charity-profile/:charityid",isCharityAdmin, (req, res, next) =>{
+privateRouter.get("/charity-profile/:charityid", isCharityAdmin, (req, res, next) => {
     const charityId = req.params.charityid;
     const userLoggedIn = req.session.currentUser;
 
