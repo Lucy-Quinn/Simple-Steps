@@ -11,11 +11,11 @@ function VolunteerProfile(props) {
 
                     <h1>{props.volunteer.name}</h1>
                     <img className="profile-img" src={props.volunteer.photo} />
-                    <div>
-                        <p>Age: {props.volunteer.age}</p>
-                        <p>Skills: {props.volunteer.skills}</p>
-                        <h3>About Me:</h3>
-                        <p>{props.volunteer.description}</p>
+                    <div className="profile-details">
+                        <p>Age:<span> {props.volunteer.age}</span></p>
+                        <p>Skills: <span>{props.volunteer.skills}</span></p>
+                        <p>About Me:</p>
+                        <p><span>{props.volunteer.description}</span></p>
                     </div>
                     {
                         props.admin
@@ -44,25 +44,26 @@ function VolunteerProfile(props) {
                                 {/* <JobCard foundJob={jobs} volunteer={props.volunteer} isVolunteerProfilePage={true}></JobCard> */}
 
                                 <div className="job-card-profile card">
-                                    <div class="card-header">
-                                        {/* <img src={props.volunteer.photo} className="card-img-top" /> */}
-                                        <h5 className="card-title">{jobs.title}</h5>
+                                    <div class="card-top profile-card-top">
+                                        <img src={jobs.charity.photo} className="card-img-top" />
+                                        <a href={`/private/charity-profile/${jobs.charity._id}`} className="card-text">{jobs.charity.name}</a>
+
                                     </div>
 
                                     <div className="card-body">
-                                        {/* <p className="card-text">{props.foundJob.date.toLocaleString()}</p> */}
-                                        <a href={`/private/charity-profile/${jobs.charity._id}`} className="card-text">{jobs.charity.name}</a>
-                                        <p>Description:</p>
-                                        <p className="card-text">{jobs.description}</p>
-                                        <p>Skills Required:</p>
-                                        <p className="card-text">{jobs.skillsRequired}</p>
+                                    <h4 className="card-title">{jobs.title}</h4>
+                                    <p className="card-text">Start Date/Time: <span>{jobs.date.toLocaleString().slice(0, -3)}</span></p>
+
+                                        <p className="card-text"><span>{jobs.description}</span></p>
+                                        <p>Volunteers: 
+                                        
                                         {jobs.volunteers.map((oneVolunteer, i) => {
                                             //put ternary in for null 
                                             return (
-                                                <a key={i} href={`/private/volunteer-profile/${oneVolunteer.volunteer._id}`} className="card-text">{oneVolunteer.volunteer.name}</a>
+                                                <span> <a key={i} href={`/private/volunteer-profile/${oneVolunteer.volunteer._id}`} className="card-links card-text">{oneVolunteer.volunteer.name}</a> </span>
                                             )
                                         })}
-
+</p>
                                         <br />
                                     </div>
                                 </div>

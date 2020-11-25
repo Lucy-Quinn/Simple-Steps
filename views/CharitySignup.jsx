@@ -5,6 +5,8 @@ function Signup(props) {
     return (
         <Layout title="Charity Sign Up" isLoggedIn={false}>
             <section class="signup-section">
+            <div class="signup-card charity-signup-card">
+
                 <h1>Charity Signup</h1>
                 <form class="signup-form" action="/auth/signup/charity" method="POST" encType="multipart/form-data">
                     <label>Name</label>
@@ -21,22 +23,22 @@ function Signup(props) {
 
                     <label>Address:</label>
                     <label>Building/House:</label>
-                    <input type="text" name="building" required />
+                    <input type="text" name="building" placeholder="Building number" required />
 
                     <br />
 
                     <label>Street:</label>
-                    <input type="text" name="street" required />
+                    <input type="text" name="street" placeholder="Street name" required />
 
                     <br />
 
                     <label>City:</label>
-                    <input type="text" name="city" required />
+                    <input type="text" name="city" placeholder="City" required />
 
                     <br />
 
                     <label>Postcode:</label>
-                    <input type="text" name="postcode" required />
+                    <input type="text" name="postcode" placeholder="Postcode" required />
                     <br />
 
                     <label>Password</label>
@@ -59,6 +61,7 @@ function Signup(props) {
                             null
                     }
                 </form>
+                </div>
             </section>
         </Layout>
     )

@@ -11,26 +11,23 @@ function JobCard(props) { //props = job document and isUserTypeCharity = boolean
       {/* Card body */}
       <div className="card-body">
         <h4 className="card-title">{props.foundJob.title}</h4>
-        <p className="card-text">{props.foundJob.date.toLocaleString().slice(0, -3)}</p>
+        <p className="card-text">Start Date/Time: <span>{props.foundJob.date.toLocaleString().slice(0, -3)}</span></p>
 
-        <p className="card-text">{props.foundJob.description}</p>
-        {/* <p>Skills Required</p> */}
-
-        {/* <p className="card-text">{props.foundJob.skillsRequired}</p> */}
-        <p>Volunteers</p>
+        <p className="card-text"><span>{props.foundJob.description}</span></p>
+        
         {/* Volunteer list */}
-        <ul>
+        <p>Volunteers:
           {
             (props.foundJob.volunteers.map((oneVolunteer, i) => {
               return (
                 //if 'volunteer' is null (i.e. volunteer does not exist/deleted) then return null, else return the volunteer link
                 oneVolunteer.volunteer === null
                   ? null
-                  : <li><a key={i} href={`/private/volunteer-profile/${oneVolunteer.volunteer._id}`} className="card-links card-text">{oneVolunteer.volunteer.name}</a></li>
+                  : <span> <a key={i} href={`/private/volunteer-profile/${oneVolunteer.volunteer._id}`} className="card-links card-text">{oneVolunteer.volunteer.name}</a> </span>
               )
             }))
           }
-        </ul>
+        </p>
 
         {/* Join now button  */}
         <br />

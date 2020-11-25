@@ -40,11 +40,11 @@ function Layout(props) {
                 {props.userLoggedIn.userType === 'volunteer'
                   //if user logged is a volunteer
                   ? <li className="nav-item">
-                    <a className="nav-link" href={`/private/volunteer-profile/${props.userLoggedIn._id}`}>Profile</a>
+                    <a className="nav-link" href={`/private/volunteer-profile/${props.userLoggedIn._id}`}>{props.userLoggedIn.username}'s Profile</a>
                   </li>
                   //if user logged is a charity
                   : <li className="nav-item">
-                    <a className="nav-link" href={`/private/charity-profile/${props.userLoggedIn._id}`}>Profile</a>
+                    <a className="nav-link" href={`/private/charity-profile/${props.userLoggedIn._id}`}>{props.userLoggedIn.username}'s Profile</a>
                   </li>
                 }
                 <li className="nav-item">

@@ -5,7 +5,7 @@ function Signup(props) {
     return (
         <Layout title="Volunteer Sign Up" isLoggedIn={false}>
             <section class="signup-section">
-                <div class="signup-card">
+                <div class="signup-card volunteer-signup-card">
 
                     <h1>Volunteer Signup</h1>
                     <form class="signup-form" action="/auth/signup/volunteer" method="POST" encType="multipart/form-data">
