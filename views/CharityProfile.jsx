@@ -30,7 +30,7 @@ function CharityProfile(props) {
                             {/* OLD JOB CARD */}
                             {/* <JobCard foundJob={jobs} charity={props.charity} isUserTypeCharity={props.charity.userType === "charity"} isCharityProfilePage={true}></JobCard> */}
 
-                            <div className="card">
+                            <div className="job-card-profile card">
                                 <div class="card-header">
                                     <img src={props.charity.photo} className="card-img-top" />
                                     <h5 className="card-title">{jobs.title}</h5>

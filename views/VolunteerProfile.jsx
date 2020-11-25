@@ -33,7 +33,7 @@ function VolunteerProfile(props) {
                                 {/* OLD JOB CARD */}
                                 {/* <JobCard foundJob={jobs} volunteer={props.volunteer} isVolunteerProfilePage={true}></JobCard> */}
 
-                                <div className="card">
+                                <div className="job-card-profile card">
                                     <div class="card-header">
                                         {/* <img src={props.volunteer.photo} className="card-img-top" /> */}
                                         <h5 className="card-title">{jobs.title}</h5>

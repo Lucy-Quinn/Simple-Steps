@@ -2,7 +2,7 @@ const React = require("react");
 
 function JobCard(props) { //props = job document and isUserTypeCharity = boolean
   return (
-    <div className="card">
+    <div className="card-joblistings card">
       <div className="card-top">
         <img src={props.foundJob.charity.photo} className="card-img-top" alt="..." />
         <a href={`/private/charity-profile/${props.foundJob.charity._id}`} className="card-links card-text">{props.foundJob.charity.name}</a>

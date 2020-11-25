@@ -365,7 +365,7 @@ footer p {
   border-radius: 20px;
 }
 .signup-section {
-  background: center url("../images/signup-volunteer.jpg"), no-repeat;
+  background: center url("../images/login-volunteer.jpg"), no-repeat;
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -485,23 +485,17 @@ footer p {
 }
 
 /* Job cards  */
-#cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  width: 900px;
-}
-.card {
+
+.job-card-profile {
   width: 18rem;
   height: 400px;
-  margin: 10px;
 }
+
 .card-body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-
 .card-links {
   color: var(--black);
   font-size: 0.9rem;
@@ -540,6 +534,36 @@ footer p {
 }
 .join-now-btn:hover {
   color: var(--bright-blue);
+}
+
+/* Job listings */
+#cards {
+  display: flex;
+  /* flex-wrap: wrap; */
+  /* justify-content: space-evenly; */
+  width: 700px;
+  overflow: scroll;
+  height: 800px;
+}
+.card-joblistings {
+  width: 43rem;
+  height: 770px;
+  margin: 10px;
+  border: 1px solid black;
+}
+.job-listings {
+  margin: 100px 0px;
+}
+.job-listing-section {
+  height: 1500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: space-between; */
+}
+.job-listing-section a {
+  margin: 150px auto;
+  font-size: 2.5rem;
 }
 
 /* Profile Page  Charity/Volunteer*/
