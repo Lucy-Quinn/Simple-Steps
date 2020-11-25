@@ -704,6 +704,12 @@ span {
   margin: 9px;
   padding: 10px;
   font-size: 1.6rem;
+  background-color: var(--bright-blue);
+  opacity: 1;
+  color: var(--blue);
+}
+.delete-btn:hover {
+  color: white;
 }
 .no-jobs {
   width: 264px;
@@ -748,6 +754,20 @@ span {
   margin: 9px;
   padding: 10px;
   font-size: 1.6rem;
+}
+
+/* Charity Edit Profile */
+
+/* .charity-profile-edit {
+  margin-bottom: 30px;
+} */
+
+.edit-form-border {
+  border-bottom: 1px solid var(--standard-font);
+  width: 110%;
+  margin: 25px 0;
+
+  box-shadow: 0 15px 10px -15px var(--standard-font);
 }
 
 /* Charity locations page  */

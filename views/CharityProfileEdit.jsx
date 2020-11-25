@@ -7,7 +7,10 @@ function CharityProfileEdit(props) {
     return (
         //props.foundCharity will always be the user that is logged in
         <Layout title="Edit Your Profile" isLoggedIn={true} userLoggedIn={props.foundCharity}>
-            <form action={`/private/charity-profile/edit?charityid=${props.foundCharity._id}`} method="POST">
+        <section className = "edit-profile-section">
+        <h1>Edit your Profile</h1>
+
+            <form className="profile-edit-form"  action={`/private/charity-profile/edit?charityid=${props.foundCharity._id}`} method="POST">
 
                 <label>Name:</label>
                 <input type="text" name="name" defaultValue={props.foundCharity.name} required />
@@ -42,13 +45,16 @@ function CharityProfileEdit(props) {
                 <input type="text" name="postcode" required />
                 <br />
 
-                <button className="edit-button" type="submit">
+                <button className="edit-button action-btn btn" type="submit">
                     Save Changes
                 </button>
 
             </form>
 
-            <form action={`/private/charity-profile/edit/add-job?charityid=${props.foundCharity._id}`} method="POST">
+            <div className=" edit-form-border"></div>
+
+            <form className="profile-edit-form"  action={`/private/charity-profile/edit/add-job?charityid=${props.foundCharity._id}`} method="POST">
+            <h1>Add a Job</h1>
 
                 <label>Title:</label>
                 <input type="text" name="title" required />
@@ -66,14 +72,14 @@ function CharityProfileEdit(props) {
                 <input type="text" name="skillsRequired" required />
                 <br />
 
-                <button className="edit-button" type="submit">
+                <button className="edit-button action-btn btn" type="submit">
                     Add Job
                 </button>
 
 
             </form>
 
-
+</section>
 
 
         </Layout>
