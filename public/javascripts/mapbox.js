@@ -32,7 +32,7 @@ const main = () => {
             result.data.forEach((charity) => {
                 const charityPopup = `
                     <div class="map-popup">
-                    <a href="/private/charity-profile/${charity._id}" >${charity.name}</a>
+                    <a class="popup-link" href="/private/charity-profile/${charity._id}" >${charity.name}</a>
                     <img class="popup-logo" src="${charity.photo}"/>
                     </div>
                 `

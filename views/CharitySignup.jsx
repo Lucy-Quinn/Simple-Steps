@@ -4,7 +4,7 @@ const Layout = require('./Layout');
 function Signup(props) {
     return (
         <Layout title="Charity Sign Up" isLoggedIn={false}>
-            <section class="signup-section">
+            <section class="signup-section signup-section-charity">
             <div class="signup-card charity-signup-card">
 
                 <h1>Charity Signup</h1>
@@ -51,7 +51,7 @@ function Signup(props) {
                     <label>Upload Charity Logo</label>
                     <input type='file' name='profilepic' />
 
-                    <button className="signup-button" type="submit">Sign Up</button>
+                    <button className="signup-button action-btn btn" type="submit">Sign Up</button>
                     {
                         props.errorMessage ?
                             (<div className="error-message">{

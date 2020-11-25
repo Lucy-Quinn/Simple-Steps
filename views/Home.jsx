@@ -16,13 +16,13 @@ function Home(props) {
           <div className="buttons-header">
             <div className="btn-header btn btn-light">
               <a href="/auth/signup/volunteer">
-                <h3>I want to volunteer</h3>
+                <h3>I'm a Volunteer</h3>
                 <p>Find opportunities</p>
               </a>
             </div>
             <div className="btn-header btn btn-light">
               <a href="/auth/signup/charity">
-                <h3>I'm a charity</h3>
+                <h3>I'm a Charity</h3>
                 <p>Find volunteers</p>
               </a>
             </div>
@@ -51,7 +51,7 @@ function Home(props) {
         </section>
 
         <section id="carousel-section">
-          <h2>Volunteer Projects Near You:</h2>
+          <h2>Volunteer Projects Near You</h2>
           <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
             <div className="carousel-inner">
               <div className="carousel-item active">

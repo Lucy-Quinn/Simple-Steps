@@ -148,7 +148,7 @@ html,
 body {
   height: 100%;
   width: 100%;
-  font-size: 16px;
+  font-size: 10px;
 }
 
 body {
@@ -161,19 +161,19 @@ body {
   min-height: 100vh;
 }
 h1 {
-  font-size: 4.5rem;
+  font-size: 3rem;
 }
 h2 {
-  font-size: 3.8rem;
+  font-size: 2.5rem;
 }
 h3 {
-  font-size: 2.3rem;
-}
-h4 {
   font-size: 2rem;
 }
-p {
+h4 {
   font-size: 1.9rem;
+}
+p {
+  font-size: 1.6rem;
 }
 
 h2,
@@ -190,7 +190,7 @@ li {
 
 .navbar-light .navbar-nav .nav-link {
   color: var(--white);
-  font-size: 2rem;
+  font-size: 1.8rem;
   text-decoration: none;
 }
 a:hover {
@@ -222,14 +222,14 @@ button:focus {
     linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
   filter: brightness(50%);
   background-size: cover;
-  height: 800px;
+  height: 373px;
   width: 100%;
 }
 .header {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: -300px;
+  margin-bottom: -200px;
 }
 .header-title {
   display: flex;
@@ -237,11 +237,11 @@ button:focus {
   margin: 0 auto;
   color: var(--white);
   position: relative;
-  bottom: 610px;
+  bottom: 300px;
 }
 
 .header-title > h1 {
-  width: 700px;
+  width: 310px;
   text-align: center;
 }
 .buttons-header {
@@ -249,7 +249,7 @@ button:focus {
   justify-content: center;
   margin: 0 auto;
   position: relative;
-  bottom: 540px;
+  bottom: 300px;
   height: 120px;
 }
 .button-header button {
@@ -259,8 +259,8 @@ button:focus {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 350px;
-  height: 140px;
+  width: 152px;
+  height: 73px;
   margin: 10px;
   background-color: var(--white);
   color: var(--blue);
@@ -303,8 +303,8 @@ button:focus {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  width: 400px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
   padding: 40px;
   box-shadow: 3px 3px 5px rgba(150, 148, 148, 0.74);
   /* box-shadow: inset 0px 0px 10px 10px rgba(73, 70, 70, 0.685); */
@@ -312,11 +312,11 @@ button:focus {
 }
 .step-card p {
   margin: 5px;
-  font-size: 2rem;
+  text-align: center;
 }
 
 .step-card h3 {
-  font-size: 2.7rem;
+  font-size: 2.3rem;
 }
 
 .carousel-item {
@@ -330,15 +330,15 @@ button:focus {
 #carousel-section > h2 {
   display: flex;
   justify-content: center;
-  margin: 20px;
+  margin: 20px 7px;
 }
 .carousel-inner,
 .carousel {
-  height: 800px;
+  height: 428px;
 }
 .home-page-card {
-  width: 80%;
-  height: 800px;
+  width: 100%;
+  height: 424px;
   box-shadow: 0px 0px 10px 0px rgba(73, 70, 70, 0.685);
 }
 .home-page-card img {
@@ -347,18 +347,14 @@ button:focus {
 }
 footer {
   display: flex;
-  justify-content: space-between;
-  padding: 40px;
+  justify-content: center;
+  padding: 20px;
   width: 100%;
   background-color: #05386b;
 }
 footer p {
   color: var(--white);
-  font-size: 2rem;
-}
-.copyright {
-  position: relative;
-  left: 40px;
+  font-size: 1.6rem;
 }
 
 #carousel-section {
@@ -372,30 +368,40 @@ footer p {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  width: 800px;
+  width: 90%;
   opacity: 0.85;
   background-color: var(--white);
   border-radius: 20px;
 }
 .volunteer-signup-card {
-  height: 1600px;
+  height: 750px;
 }
 .charity-signup-card {
-  height: 2000px;
-  margin: 30px 0px;
+  height: 920px;
+  /* margin: 20px 0px; */
 }
 .signup-section {
-  background: center url("../images/sign-up-volunteer.jpg"), no-repeat;
-  background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 2100px;
+  height: 700px;
+}
+.signup-section-volunteer {
+  background: center url("../images/signup-volunteer.jpg"), no-repeat;
+  padding: 100px 0;
+  background-size: cover;
+}
+.signup-section-charity {
+  background: center url("../images/sign-up-charity.jpg"), no-repeat;
+  padding: 350px 0;
+  background-size: cover;
+  height: 900px;
 }
 
 .signup-section h1 {
-  margin: 30px;
+  margin: 20px;
+  font-size: 3.5rem;
 }
 
 .signup-form {
@@ -405,34 +411,31 @@ footer p {
 }
 
 .signup-form input {
-  margin: 10px;
-  font-size: 2.5rem;
-  border: 2px solid black;
-  padding: 10px;
-  margin: 20px 0px;
-  width: 500px;
+  margin: 10px 0px;
+  font-size: 1.6rem;
+  border: 1px solid black;
+  /* padding: 10px; */
+  width: 70%;
 }
 
 .signup-form textarea {
   margin: 10px 0px;
-  font-size: 2.5rem;
-  border: 2px solid black;
-  width: 500px;
+  font-size: 1.6rem;
+  border: 1px solid black;
+  width: 70%;
 }
 
 .signup-form label {
-  font-size: 2.5rem;
+  font-size: 1.7rem;
 }
 
-.signup-form button {
-  margin: 20px;
-  padding: 20px;
-  width: 250px;
-  font-size: 2.5rem;
+.signup-form button,
+.login-form button {
+  margin: 10px;
+  padding: 10px;
+  width: 100px;
+  font-size: 1.6rem;
 }
-/* input[type="file"] {
-  height: 100px;
-} */
 
 /* Login */
 
@@ -443,19 +446,24 @@ footer p {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  padding: 50px 0;
+  height: 700px;
 }
 
 .login-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
-  height: 1200px;
-  width: 900px;
+  justify-content: center;
+  height: 700px;
+  width: 90%;
   opacity: 0.85;
   background-color: var(--white);
   border-radius: 20px;
+}
+.login-card h1 {
+  margin: 0px 0px 30px 0px;
+  font-size: 4rem;
 }
 .login-form {
   display: flex;
@@ -466,20 +474,13 @@ footer p {
 }
 
 .login-form input {
-  margin: 10px;
-  font-size: 2.5rem;
-  border: 2px solid black;
-  padding: 10px;
+  margin: 10px 0px;
+  font-size: 1.6rem;
+  border: 1px solid black;
+  padding: 5px;
 }
 .login-form label {
-  font-size: 2.5rem;
-}
-
-.login-form button {
-  margin: 20px;
-  padding: 20px;
-  width: 250px;
-  font-size: 2.5rem;
+  font-size: 1.6rem;
 }
 
 .account-message {
@@ -489,7 +490,7 @@ footer p {
   align-items: center;
 }
 .account-message > p {
-  font-size: 2.5rem;
+  font-size: 1.6rem;
 }
 .login-redirect-links {
   display: flex;
@@ -497,9 +498,9 @@ footer p {
 }
 
 .login-redirect-links a {
-  margin: 10px 0px;
-  font-size: 2rem;
-  width: 320px;
+  margin: 5px 0px;
+  font-size: 1.6rem;
+  width: 150px;
   color: #05386b;
   text-align: center;
 }
@@ -512,27 +513,29 @@ footer p {
   align-items: center;
   /* margin: 20px; */
   margin: 10px;
-  height: 300px;
+  height: 80px;
 }
 
 .card-body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin: 10px;
 }
 .card-body h4 {
   margin: 10px;
 }
 
 .job-card-profile {
-  width: 52rem; /* 18rem desktop */
-  height: 638px;
+  width: 30rem; /* 18rem desktop */
+  height: 450px;
+  margin: 20px 0px;
 }
 .profile-details {
   width: 70%;
 }
 .profile-card-top {
-  height: 200px;
+  height: 100px;
 }
 
 .card-header {
@@ -541,25 +544,25 @@ footer p {
 
 .card-links {
   color: var(--standard-font);
-  font-size: 2.5rem;
+  font-size: 1.6rem;
 }
 .card-links:hover {
   color: var(--bright-blue);
 }
 .card p {
-  font-size: 2.5rem;
+  font-size: 1.6rem;
   text-align: start;
   margin: 5px 0;
 }
 
 .card-top img {
-  width: 200px;
+  width: 70px;
   height: auto;
 }
 .card-top a {
   /* width: 50%; */
   height: auto;
-  font-size: 3rem;
+  font-size: 1.6rem;
   justify-self: flex-end;
   color: var(--standard-font);
 }
@@ -573,8 +576,8 @@ footer p {
   background-color: var(--blue);
 }
 .join-now-btn {
-  margin: 30px auto;
-  font-size: 2.5rem;
+  margin: 0 auto 20px auto;
+  font-size: 1.6rem;
 }
 .action-btn:hover,
 .card-top a:hover {
@@ -586,19 +589,19 @@ footer p {
   display: flex;
   /* flex-wrap: wrap; */
   /* justify-content: space-evenly; */
-  width: 707px;
+  width: 315px;
   overflow: scroll;
-  height: 913px;
+  height: 520px;
 }
 .card-joblistings {
-  width: 43rem;
-  height: 876px;
+  width: 30rem;
+  height: 494px;
   margin: 10px;
   /* border: 1px solid rgba(73, 70, 70, 0.685); */
   box-shadow: 0px 0px 10px 0px rgba(73, 70, 70, 0.685);
 }
 .job-listings {
-  margin: 100px 0px;
+  margin: 20px 0px;
 }
 .job-listing-section {
   height: 1500px;
@@ -608,8 +611,12 @@ footer p {
   /* justify-content: space-between; */
 }
 .charity-locations-btn {
-  margin: 130px auto;
-  font-size: 2.5rem;
+  /* margin:  auto 50px auto;
+  font-size: 1.6rem; */
+  margin: 10px auto 20px auto;
+  padding: 10px;
+  width: 180px;
+  font-size: 1.6rem;
 }
 
 /* Profile Page  Charity/Volunteer*/
@@ -643,13 +650,13 @@ footer p {
   flex-direction: column;
   align-items: center;
   width: 90%;
-  height: 933px;
+  height: 500px;
 }
 .profile-info p,
 .profile-job-cards p,
 .card-joblistings p {
   margin: 10px;
-  font-size: 2.5rem;
+  font-size: 1.6rem;
   font-weight: 600;
 }
 
@@ -673,7 +680,7 @@ span {
   align-items: center;
   justify-content: space-evenly;
   padding: 0px 10px;
-  width: 250px;
+  width: 150px;
 }
 .popup-logo {
   width: 50px;
@@ -687,18 +694,27 @@ span {
   margin: 0 auto;
   /* align-items: center; */
   justify-content: space-between;
-  height: 1200px;
+  height: 700px;
+}
+#charity-location h1 {
+  margin: 20px auto;
 }
 #charity-location a {
-  margin: 0 auto;
-  padding: 20px;
-  width: 300px;
-  font-size: 2.5rem;
+  margin: 10px auto 20px auto;
+  padding: 10px;
+  width: 180px;
+  font-size: 1.6rem;
+}
+.popup-link {
+  color: rgb(34, 33, 33) !important;
+}
+#charity-location a:hover {
+  color: #30d8b6 !important;
 }
 #charity-location p {
-  width: 750px;
-  margin: 0 auto;
-  font-size: 2.5rem;
+  width: 300px;
+  margin: 30px auto 20px auto;
+  font-size: 1.6rem;
 }
 
 @media (min-width: 1024px) {

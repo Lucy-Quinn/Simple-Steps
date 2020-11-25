@@ -9,7 +9,9 @@ function CharityLocations(props) {
                 <h1>Find Charities Near You!</h1>
 
 
-                <div id='map' style={{ width: "800px", height: "600px" }}></div>
+                {/* <div id='map' style={{ width: "800px", height: "600px" }}></div> */}
+                <div id='map' style={{ width: "320px", height: "400px" }}></div>
+
 
                 {/* Mapbox scripts */}
                 <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css' rel='stylesheet' />

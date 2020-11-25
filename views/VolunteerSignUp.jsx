@@ -4,7 +4,7 @@ const Layout = require('./Layout');
 function Signup(props) {
     return (
         <Layout title="Volunteer Sign Up" isLoggedIn={false}>
-            <section class="signup-section">
+            <section class="signup-section signup-section-volunteer">
                 <div class="signup-card volunteer-signup-card">
 
                     <h1>Volunteer Signup</h1>
