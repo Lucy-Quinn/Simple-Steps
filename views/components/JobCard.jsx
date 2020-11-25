@@ -5,7 +5,7 @@ function JobCard(props) { //props = job document and isUserTypeCharity = boolean
     <div className="card-joblistings card">
       {/* Top of card */}
       <div className="card-top">
-        <img src={props.foundJob.charity.photo} className="card-img-top" alt="..." />
+        <img src={props.foundJob.charity.photo} className="card-img-top" alt="charity logo" />
         <a href={`/private/charity-profile/${props.foundJob.charity._id}`} className="card-links card-text">{props.foundJob.charity.name}</a>
       </div>
       {/* Card body */}
@@ -14,7 +14,7 @@ function JobCard(props) { //props = job document and isUserTypeCharity = boolean
         <p className="card-text">Start Date/Time: <span>{props.foundJob.date.toLocaleString().slice(0, -3)}</span></p>
 
         <p className="card-text"><span>{props.foundJob.description}</span></p>
-        
+
         {/* Volunteer list */}
         <p>Volunteers:
           {
