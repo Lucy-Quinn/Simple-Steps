@@ -15,7 +15,7 @@ A web app that connects volunteers and charities in Barcelona, which offers two 
 - **Login** - As a user I would like to login in either as a volunteer or charity user to be able to view volunteer work and post volunteer jobs.
 - **Logout** - As a user I would want to be able to log out of my account so that no-one will have access to it and redirect to the homepage.
 - **Profiles ** - As a volunteer I would like to be able to see my profile and also the charity's profile and vice versa. Also, as a volunteer I would like to be able to add jobs to my profile or as a charity user I would like to be able to create jobs.
-- **Edit User ** - As a user I would like to change aspects of my profile after I have signed up.
+- **Edit User** - As a user I would like to change aspects of my profile after I have signed up.
 - **Job Listings** - As a user I would like to see the jobs available in my area that match my interests; available in a list format and also display the locations on a map. As a volunteer user I would like to be able to click attending on jobs and remove jobs. As a charity user I would like to be able to add and delete jobs.
 
 ## Server Routes (Back-end):
