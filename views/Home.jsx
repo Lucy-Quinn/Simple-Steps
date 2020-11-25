@@ -41,7 +41,7 @@ function Home(props) {
             </div>
             <div className="step-card">
               <h3>Connect</h3>
-              <p>Join a volunteer job and wait for the charity to accept</p>
+              <p>Join a volunteer job and help your community. Make a difference!</p>
             </div>
             <div className="step-card">
               <h3>Create Change</h3>

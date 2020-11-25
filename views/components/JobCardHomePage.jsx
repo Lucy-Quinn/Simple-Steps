@@ -7,12 +7,12 @@ function JobCardHomePage(props) { //props = job document and isUserTypeCharity =
 
             <div className="card-top">
 
-                <img src={props.foundJob.charity.photo} className="card-img-top" alt="..." />
+                <img src={props.foundJob.charity.photo} className="card-img-top" alt="charity logo" />
                 <a href={'/auth/login'} className="card-text">{props.foundJob.charity.name}</a>
             </div>
             <div className="card-body">
                 <h4 className="card-title">{props.foundJob.title}</h4>
-        <p className="card-text">Start Date/Time: <span>{props.foundJob.date.toLocaleString().slice(0, -3)}</span></p>
+                <p className="card-text">Start Date/Time: <span>{props.foundJob.date.toLocaleString().slice(0, -3)}</span></p>
 
 
                 <p className="card-text">{props.foundJob.description}</p>

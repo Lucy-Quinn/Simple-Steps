@@ -186,6 +186,28 @@ p {
 li {
   list-style-type: none;
 }
+
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 3.5rem;
+  }
+  h2 {
+    font-size: 3rem;
+  }
+  h3 {
+    font-size: 2.5rem;
+  }
+  h4 {
+    font-size: 2.4rem;
+  }
+  p {
+    font-size: 2.1rem;
+  }
+
+  .header {
+    margin-bottom: -120px;
+  }
+}
 /* Navbar */
 
 .navbar-light .navbar-nav .nav-link {
@@ -359,6 +381,43 @@ footer p {
 
 #carousel-section {
   margin-bottom: 40px;
+}
+
+@media (min-width: 1024px) {
+  .header-title > h1 {
+    width: 483px;
+    line-height: 50px;
+  }
+  .header-title {
+    bottom: 450px;
+  }
+  .btn-header {
+    width: 217px;
+    height: 86px;
+  }
+  .buttons-header {
+    bottom: 430px;
+  }
+  .header-img {
+    height: 717px;
+  }
+  #steps-section > h2,
+  #carousel-section > h2 {
+    font-size: 4rem;
+  }
+  .step-card {
+    width: 357px;
+  }
+  .carousel-inner {
+    width: 50%;
+    margin: 0 auto;
+  }
+  .card-text {
+    font-size: 3rem;
+  }
+  .card-img-top {
+    width: 100px;
+  }
 }
 
 /* Signup Form Charity/Volunteer */
@@ -812,26 +871,4 @@ span {
   width: 300px;
   margin: 30px auto 20px auto;
   font-size: 1.6rem;
-}
-
-@media (min-width: 1024px) {
-  h1 {
-    font-size: 2.5rem;
-  }
-  h2 {
-    font-size: 2.1rem;
-  }
-  h3 {
-    font-size: 1.9rem;
-  }
-  h4 {
-    font-size: 1.5rem;
-  }
-  p {
-    font-size: 1.4rem;
-  }
-
-  .header {
-    margin-bottom: -120px;
-  }
 }
