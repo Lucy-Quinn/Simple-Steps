@@ -27,7 +27,17 @@ function VolunteerProfile(props) {
 
                 </div>
                 <div className="profile-job-cards">
-                    {props.volunteer.jobsApplied.map((jobs, i) => {
+                {props.volunteer.jobsApplied.length === 0 
+                    ? (
+                        <div>
+                        <h2>You have not joined any volunteer projects yet.</h2>
+                            <p>Go out and get volunteering. Click <a href="/private/job-listings">here</a></p>
+                            <p>Or find charities in your <a href="/private/charity-locations">area</a></p>
+                        </div>
+                        
+                    )
+                    : (
+                        props.volunteer.jobsApplied.map((jobs, i) => {
                         return (
                             <div key={i}>
                                 {/* OLD JOB CARD */}
@@ -60,7 +70,10 @@ function VolunteerProfile(props) {
 
                             </div>
                         )
-                    })}
+                    })
+                    )
+                    }
+                    
 
 
                 </div>

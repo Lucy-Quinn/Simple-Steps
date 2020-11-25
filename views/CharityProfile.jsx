@@ -3,7 +3,7 @@ const Layout = require("./Layout");
 
 
 function CharityProfile(props) {
-    // console.log('jobscreated', props.charity.jobsCreated)
+    console.log('props.admin', props.admin)
 
     return (
         <Layout title={`${props.charity.name} Profile`} isLoggedIn={true} userLoggedIn={props.userLoggedIn}>
@@ -23,7 +23,26 @@ function CharityProfile(props) {
             </div>
 
             <div>
-                {props.charity.jobsCreated.map((jobs, i) => {
+            {props.charity.jobsCreated.length === 0 
+                    ? 
+                        [(props.admin
+
+                        ?
+                        <div>
+
+                            <h2>You have not created any jobs yet.</h2>
+                            <p>Go to your edit page and create a job now. Those simpe steps matter!</p>
+                        </div>
+
+                            :
+                            <div>
+                            <h2>No jobs have been added yet.</h2>
+                            <p>Please check again later.</p>
+                        </div>
+                        )]
+                    
+                    : (
+                props.charity.jobsCreated.map((jobs, i) => {
                     return (
                         <div key={i}>
 
@@ -68,7 +87,7 @@ function CharityProfile(props) {
                             }
                         </div>
                     )
-                })}
+                    }))}
 
 
             </div>
