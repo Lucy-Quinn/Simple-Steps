@@ -19,6 +19,26 @@ function Signup(props) {
                     <label>Description</label>
                     <textarea name="description" rows="4" cols="50" placeholder="A brief description about yourself" required />
 
+                    <label>Address:</label>
+                    <label>Building/House:</label>
+                    <input type="text" name="building" required />
+
+                    <br />
+
+                    <label>Street:</label>
+                    <input type="text" name="street" required />
+
+                    <br />
+
+                    <label>City:</label>
+                    <input type="text" name="city" required />
+
+                    <br />
+
+                    <label>Postcode:</label>
+                    <input type="text" name="postcode" required />
+                    <br />
+
                     <label>Password</label>
                     <input type="password" name="password" placeholder="Password" required></input>
                     {/* 

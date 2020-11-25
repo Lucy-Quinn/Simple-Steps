@@ -139,6 +139,7 @@ table {
   --black: black;
   --bright-blue: #30d8b6;
   --blue: #05386b;
+  --standard-font: rgb(34, 33, 33);
   /* color: var(--black-color); */
   /* color: var(--bright-blue); */
 }
@@ -147,12 +148,12 @@ html,
 body {
   height: 100%;
   width: 100%;
+  font-size: 16px;
 }
 
 body {
   font-family: "Roboto", sans-serif;
   /* font: "Lucida Grande", Helvetica, Arial, sans-serif; */
-  font-size: 10px;
   background-color: var(--white);
   display: flex;
   flex-direction: column;
@@ -160,26 +161,26 @@ body {
   min-height: 100vh;
 }
 h1 {
-  font-size: 2.5rem;
+  font-size: 4.5rem;
 }
 h2 {
-  font-size: 2.1rem;
+  font-size: 3.8rem;
 }
 h3 {
-  font-size: 1.9rem;
+  font-size: 2.3rem;
 }
 h4 {
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 p {
-  font-size: 1.4rem;
+  font-size: 1.9rem;
 }
 
 h2,
 h3,
 h4,
 p {
-  color: rgb(34, 33, 33);
+  color: var(--standard-font);
 }
 
 li {
@@ -189,7 +190,7 @@ li {
 
 .navbar-light .navbar-nav .nav-link {
   color: var(--white);
-  font-size: 1.2rem;
+  font-size: 2rem;
   text-decoration: none;
 }
 a:hover {
@@ -207,7 +208,13 @@ a:hover {
 .navbar-custom {
   background-color: #05386b;
 }
-
+.navbar img {
+  width: 70px;
+  border-radius: 50%;
+}
+button:focus {
+  outline: 1px solid white;
+}
 /* Home Page */
 
 .header-img {
@@ -222,16 +229,15 @@ a:hover {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-bottom: -170px;
+  margin-bottom: -300px;
 }
 .header-title {
   display: flex;
   justify-content: center;
   margin: 0 auto;
-  filter: brightness(100%);
   color: var(--white);
   position: relative;
-  bottom: 480px;
+  bottom: 610px;
 }
 
 .header-title > h1 {
@@ -243,26 +249,31 @@ a:hover {
   justify-content: center;
   margin: 0 auto;
   position: relative;
-  bottom: 460px;
+  bottom: 540px;
+  height: 120px;
 }
 .button-header button {
   margin: 10px;
 }
 .btn-header {
-  width: 300px;
-  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 350px;
+  height: 140px;
   margin: 10px;
   background-color: var(--white);
   color: var(--blue);
   border-radius: 20px;
+  box-sizing: border-box;
 }
-/* .btn-header:hover {
+.btn-header:hover {
   border: 5px solid var(--blue);
   height: 105px;
   width: 300px;
   margin: 10px;
   border-radius: 20px;
-} */
+}
 .btn-header h3 {
   color: var(--blue);
 }
@@ -285,17 +296,27 @@ a:hover {
   display: flex;
   justify-content: space-around;
   margin: 0px 10px 20px 10px;
+  flex-wrap: wrap;
 }
 .step-card {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-  width: 300px;
+  width: 400px;
+  height: 300px;
   padding: 40px;
-  background-color: #379683;
+  box-shadow: 3px 3px 5px rgba(150, 148, 148, 0.74);
+  /* box-shadow: inset 0px 0px 10px 10px rgba(73, 70, 70, 0.685); */
+  margin: 20px 0;
 }
 .step-card p {
   margin: 5px;
+  font-size: 2rem;
+}
+
+.step-card h3 {
+  font-size: 2.7rem;
 }
 
 .carousel-item {
@@ -311,16 +332,29 @@ a:hover {
   justify-content: center;
   margin: 20px;
 }
+.carousel-inner,
+.carousel {
+  height: 800px;
+}
+.home-page-card {
+  width: 80%;
+  height: 800px;
+  box-shadow: 0px 0px 10px 0px rgba(73, 70, 70, 0.685);
+}
+.home-page-card img {
+  height: 300px;
+  width: 50%;
+}
 footer {
   display: flex;
   justify-content: space-between;
-  padding: 15px;
+  padding: 40px;
   width: 100%;
   background-color: #05386b;
 }
 footer p {
   color: var(--white);
-  font-size: 1rem;
+  font-size: 2rem;
 }
 .copyright {
   position: relative;
@@ -333,11 +367,25 @@ footer p {
 
 /* Signup Form Charity/Volunteer */
 
-.signup-section {
+.signup-card {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px;
+  justify-content: space-around;
+  height: 1600px;
+  width: 800px;
+  opacity: 0.85;
+  background-color: var(--white);
+  border-radius: 20px;
+}
+.signup-section {
+  background: center url("../images/sign-up-volunteer.jpg"), no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
 .signup-section h1 {
@@ -351,132 +399,210 @@ footer p {
 }
 
 .signup-form input {
-  width: 200px;
-  font-size: 1.1rem;
+  margin: 10px;
+  font-size: 2.5rem;
+  border: 2px solid black;
+  padding: 10px;
+  margin: 20px 0px;
+  width: 500px;
 }
 
 .signup-form textarea {
-  width: 400px;
-  font-size: 1.1rem;
+  margin: 10px 0px;
+  font-size: 2.5rem;
+  border: 2px solid black;
+  width: 500px;
 }
 
 .signup-form label {
-  margin: 15px;
-  font-size: 1.2rem;
+  font-size: 2.5rem;
 }
-.signup-button {
-  padding: 10px;
-  margin-top: 20px;
+
+.signup-form button {
+  margin: 20px;
+  padding: 20px;
+  width: 250px;
+  font-size: 2.5rem;
 }
+/* input[type="file"] {
+  height: 100px;
+} */
 
 /* Login */
 
 #login-section {
+  background: center url("../images/login-image.jpg"), no-repeat;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
+.login-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 1200px;
+  width: 900px;
+  opacity: 0.85;
+  background-color: var(--white);
+  border-radius: 20px;
+}
 .login-form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;
+  height: 50%;
 }
 
 .login-form input {
-  width: 200px;
   margin: 10px;
-  font-size: 1.1rem;
+  font-size: 2.5rem;
+  border: 2px solid black;
+  padding: 10px;
 }
 .login-form label {
-  font-size: 1.1rem;
+  font-size: 2.5rem;
 }
 
 .login-form button {
   margin: 20px;
-  width: 80px;
+  padding: 20px;
+  width: 250px;
+  font-size: 2.5rem;
 }
 
 .account-message {
-  font-size: 1.1rem;
-  width: 220px;
+  width: 70%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+.account-message > p {
+  font-size: 2.5rem;
+}
 .login-redirect-links {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .login-redirect-links a {
-  margin: 10px 5px;
-  font-size: 1rem;
+  margin: 10px 0px;
+  font-size: 2rem;
+  width: 320px;
+  color: #05386b;
+  text-align: center;
 }
 
 /* Job cards  */
-#cards {
+
+.card-top {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-}
-.card {
-  width: 18rem;
-  height: 400px;
+  justify-content: space-around;
+  align-items: center;
+  /* margin: 20px; */
+
   margin: 10px;
+  height: 300px;
 }
+
 .card-body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
+.job-card-profile {
+  width: 18rem;
+  height: 400px;
+}
+
+.card-header {
+  display: flex;
+}
+
 .card-links {
-  color: var(--black);
-  font-size: 0.9rem;
+  color: var(--standard-font);
+  font-size: 2.5rem;
 }
 .card-links:hover {
   color: var(--bright-blue);
 }
 .card p {
-  font-size: 1rem;
+  font-size: 2.5rem;
+  text-align: start;
   margin: 5px 0;
 }
-.card-header {
-  display: flex;
-}
-.card-top {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-top: 8px;
-}
+
 .card-top img {
-  width: 30%;
+  width: 200px;
   height: auto;
 }
 .card-top a {
-  font-size: 1.1rem;
+  /* width: 50%; */
+  height: auto;
+  font-size: 3rem;
+  justify-self: flex-end;
+  color: var(--standard-font);
 }
 
 .action-btn {
   display: flex;
   justify-content: center;
-  /* justify-content: flex-end; */
   color: var(--white);
   width: 50%;
   margin-left: 120px;
   background-color: var(--blue);
 }
-.join-now-btn:hover {
+.join-now-btn {
+  margin: 30px auto;
+  font-size: 2.5rem;
+}
+.action-btn:hover,
+.card-top a:hover {
   color: var(--bright-blue);
+}
+
+/* Job listings */
+#cards {
+  display: flex;
+  /* flex-wrap: wrap; */
+  /* justify-content: space-evenly; */
+  width: 707px;
+  overflow: scroll;
+  height: 913px;
+}
+.card-joblistings {
+  width: 43rem;
+  height: 876px;
+  margin: 10px;
+  /* border: 1px solid rgba(73, 70, 70, 0.685); */
+  box-shadow: 0px 0px 10px 0px rgba(73, 70, 70, 0.685);
+}
+.job-listings {
+  margin: 100px 0px;
+}
+.job-listing-section {
+  height: 1500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: space-between; */
+}
+.charity-locations-btn {
+  margin: 130px auto;
+  font-size: 2.5rem;
 }
 
 /* Profile Page  Charity/Volunteer*/
 
 .profile {
   display: flex;
-
+  flex-wrap: wrap;
   justify-content: space-evenly;
   margin: 20px 0;
 }
@@ -520,4 +646,46 @@ footer p {
   width: 50px;
   height: 50px;
   margin: 5px;
+}
+
+#charity-location {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  /* align-items: center; */
+  justify-content: space-between;
+  height: 1200px;
+}
+#charity-location a {
+  margin: 0 auto;
+  padding: 20px;
+  width: 300px;
+  font-size: 2.5rem;
+}
+#charity-location p {
+  width: 750px;
+  margin: 0 auto;
+  font-size: 2.5rem;
+}
+
+@media (min-width: 1024px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  h2 {
+    font-size: 2.1rem;
+  }
+  h3 {
+    font-size: 1.9rem;
+  }
+  h4 {
+    font-size: 1.5rem;
+  }
+  p {
+    font-size: 1.4rem;
+  }
+
+  .header {
+    margin-bottom: -120px;
+  }
 }

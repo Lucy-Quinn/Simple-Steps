@@ -44,7 +44,7 @@ function Home(props) {
               <p>Join a volunteer job and wait for the charity to accept</p>
             </div>
             <div className="step-card">
-              <h3>Make a difference</h3>
+              <h3>Create Change</h3>
               <p>98% of charities say they found amazing volunteers through our website</p>
             </div>
           </div>
@@ -57,8 +57,8 @@ function Home(props) {
               <div className="carousel-item active">
                 <div className="carousel-row">
                   <JobCardHomePage foundJob={props.foundJobs[0]}></JobCardHomePage>
-                  <JobCardHomePage foundJob={props.foundJobs[0]}></JobCardHomePage>
-                  <JobCardHomePage foundJob={props.foundJobs[0]}></JobCardHomePage>
+                  {/* <JobCardHomePage foundJob={props.foundJobs[0]}></JobCardHomePage>
+                  <JobCardHomePage foundJob={props.foundJobs[0]}></JobCardHomePage> */}
                 </div>
               </div>
 
@@ -66,17 +66,17 @@ function Home(props) {
               <div className="carousel-item">
                 <div className="carousel-row">
 
-                  <JobCardHomePage foundJob={props.foundJobs[0]} ></JobCardHomePage>
-                  <JobCardHomePage foundJob={props.foundJobs[0]} ></JobCardHomePage>
-                  <JobCardHomePage foundJob={props.foundJobs[0]} ></JobCardHomePage>
+                  <JobCardHomePage foundJob={props.foundJobs[1]} ></JobCardHomePage>
+                  {/* <JobCardHomePage foundJob={props.foundJobs[0]} ></JobCardHomePage>
+                  <JobCardHomePage foundJob={props.foundJobs[0]} ></JobCardHomePage> */}
                 </div>
               </div>
               <div className="carousel-item">
                 <div className="carousel-row">
 
-                  <JobCardHomePage foundJob={props.foundJobs[0]}></JobCardHomePage>
-                  <JobCardHomePage foundJob={props.foundJobs[0]}></JobCardHomePage>
-                  <JobCardHomePage foundJob={props.foundJobs[0]}></JobCardHomePage>
+                  <JobCardHomePage foundJob={props.foundJobs[2]}></JobCardHomePage>
+                  {/* <JobCardHomePage foundJob={props.foundJobs[0]}></JobCardHomePage>
+                  <JobCardHomePage foundJob={props.foundJobs[0]}></JobCardHomePage> */}
                 </div>
               </div>
             </div>

@@ -7,19 +7,25 @@ function JobListings(props) {
         // isLoggedIn = to change content of navbar when user is loggedIn
         //userProfile = the user document of the current user who is logged in 
         <Layout title="Job Listings" isLoggedIn={true} userLoggedIn={props.userLoggedIn}>
-            {props.userLoggedIn.userType === "charity"
-                ? <h1>Jobs Available</h1>
-                : <h1>Jobs for you {props.userLoggedIn.name}!</h1>
-            }
+            <section className="job-listing-section">
+                <div className="job-listings">
+                    {props.userLoggedIn.userType === "charity"
+                        ? <h1>Jobs Available</h1>
+                        : <h1>Jobs for you {props.userLoggedIn.name}!</h1>
+                    }
+                </div>
 
-            <div id="cards">{props.foundJobs.map((foundJob, i) => {
-                return (
-                    <div key={i}>
-                        <JobCard foundJob={foundJob} userLoggedIn={props.userLoggedIn}></JobCard>
-                    </div>
-                )
-            })}
-            </div>
+                <div id="cards">{props.foundJobs.map((foundJob, i) => {
+                    return (
+                        <div key={i}>
+                            <JobCard foundJob={foundJob} userLoggedIn={props.userLoggedIn}></JobCard>
+                        </div>
+                    )
+                })}
+                </div>
+                <a className="action-btn charity-locations-btn btn" href="/private/charity-locations">Charity Locations</a>
+            </section>
+
         </Layout>
     )
 }
