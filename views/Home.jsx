@@ -57,8 +57,8 @@ function Home(props) {
               <div className="carousel-item active">
                 <div className="carousel-row">
                   <JobCardHomePage foundJob={props.foundJobs[0]}></JobCardHomePage>
-                  <JobCardHomePage foundJob={props.foundJobs[0]}></JobCardHomePage>
-                  <JobCardHomePage foundJob={props.foundJobs[0]}></JobCardHomePage>
+                  {/* <JobCardHomePage foundJob={props.foundJobs[0]}></JobCardHomePage>
+                  <JobCardHomePage foundJob={props.foundJobs[0]}></JobCardHomePage> */}
                 </div>
               </div>
 
@@ -66,17 +66,17 @@ function Home(props) {
               <div className="carousel-item">
                 <div className="carousel-row">
 
-                  <JobCardHomePage foundJob={props.foundJobs[0]} ></JobCardHomePage>
-                  <JobCardHomePage foundJob={props.foundJobs[0]} ></JobCardHomePage>
-                  <JobCardHomePage foundJob={props.foundJobs[0]} ></JobCardHomePage>
+                  <JobCardHomePage foundJob={props.foundJobs[1]} ></JobCardHomePage>
+                  {/* <JobCardHomePage foundJob={props.foundJobs[0]} ></JobCardHomePage>
+                  <JobCardHomePage foundJob={props.foundJobs[0]} ></JobCardHomePage> */}
                 </div>
               </div>
               <div className="carousel-item">
                 <div className="carousel-row">
 
-                  <JobCardHomePage foundJob={props.foundJobs[0]}></JobCardHomePage>
-                  <JobCardHomePage foundJob={props.foundJobs[0]}></JobCardHomePage>
-                  <JobCardHomePage foundJob={props.foundJobs[0]}></JobCardHomePage>
+                  <JobCardHomePage foundJob={props.foundJobs[2]}></JobCardHomePage>
+                  {/* <JobCardHomePage foundJob={props.foundJobs[0]}></JobCardHomePage>
+                  <JobCardHomePage foundJob={props.foundJobs[0]}></JobCardHomePage> */}
                 </div>
               </div>
             </div>

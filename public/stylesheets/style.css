@@ -139,6 +139,7 @@ table {
   --black: black;
   --bright-blue: #30d8b6;
   --blue: #05386b;
+  --standard-font: rgb(34, 33, 33);
   /* color: var(--black-color); */
   /* color: var(--bright-blue); */
 }
@@ -179,7 +180,7 @@ h2,
 h3,
 h4,
 p {
-  color: rgb(34, 33, 33);
+  color: var(--standard-font);
 }
 
 li {
@@ -294,7 +295,6 @@ button:focus {
 .steps {
   display: flex;
   justify-content: space-around;
-
   margin: 0px 10px 20px 10px;
   flex-wrap: wrap;
 }
@@ -307,6 +307,7 @@ button:focus {
   height: 300px;
   padding: 40px;
   box-shadow: 3px 3px 5px rgba(150, 148, 148, 0.74);
+  /* box-shadow: inset 0px 0px 10px 10px rgba(73, 70, 70, 0.685); */
   margin: 20px 0;
 }
 .step-card p {
@@ -330,6 +331,19 @@ button:focus {
   display: flex;
   justify-content: center;
   margin: 20px;
+}
+.carousel-inner,
+.carousel {
+  height: 800px;
+}
+.home-page-card {
+  width: 80%;
+  height: 800px;
+  box-shadow: 0px 0px 10px 0px rgba(73, 70, 70, 0.685);
+}
+.home-page-card img {
+  height: 300px;
+  width: 50%;
 }
 footer {
   display: flex;
@@ -360,12 +374,12 @@ footer p {
   justify-content: space-around;
   height: 1600px;
   width: 800px;
-  opacity: 0.9;
+  opacity: 0.85;
   background-color: var(--white);
   border-radius: 20px;
 }
 .signup-section {
-  background: center url("../images/login-volunteer.jpg"), no-repeat;
+  background: center url("../images/sign-up-volunteer.jpg"), no-repeat;
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -433,7 +447,7 @@ footer p {
   justify-content: space-around;
   height: 1200px;
   width: 900px;
-  opacity: 0.9;
+  opacity: 0.85;
   background-color: var(--white);
   border-radius: 20px;
 }
@@ -486,9 +500,14 @@ footer p {
 
 /* Job cards  */
 
-.job-card-profile {
-  width: 18rem;
-  height: 400px;
+.card-top {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* margin: 20px; */
+
+  margin: 10px;
+  height: 300px;
 }
 
 .card-body {
@@ -496,32 +515,39 @@ footer p {
   flex-direction: column;
   justify-content: space-between;
 }
+
+.job-card-profile {
+  width: 18rem;
+  height: 400px;
+}
+
+.card-header {
+  display: flex;
+}
+
 .card-links {
-  color: var(--black);
-  font-size: 0.9rem;
+  color: var(--standard-font);
+  font-size: 2.5rem;
 }
 .card-links:hover {
   color: var(--bright-blue);
 }
 .card p {
-  font-size: 1rem;
+  font-size: 2.5rem;
+  text-align: start;
   margin: 5px 0;
 }
-.card-header {
-  display: flex;
-}
-.card-top {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-top: 8px;
-}
+
 .card-top img {
-  width: 30%;
+  width: 200px;
   height: auto;
 }
 .card-top a {
-  font-size: 1.1rem;
+  /* width: 50%; */
+  height: auto;
+  font-size: 3rem;
+  justify-self: flex-end;
+  color: var(--standard-font);
 }
 
 .action-btn {
@@ -532,7 +558,12 @@ footer p {
   margin-left: 120px;
   background-color: var(--blue);
 }
-.join-now-btn:hover {
+.join-now-btn {
+  margin: 30px auto;
+  font-size: 2.5rem;
+}
+.action-btn:hover,
+.card-top a:hover {
   color: var(--bright-blue);
 }
 
@@ -541,15 +572,16 @@ footer p {
   display: flex;
   /* flex-wrap: wrap; */
   /* justify-content: space-evenly; */
-  width: 700px;
+  width: 707px;
   overflow: scroll;
-  height: 800px;
+  height: 913px;
 }
 .card-joblistings {
   width: 43rem;
-  height: 770px;
+  height: 876px;
   margin: 10px;
-  border: 1px solid black;
+  /* border: 1px solid rgba(73, 70, 70, 0.685); */
+  box-shadow: 0px 0px 10px 0px rgba(73, 70, 70, 0.685);
 }
 .job-listings {
   margin: 100px 0px;
@@ -561,8 +593,8 @@ footer p {
   align-items: center;
   /* justify-content: space-between; */
 }
-.job-listing-section a {
-  margin: 150px auto;
+.charity-locations-btn {
+  margin: 130px auto;
   font-size: 2.5rem;
 }
 

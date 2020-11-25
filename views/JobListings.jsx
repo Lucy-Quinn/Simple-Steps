@@ -23,7 +23,7 @@ function JobListings(props) {
                     )
                 })}
                 </div>
-                <a className="action-btn btn" href="/private/charity-locations">Charity Locations</a>
+                <a className="action-btn charity-locations-btn btn" href="/private/charity-locations">Charity Locations</a>
             </section>
 
         </Layout>
