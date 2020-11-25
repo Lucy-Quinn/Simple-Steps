@@ -8,7 +8,7 @@ function CharityProfile(props) {
     return (
         <Layout title={`${props.charity.name} Profile`} isLoggedIn={true} userLoggedIn={props.userLoggedIn}>
             <div>
-                <h1>{props.charity.name}</h1>
+                <h1>{props.charity.name}'s Profile</h1>
                 <img src={props.charity.photo} />
                 <h3>Description</h3>
                 <p>{props.charity.description}</p>

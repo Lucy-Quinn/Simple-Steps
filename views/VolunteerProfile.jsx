@@ -9,7 +9,7 @@ function VolunteerProfile(props) {
             <section className="profile">
                 <div className="profile-info">
 
-                    <h1>{props.volunteer.name}</h1>
+                    <h1>{props.volunteer.name}'s Profile</h1>
                     <img className="profile-img" src={props.volunteer.photo} />
                     <div className="profile-details">
                         <p>Age:<span> {props.volunteer.age}</span></p>
@@ -29,10 +29,10 @@ function VolunteerProfile(props) {
                 <div className="profile-job-cards">
                 {props.volunteer.jobsApplied.length === 0 
                     ? (
-                        <div>
-                        <h2>You have not joined any volunteer projects yet.</h2>
-                            <p>Go out and get volunteering. Click <a href="/private/job-listings">here</a></p>
-                            <p>Or find charities in your <a href="/private/charity-locations">area</a></p>
+                        <div className="no-jobs">
+                        <h3>You have not joined any volunteer projects yet.</h3>
+                            <p><span>Go out and get volunteering. <a className="card-links" href="/private/job-listings">Click here</a></span></p>
+                            <p><span>Or find charities in your <a className="card-links" href="/private/charity-locations">area</a></span></p>
                         </div>
                         
                     )

@@ -11,7 +11,7 @@ function JobListings(props) {
                 <div className="job-listings">
                     {props.userLoggedIn.userType === "charity"
                         ? <h1>Jobs Available</h1>
-                        : <h1>Jobs for you {props.userLoggedIn.name}!</h1>
+                        : <h1>Available jobs for {props.userLoggedIn.name}!</h1>
                     }
                 </div>
 
