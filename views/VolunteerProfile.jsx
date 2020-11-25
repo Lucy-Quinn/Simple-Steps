@@ -10,7 +10,7 @@ function VolunteerProfile(props) {
                 <div className="profile-info">
 
                     <h1>{props.volunteer.name}'s Profile</h1>
-                    <img className="profile-img" src={props.volunteer.photo} />
+                    <img className="profile-img-volunteer profile-iimg" src={props.volunteer.photo} />
                     <div className="profile-details">
                         <p>Age:<span> {props.volunteer.age}</span></p>
                         <p>Skills: <span>{props.volunteer.skills}</span></p>
@@ -63,7 +63,7 @@ function VolunteerProfile(props) {
                                                 <span> <a key={i} href={`/private/volunteer-profile/${oneVolunteer.volunteer._id}`} className="card-links card-text">{oneVolunteer.volunteer.name}</a> </span>
                                             )
                                         })}
-</p>
+                                        </p>
                                         <br />
                                     </div>
                                 </div>

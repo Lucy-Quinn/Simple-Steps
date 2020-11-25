@@ -7,37 +7,40 @@ function CharityProfile(props) {
 
     return (
         <Layout title={`${props.charity.name} Profile`} isLoggedIn={true} userLoggedIn={props.userLoggedIn}>
-            <div>
+            <section className="profile">
+            <div className="profile-info-charity profile-info">
+            
                 <h1>{props.charity.name}'s Profile</h1>
-                <img src={props.charity.photo} />
-                <h3>Description</h3>
-                <p>{props.charity.description}</p>
+                <img className="profile-img-charity profile-img" src={props.charity.photo} />
+                <div className="profile-details">
+                    <p className="charity-description"><span>{props.charity.description}</span></p>
+                </div>
                 {
                     props.admin
                         //if admin is true (i.e. is current user who is logged in charity user) then we can see edit button
-                        ? (<button>
-                            <a href={`/private/charity-profile/edit/${props.charity._id}`}>Edit</a>
-                        </button>)
+                        ? (
+                            <a className="action-btn btn" href={`/private/charity-profile/edit/${props.charity._id}`}>Edit</a>
+                        )
                         : null
                 }
             </div>
 
-            <div>
+            <div className="profile-job-cards">
             {props.charity.jobsCreated.length === 0 
                     ? 
                         [(props.admin
 
                         ?
-                        <div>
+                        <div className="no-jobs">
 
-                            <h2>You have not created any jobs yet.</h2>
-                            <p>Go to your edit page and create a job now. Those simpe steps matter!</p>
+                            <h3>You have not created any jobs yet.</h3>
+                            <p><span>Go to your edit page and create a job now. Those simpe steps matter!</span></p>
                         </div>
 
                             :
-                            <div>
-                            <h2>No jobs have been added yet.</h2>
-                            <p>Please check again later.</p>
+                            <div className="no-jobs">
+                            <h3>No jobs have been added yet.</h3>
+                            <p><span>Please check again later.</span></p>
                         </div>
                         )]
                     
@@ -50,26 +53,27 @@ function CharityProfile(props) {
                             {/* <JobCard foundJob={jobs} charity={props.charity} isUserTypeCharity={props.charity.userType === "charity"} isCharityProfilePage={true}></JobCard> */}
 
                             <div className="job-card-profile card">
-                                <div class="card-header">
+                                <div class="card-top profile-card-top">
                                     <img src={props.charity.photo} className="card-img-top" />
-                                    <h5 className="card-title">{jobs.title}</h5>
+                                    <a href={`/private/charity-profile/${jobs.charity._id}`} className="card-text">{props.charity.name}</a>
                                 </div>
 
                                 <div className="card-body">
-                                    {/* <p className="card-text">{props.foundJob.date.toLocaleString()}</p> */}
-                                    <a href={`/private/charity-profile/${jobs.charity._id}`} className="card-text">{props.charity.name}</a>
-                                    <p>Description:</p>
-                                    <p className="card-text">{jobs.description}</p>
-                                    <p>Skills Required:</p>
-                                    <p className="card-text">{jobs.skillsRequired}</p>
+                                <h4 className="card-title">{jobs.title}</h4>
+
+                                    <p className="card-text">Start Date/Time: <span>{jobs.date.toLocaleString().slice(0, -3)}</span></p>
+
+                                    <p className="card-text"><span>{jobs.description}</span></p>
+                                    <p>Volunteers: 
+
                                     {jobs.volunteers.map((oneVolunteer, i) => {
                                         //put ternary in for null 
 
                                         return (
-                                            <a key={i} href={`/private/volunteer-profile/${oneVolunteer.volunteer._id}`} className="card-text">{oneVolunteer.volunteer.name}</a>
+                                            <span> <a key={i} href={`/private/volunteer-profile/${oneVolunteer.volunteer._id}`} className="card-links card-text">{oneVolunteer.volunteer.name}</a></span>
                                         )
                                     })}
-
+                                    </p>
                                     <br />
                                     {/* If user logged in is usertype === 'charity' do not show join now button */}
                                     {props.userLoggedIn.userType === 'charity'
@@ -80,9 +84,8 @@ function CharityProfile(props) {
 
                             {/* Delete job button */}
                             { props.admin
-                                ? (<button>
-                                    <a href={`/private/charity-profile/delete/${jobs._id}`}>Delete Job</a>
-                                </button>)
+                                ? 
+                                    <a className="action-btn delete-btn btn" href={`/private/charity-profile/delete/${jobs._id}`}>Delete Job</a>
                                 : null
                             }
                         </div>
@@ -91,6 +94,7 @@ function CharityProfile(props) {
 
 
             </div>
+            </section>
         </Layout>
 
     )

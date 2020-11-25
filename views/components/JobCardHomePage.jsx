@@ -8,7 +8,7 @@ function JobCardHomePage(props) { //props = job document and isUserTypeCharity =
             <div className="card-top">
 
                 <img src={props.foundJob.charity.photo} className="card-img-top" alt="..." />
-                <a href={`/private/charity-profile/${props.foundJob.charity._id}`} className="card-text">{props.foundJob.charity.name}</a>
+                <a href={'/auth/login'} className="card-text">{props.foundJob.charity.name}</a>
             </div>
             <div className="card-body">
                 <h4 className="card-title">{props.foundJob.title}</h4>
