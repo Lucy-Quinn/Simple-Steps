@@ -11,10 +11,10 @@ const charityUserCollection = [
         },
         userType: "charity",
         photo: "https://d13kjxnqnhcmn2.cloudfront.net/AcuCustom/Sitename/DAM/004/Concern-Worldwide.png",
-        building: 20,
+        address: {building: 20,
         street: "Carrer dels Banys Nous",
         city: "barcelona",
-        postcode: "08002"
+        postcode: "08002"}
     },
     {
         name: "Trocaire",
@@ -28,11 +28,12 @@ const charityUserCollection = [
         },
         userType: "charity",
         photo: "https://www.eurac-network.org/sites/default/files/styles/logo/public/trocaire.png?itok=iAL4FXVj",
-        building: 12,
+        address: {
+            building: 12,
         street: "Passatge de Llavallol",
         city: "barcelona",
 
-        postcode: "08025",
+        postcode: "08025",}
     },
 
     {
@@ -48,10 +49,11 @@ const charityUserCollection = [
         userType: "charity",
         https: "//www.hacesfalta.org/images/logo-hacesfalta.png",
         // location: { type: "Point", "coordinates": [2.171519, 41.392156] },
+        address:{
         building: 641,
         street: "Gran Via de les Corts Catalanes",
         city: "barcelona",
-        postcode: "08010"
+        postcode: "08010"}
     },
     {
         name: "Amics de la gent gran",
@@ -66,10 +68,11 @@ const charityUserCollection = [
         userType: "charity",
         photo: "https://scontent-mad1-1.xx.fbcdn.net/v/t1.0-9/106102831_3033134336741957_3724663550886371430_n.png?_nc_cat=102&ccb=2&_nc_sid=09cbfe&_nc_ohc=r75EANwlLTsAX9XW8Jc&_nc_ht=scontent-mad1-1.xx&oh=9d21a1788174c5b95954c53eeab5daa9&oe=5FE105F6",
         // location: { type: "Point", "coordinates": [2.153848, 41.387037] },
+        address : {
         building: 134,
         street: "Carrer de Mallorca",
         city: "barcelona",
-        postcode: "08036"
+        postcode: "08036"}
     },
     {
         name: "Lifeline",
@@ -84,10 +87,11 @@ const charityUserCollection = [
         userType: "charity",
         photo: "https://upload.wikimedia.org/wikipedia/en/2/21/Lifeline_Australia_Logo.gif",
         // location: { type: "Point", "coordinates": [2.153848, 41.387037] },
-        building: 134,
+        address: {
+            building: 134,
         street: "Carrer de Mallorca",
         city: "barcelona",
-        postcode: "08036"
+        postcode: "08036"}
     },
     {
         name: "Marie Curie",
@@ -102,10 +106,11 @@ const charityUserCollection = [
         userType: "charity",
         photo: "https://upload.wikimedia.org/wikipedia/en/thumb/5/5f/Marie_Curie_logo.png/200px-Marie_Curie_logo.png",
         // location: { type: "Point", "coordinates": [2.190358, 41.403602] },
-        building: 205,
+        address: {
+            building: 205,
         street: "Avinguda Diagonal",
         city: "barcelona",
-        postcode: "08018"
+        postcode: "08018"}
     },
     // {
     //     name: 'Oxfam Intermon',

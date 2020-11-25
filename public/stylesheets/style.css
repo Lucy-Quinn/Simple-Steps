@@ -269,8 +269,8 @@ button:focus {
 }
 .btn-header:hover {
   border: 5px solid var(--blue);
-  height: 105px;
-  width: 300px;
+  width: 350px;
+  height: 140px;
   margin: 10px;
   border-radius: 20px;
 }

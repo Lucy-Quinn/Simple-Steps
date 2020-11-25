@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const User = require('./../models/User.model');
 const zxcvbn = require('zxcvbn');
 const parser = require('./../config/cloudinary');
-
+const axios = require("axios")
 
 const isLoggedIn = require('./../utils/isLoggedIn')
 const saltRounds = 10;
@@ -19,17 +19,38 @@ authRouter.get('/signup/charity', (req, res, next) => {
 });
 
 
+
+
+function formatStreet(street){
+
+    const streetSplit = street.split(" ");
+    
+    const formatedStreet = streetSplit.reduce((result, word) =>{
+       return result += `%20${word}`
+    },'')
+    return formatedStreet
+    
+}
+
+
+
+
+
 // POST       /auth/signup/charity
 authRouter.post('/signup/charity', parser.single('profilepic'), (req, res, next) => {
     const imageUrl = req.file.secure_url;
 
-    const { name, username, email, description, password } = req.body;
+    const { name, username, email, description, password, building, street, city, postcode } = req.body;
     if (username === '' || password === '') {
         const props = { errorMessage: 'Enter your username and password' };
         res.render('CharitySignup', props);
         return;
     }
 
+    const formattedStreetName = formatStreet(street)
+
+
+    
     //Password strength test
     // if (zxcvbn(password).score < 3) {
     //     const suggestions = zxcvbn(password).feedback.suggestions;
@@ -46,6 +67,29 @@ authRouter.post('/signup/charity', parser.single('profilepic'), (req, res, next)
                 return;
             };
 
+            const pr = axios
+            .get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${building}${formattedStreetName}%20${postcode}%20${city}.json?&access_token=pk.eyJ1IjoibHVjeWFxIiwiYSI6ImNraHRnY2MwNzA4a2wycHBobWc3NjA5d2gifQ.0e6yWmXZXeKEhKQ0fo76fg`)
+
+            return pr; 
+        })
+        .then((result) => {
+            //console.log('result:', result.data.features)
+
+            const foundCoordinates = result.data.features[0].geometry.coordinates;
+            const location = {
+
+                type: 'Point',
+                coordinates: foundCoordinates.reverse(),
+
+            }
+            const address = {
+                building:building,
+                street:street,
+                postcode: postcode,
+                city: city
+            }
+
+
             const salt = bcrypt.genSaltSync(saltRounds);
             const hashedPassword = bcrypt.hashSync(password, salt);
 
@@ -56,7 +100,10 @@ authRouter.post('/signup/charity', parser.single('profilepic'), (req, res, next)
                 description: description,
                 password: hashedPassword,
                 photo: imageUrl,
-                userType: 'charity'
+                userType: 'charity',
+                location: location,
+                address: address
+
             }
 
             User.create(newUser)
