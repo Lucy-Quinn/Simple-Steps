@@ -20,9 +20,9 @@ function Layout(props) {
             //if logged in
             /* <p className="">Simple Steps</p> */
 
-            ? <img src="/images/logo.png" alt="navbar logo" />
+            ? <img className="navbar-img" src="/images/logo.png" alt="navbar logo" />
             //if logged out
-            : (<a href="/"><img src="/images/logo.png" alt="navbar logo" /></a>)
+            : (<a href="/"><img className="navbar-img" src="/images/logo.png" alt="navbar logo" /></a>)
           }
           <button className="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>

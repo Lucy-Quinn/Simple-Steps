@@ -79,15 +79,21 @@ function CharityProfile(props) {
                                                 {props.userLoggedIn.userType === 'charity'
                                                     ? null
                                                     : (<a href={`/private/join-job/${jobs._id}`} className="btn btn-primary">Join Now</a>)}
-                                            </div>
-                                        </div>
-
-                                        {/* Delete job button */}
+                                                            {/* Delete job button */}
                                         { props.admin
                                             ?
                                             <a className="action-btn delete-btn btn" href={`/private/charity-profile/delete/${jobs._id}`}>Delete Job</a>
                                             : null
                                         }
+                                        <div className="scroll-down">
+                                    <p className="scroll"><span>Scroll</span></p>
+
+                                    <p className="arrow-down"><span>&#62; </span></p>
+                                    </div>
+                                            </div>
+                                        </div>
+
+                                
                                     </div>
                                 )
                             }))}

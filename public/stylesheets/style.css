@@ -186,6 +186,13 @@ p {
 li {
   list-style-type: none;
 }
+input {
+  border-radius: 5px;
+}
+textarea {
+  border-radius: 5px;
+  border: 1px solid black;
+}
 
 @media (min-width: 1024px) {
   h1 {
@@ -206,6 +213,9 @@ li {
 
   .header {
     margin-bottom: -120px;
+  }
+  .navbar .navbar-img {
+    width: 60px;
   }
 }
 /* Navbar */
@@ -231,7 +241,7 @@ a:hover {
   background-color: #05386b;
 }
 .navbar img {
-  width: 70px;
+  width: 50px;
   border-radius: 50%;
 }
 button:focus {
@@ -729,6 +739,7 @@ footer p {
   width: 50%;
   margin-left: 120px;
   background-color: var(--blue);
+  border-radius: 12px;
 }
 .join-now-btn {
   margin: 0 auto 20px auto;
@@ -887,6 +898,9 @@ span {
   width: 264px;
   text-align: center;
 }
+.scroll-down {
+  display: none;
+}
 
 @media (min-width: 1024px) {
   .profile {
@@ -913,9 +927,13 @@ span {
     margin: 0px;
     height: 526px;
   }
+  .edit-profile-section .profile-edit-form input,
+  .edit-profile-section .profile-edit-form textarea {
+    width: 224px;
+  }
   .profile .action-btn {
     margin: 0;
-    margin-right: 44px;
+    /* margin-right: 44px; */
   }
   .profile-details {
     display: flex;
@@ -930,6 +948,12 @@ span {
     width: 60%;
     height: auto;
     /* margin: 20px; */
+  }
+  .scroll-down {
+    /* display: block; */
+    display: flex;
+    justify-content: center;
+    margin: auto;
   }
   .scroll-down .arrow-down {
     transform: rotate(90deg);
@@ -964,6 +988,17 @@ span {
       position: relative;
       top: 0;
     }
+  }
+
+  /* Charity profile */
+  .card-body .delete-btn {
+    margin: 0 auto;
+  }
+  .profile-details {
+    margin: 0px;
+  }
+  .profile-info-charity {
+    justify-content: space-evenly;
   }
 }
 
@@ -1009,16 +1044,19 @@ span {
 
 /* Charity Edit Profile */
 
-/* .charity-profile-edit {
-  margin-bottom: 30px;
-} */
-
 .edit-form-border {
   border-bottom: 1px solid var(--standard-font);
   width: 110%;
   margin: 25px 0;
 
   box-shadow: 0 15px 10px -15px var(--standard-font);
+}
+@media (min-width: 1024px) {
+  .edit-form-border {
+    box-shadow: 0px 0px 1px 1px rgba(175, 174, 174, 0.5);
+    width: 90%;
+    border-bottom: 0px solid var(--standard-font);
+  }
 }
 
 /* Charity locations page  */
@@ -1063,4 +1101,24 @@ span {
   width: 300px;
   margin: 30px auto 20px auto;
   font-size: 1.6rem;
+}
+
+@media (min-width: 1024px) {
+  .mapboxgl-canvas {
+    position: absolute;
+    width: 550px;
+    height: 800px;
+  }
+  #charity-location {
+    height: 900px !important;
+    width: 666px !important;
+    position: relative;
+  }
+}
+
+@media (min-width: 1440px) {
+  .mapboxgl-canvas {
+    width: 416px;
+    height: 600px;
+  }
 }
