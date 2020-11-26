@@ -7,7 +7,7 @@ function Signup(props) {
             <section class="signup-section signup-section-volunteer">
                 <div class="signup-card volunteer-signup-card">
 
-                    <h1>Volunteer Signup</h1>
+                    <h1 className="signup-title">Volunteer Signup</h1>
                     <form class="signup-form" action="/auth/signup/volunteer" method="POST" encType="multipart/form-data">
                         <label>Name</label>
                         <input type="text" name="name" placeholder="Your full name" required></input>

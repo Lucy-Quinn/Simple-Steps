@@ -66,6 +66,10 @@ function VolunteerProfile(props) {
                                         </p>
                                         <br />
                                     </div>
+                                    <div className="scroll-down">
+                                    <p className="arrow-down"><span>&#62;</span></p>
+                                    <p className="scroll"><span>Scroll</span></p>
+                                    </div>
                                 </div>
 
 

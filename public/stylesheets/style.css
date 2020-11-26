@@ -442,9 +442,9 @@ footer p {
     width: 80%;
   }
   .card-body .join-now-btn {
-    margin: 15px auto;
+    margin: 13px auto;
     padding: 20px 0;
-    width: 30%;
+    width: 40%;
   }
   .card-body .join-now-btn:hover {
     background-color: var(--blue);
@@ -547,15 +547,18 @@ footer p {
 }
 
 @media (min-width: 1024px) {
-  .signup-section {
+  .signup-section-volunteer {
     height: 850px;
   }
-  .signup-section > h1 {
+  .signup-section-charity {
+    height: 1100px;
+  }
+  .signup-section .signup-title {
     /* margin: 30px auto 20px auto; */
     height: 80px;
     align-items: center;
     display: flex;
-    margin: 20px 0 0 0;
+    margin: 40px 0 0 0;
     font-size: 3.5rem;
     padding-top: 20px;
   }
@@ -563,15 +566,28 @@ footer p {
     height: 800px;
   }
   .signup-card {
-    width: 60%;
+    width: 50%;
   }
   .signup-form {
-    height: 700px;
+    height: 850px;
     margin: 20px;
     align-items: center;
   }
   .signup-form input {
     padding: 5px;
+  }
+
+  .signup textarea {
+    margin: 10px 0px;
+    font-size: 1.6rem;
+    border: 1px solid black;
+    width: 70%;
+    height: 30px;
+  }
+
+  .charity-signup-card {
+    padding: 150px 0;
+    height: 1000px;
   }
 }
 
@@ -641,6 +657,12 @@ footer p {
   width: 150px;
   color: #05386b;
   text-align: center;
+}
+
+@media (min-width: 1024px) {
+  #login-section .login-card {
+    width: 50%;
+  }
 }
 
 /* Job cards  */
@@ -756,6 +778,21 @@ footer p {
   font-size: 1.6rem;
 }
 
+@media (min-width: 1024px) {
+  .job-listing-section #cards {
+    overflow: visible;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-around;
+    height: 1100px;
+  }
+
+  .card-joblistings {
+    width: 32rem;
+    height: 516px;
+  }
+}
+
 /* Profile Page  Charity/Volunteer*/
 
 .profile {
@@ -849,6 +886,85 @@ span {
 .no-jobs {
   width: 264px;
   text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .profile {
+    flex-direction: row;
+    height: 600px;
+    justify-content: space-evenly;
+  }
+  .profile-info h1 {
+    margin: 0px;
+  }
+  .profile-info {
+    width: 50%;
+    height: 526px;
+  }
+  .profile-job-cards {
+    height: 526px;
+    overflow-y: scroll;
+    width: 30%;
+    flex-direction: column;
+    justify-content: unset;
+    margin: auto 30px;
+  }
+  .job-card-profile {
+    margin: 0px;
+    height: 526px;
+  }
+  .profile .action-btn {
+    margin: 0;
+    margin-right: 44px;
+  }
+  .profile-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 320px;
+    margin: auto auto 20px auto;
+  }
+  .profile-img-volunteer {
+    border-radius: 50%;
+    width: 60%;
+    height: auto;
+    /* margin: 20px; */
+  }
+  .scroll-down .arrow-down {
+    transform: rotate(90deg);
+    width: 31px;
+    margin: 0 auto;
+    font-size: 3rem;
+    color: var(--bright-blue);
+    animation-name: arrow-transformation;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+  }
+  .scroll-down .scroll {
+    margin: 10px auto 20px auto;
+    color: var(--blue);
+    font-size: 2rem;
+    font-weight: bolder;
+    width: 55px;
+  }
+  .scroll-down .scroll span {
+    width: 50px;
+  }
+  @keyframes arrow-transformation {
+    0% {
+      position: relative;
+      top: 0;
+    }
+    50% {
+      position: relative;
+      top: 10px;
+    }
+    100% {
+      position: relative;
+      top: 0;
+    }
+  }
 }
 
 /* Edit profile volunteer */

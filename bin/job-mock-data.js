@@ -15,19 +15,19 @@ const jobCollection = [
     {
         title: 'Driver',
         date: new Date('2020-12-11T16:30:00.000+00:00'),
-        description: "We would like a Driver to help transport our patients. Mainly during the day, will be just 6 hours a day",
+        description: "We would like a Driver to help transport our patients. Mainly during the day, will be just 6 hours a day.",
         skillsRequired: ['driver'],
     },
     {
         title: 'Bucket Collection',
         date: new Date('2020-12-23T14:00:00.000+00:00'),
-        description: "We would like a number of volunteers to collect money around Plasa de Catalunya. Will be for 3 days a week",
+        description: "We would like a number of volunteers to collect money around Plasa de Catalunya. Will be for 3 days a week.",
         skillsRequired: 'Bucket Collection',
     },
     {
         title: 'Dog sitter',
         date: new Date('2021-04-11T10:00:00.000+00:00'),
-        description: "We would someone to look after homeless dogs, take one in for 3 weeks. You must not have another dog as these homeless dogs need space.",
+        description: "We would like someone to look after homeless dogs, and give them a lovely home for 3 weeks. Fun and love is what they need.",
         skillsRequired: ['dogsitter'],
     },
     {
