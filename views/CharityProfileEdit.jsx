@@ -27,22 +27,22 @@ function CharityProfileEdit(props) {
 
                 <label>Address:</label>
                 <label>Building/House:</label>
-                <input type="text" name="building" required />
+                <input type="text" name="building" defaultValue={props.foundCharity.address.building} required />
 
                 <br />
 
                 <label>Street:</label>
-                <input type="text" name="street" required />
+                <input type="text" name="street" defaultValue={props.foundCharity.address.street} required />
 
                 <br />
 
                 <label>City:</label>
-                <input type="text" name="city" required />
+                <input type="text" name="city" defaultValue={props.foundCharity.address.city} required />
 
                 <br />
 
                 <label>Postcode:</label>
-                <input type="text" name="postcode" required />
+                <input type="text" name="postcode" defaultValue={props.foundCharity.address.postcode} required />
                 <br />
 
                 <button className="edit-button action-btn btn" type="submit">

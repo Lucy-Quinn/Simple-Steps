@@ -297,13 +297,13 @@ button:focus {
   background-color: var(--white);
   color: var(--blue);
   border-radius: 20px;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
 }
 .btn-header:hover {
-  border: 5px solid var(--blue);
-  width: 350px;
-  height: 140px;
-  margin: 10px;
+  /* border: 5px solid var(--blue); */
+  /* width: 350px;
+  height: 140px; */
+  /* margin: 10px; */
   border-radius: 20px;
 }
 .btn-header h3 {
@@ -393,26 +393,6 @@ footer p {
   margin-bottom: 40px;
 }
 
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  height: 100px;
-  width: 100px;
-  outline: black;
-  background-size: 100%, 100%;
-}
-
-.carousel-control-next-icon:after {
-  content: ">";
-  font-size: 55px;
-  color: black;
-}
-
-.carousel-control-prev-icon:after {
-  content: "<";
-  font-size: 55px;
-  color: black;
-}
-
 @media (min-width: 1024px) {
   .header-title > h1 {
     width: 483px;
@@ -428,6 +408,9 @@ footer p {
   .buttons-header {
     bottom: 430px;
   }
+  .btn-header:hover {
+    border: 5px solid var(--blue);
+  }
   .header-img {
     height: 717px;
   }
@@ -441,6 +424,24 @@ footer p {
   .carousel-inner {
     width: 50%;
     margin: 0 auto;
+  }
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    height: 100px;
+    width: 100px;
+    outline: black;
+    background-size: 100%, 100%;
+  }
+  .carousel-control-next-icon:after {
+    content: ">";
+    font-size: 55px;
+    color: black;
+  }
+
+  .carousel-control-prev-icon:after {
+    content: "<";
+    font-size: 55px;
+    color: black;
   }
   .card-text {
     font-size: 3rem;
@@ -668,7 +669,11 @@ footer p {
   color: #05386b;
   text-align: center;
 }
-
+.error-message {
+  font-size: 1.6rem;
+  color: red;
+  margin-bottom: 20px;
+}
 @media (min-width: 1024px) {
   #login-section .login-card {
     width: 50%;
@@ -691,6 +696,9 @@ footer p {
   flex-direction: column;
   justify-content: space-between;
   margin: 10px;
+}
+.card-title {
+  margin: 0 15px;
 }
 
 .job-card-profile {
@@ -817,9 +825,9 @@ footer p {
 
 .profile-img-volunteer {
   border-radius: 50%;
-  width: 70%;
+  width: 47%;
   height: auto;
-  margin: 20px;
+  margin: 10px;
 }
 .profile-img-charity {
   width: 50%;
@@ -858,6 +866,7 @@ footer p {
   align-items: center;
   width: 90%;
   height: 420px;
+  height: auto;
 }
 
 .profile-info h1 {
@@ -905,7 +914,8 @@ span {
 @media (min-width: 1024px) {
   .profile {
     flex-direction: row;
-    height: 600px;
+    height: 700px;
+    padding: 50px 0 110px 0;
     justify-content: space-evenly;
   }
   .profile-info h1 {
@@ -1070,7 +1080,7 @@ span {
 }
 .popup-logo {
   width: 50px;
-  height: 50px;
+  height: auto;
   margin: 5px;
 }
 
