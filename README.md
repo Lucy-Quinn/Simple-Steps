@@ -8,8 +8,6 @@ A web app that connects volunteers and charities in Barcelona, which offers two 
 
 ## User Stories
 
-- **404** - As a user I would like to see a presentable page when the page does not exist.
-- **500** - As a user I would like to see a nice error page that lets me know it was an internal error.
 - **Homepage** - As a user I would like to access the homepage with the options to signup and login and find further information about the website.
 - **Sign Up** - As a user I would like to be able to sign up as either a volunteer or a charity.
 - **Login** - As a user I would like to login in either as a volunteer or charity user to be able to view volunteer work and post volunteer jobs.
@@ -118,7 +116,7 @@ Job Model
 
 ### Trello
 
-[Trello](https://trello.com/b/mlRVDGZU/simple-steps)
+[Trello](https://trello.com/b/oC1sCNCn/simple-steps)
 
 ### Git
 
@@ -126,7 +124,7 @@ The URL to the repository and the deployed project
 
 [Repository Link](https://github.com/Lucy-Quinn/Simple-Steps)
 
-[Deploy Link]() //need to add link
+[Deploy Link](https://simple-steps.herokuapp.com/) 
 
 ### Wireframes
 
@@ -136,4 +134,4 @@ The URL to the repository and the deployed project
 
 The URL to the presentation slides.
 
-[Presentation](https://docs.google.com/presentation/d/1ZixJfaZPBRazWuJz3GIZz_Akk3VCam6sfUeddH4lv08/edit#slide=id.p)
+[Presentation](https://docs.google.com/presentation/d/1k8kEyyX-qUC3BBt6I8T4apuhZikpifX9mAXKNJC36BI/edit#slide=id.p)
