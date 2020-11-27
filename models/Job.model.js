@@ -7,12 +7,6 @@ const jobSchema = new Schema(
         title: { type: String, require: true },
         date: { type: Date, require: true },
         description: { type: String, maxlength: 280 },
-        // address: {
-        //     street: { type: String, default: '' },
-        //     city: { type: String, default: '' },
-        //     country: { type: String, default: '' },
-        //     postcode: { type: String, default: '' }
-        // },
         location: {
             type: {
                 type: String
