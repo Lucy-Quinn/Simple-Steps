@@ -19,7 +19,7 @@ function JobCardHomePage(props) { //props = job document and isUserTypeCharity =
                 {/* <p className="card-text">{props.foundJob.skillsRequired}</p> */}
 
                 <br />
-                <a href={`/auth/signup/volunteer`} className="action-btn join-now-btn btn btn-primary">Join Now</a>
+                <a href={`/auth/signup/volunteer`} className="action-btn join-now-btn btn">Join Now</a>
 
             </div>
         </div>

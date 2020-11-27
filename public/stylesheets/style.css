@@ -300,10 +300,6 @@ button:focus {
   /* box-sizing: border-box; */
 }
 .btn-header:hover {
-  /* border: 5px solid var(--blue); */
-  /* width: 350px;
-  height: 140px; */
-  /* margin: 10px; */
   border-radius: 20px;
 }
 .btn-header h3 {
