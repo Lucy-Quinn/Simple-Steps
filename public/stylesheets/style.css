@@ -902,9 +902,13 @@ span {
 .no-jobs {
   width: 264px;
   text-align: center;
+  margin-top: 20px;
 }
 .scroll-down {
   display: none;
+}
+.card-body > .leave-job {
+  margin-bottom: 20px;
 }
 
 @media (min-width: 1024px) {

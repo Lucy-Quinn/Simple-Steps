@@ -52,7 +52,7 @@ function VolunteerProfile(props) {
 
                                     <div className="card-body">
                                     <h4 className="card-title">{jobs.title}</h4>
-                                    <p className="card-text">Start Date/Time: <span>{jobs.date.toLocaleString().slice(0, -3)}</span></p>
+                                    <p className="card-text">Start Date/Time: <span>{jobs.date.toLocaleString('en-GB').slice(0, -3)}</span></p>
 
                                         <p className="card-text"><span>{jobs.description}</span></p>
                                         <p>Volunteers: 
@@ -65,13 +65,20 @@ function VolunteerProfile(props) {
                                         })}
                                         </p>
                                         <br />
-                                    </div>
+                                    {props.admin
+                                                    ?
+                                                    <a className="leave-job action-btn delete-btn btn" href={`/private/volunteer-profile/delete/${jobs._id}`}>Leave Job</a>
+                                                    : null
+                                                }
                                     <div className="scroll-down">
                                     <p className="scroll"><span>Scroll</span></p>
 
                                     <p className="arrow-down"><span>&#62;</span></p>
                                     </div>
                                 </div>
+
+                                </div>
+                                
 
 
                             </div>

@@ -11,7 +11,7 @@ function JobCard(props) { //props = job document and isUserTypeCharity = boolean
       {/* Card body */}
       <div className="card-body">
         <h4 className="card-title">{props.foundJob.title}</h4>
-        <p className="card-text">Start Date/Time: <span>{props.foundJob.date.toLocaleString().slice(0, -3)}</span></p>
+        <p className="card-text">Start Date/Time: <span>{props.foundJob.date.toLocaleString('en-GB').slice(0, -3)}</span></p>
 
         <p className="card-text"><span>{props.foundJob.description}</span></p>
 

@@ -222,6 +222,34 @@ privateRouter.post("/volunteer-profile/edit", isVolunteerAdmin, (req, res, next)
 });
 
 
+// GET       /private/volunteer-profile/delete/:jobid
+privateRouter.get("/volunteer-profile/delete/:jobid", isVolunteerAdmin, (req, res, next) => {
+    const jobId = req.params.jobid;
+    const userLoggedIn = req.session.currentUser._id;
+    User.findByIdAndUpdate(
+        { "_id": userLoggedIn },
+        { $pull: { jobsApplied: jobId } },
+        { new: true }
+    )
+        .then((updatedUser) => {
+            console.log('updatedUser', updatedUser)
+            // volunteers = deletedJob.volunteers;
+            const pr = Job.findByIdAndUpdate(
+                jobId,
+                { $pull: { volunteers: { volunteer: userLoggedIn } } }
+            );
+            return pr
+        })
+        .then((updatedJob) => {
+            console.log('updatedJob', updatedJob)
+            res.redirect(`/private/volunteer-profile/${userLoggedIn}`)
+        })
+        .catch((error) => {
+            console.log("Could not delete job", error);
+        })
+})
+
+
 // GET       /private/charity-profile/delete/:jobid
 privateRouter.get("/charity-profile/delete/:jobid", isCharityAdmin, (req, res, next) => {
     const jobId = req.params.jobid;
