@@ -21,15 +21,15 @@ authRouter.get('/signup/charity', (req, res, next) => {
 
 
 
-function formatStreet(street){
+function formatStreet(street) {
 
     const streetSplit = street.split(" ");
-    
-    const formatedStreet = streetSplit.reduce((result, word) =>{
-       return result += `%20${word}`
-    },'')
+
+    const formatedStreet = streetSplit.reduce((result, word) => {
+        return result += `%20${word}`
+    }, '')
     return formatedStreet
-    
+
 }
 
 
@@ -50,7 +50,7 @@ authRouter.post('/signup/charity', parser.single('profilepic'), (req, res, next)
     const formattedStreetName = formatStreet(street)
 
 
-    
+
     //Password strength test
     // if (zxcvbn(password).score < 3) {
     //     const suggestions = zxcvbn(password).feedback.suggestions;
@@ -68,9 +68,9 @@ authRouter.post('/signup/charity', parser.single('profilepic'), (req, res, next)
             };
 
             const pr = axios
-            .get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${building}${formattedStreetName}%20${postcode}%20${city}.json?&access_token=pk.eyJ1IjoibHVjeWFxIiwiYSI6ImNraHRnY2MwNzA4a2wycHBobWc3NjA5d2gifQ.0e6yWmXZXeKEhKQ0fo76fg`)
+                .get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${building}${formattedStreetName}%20${postcode}%20${city}.json?&access_token=pk.eyJ1IjoibHVjeWFxIiwiYSI6ImNraHRnY2MwNzA4a2wycHBobWc3NjA5d2gifQ.0e6yWmXZXeKEhKQ0fo76fg`)
 
-            return pr; 
+            return pr;
         })
         .then((result) => {
             //console.log('result:', result.data.features)
@@ -83,8 +83,8 @@ authRouter.post('/signup/charity', parser.single('profilepic'), (req, res, next)
 
             }
             const address = {
-                building:building,
-                street:street,
+                building: building,
+                street: street,
                 postcode: postcode,
                 city: city
             }
@@ -178,14 +178,14 @@ authRouter.post('/signup/volunteer', parser.single('profilepic'), (req, res, nex
                 .catch((err) => console.log(err));
         })
         .catch((err) => console.log(err))
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
+
         ;
 });
 
@@ -218,6 +218,7 @@ authRouter.post('/login', (req, res, next) => {
 
             if (passwordCorrect) {
                 req.session.currentUser = user;
+                // console.log(req.session.currentUser)
                 if (user.userType === 'charity') {
                     res.redirect(`/private/charity-profile/${user._id}`)
                 } else {

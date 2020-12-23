@@ -90,26 +90,29 @@ privateRouter.get("/charity-profile/edit/:charityid", isCharityAdmin, (req, res,
         .then((foundCharity) => {
             const props = { foundCharity };
             res.render('CharityProfileEdit', props);
-
-
         })
         .catch((error) => {
             console.log('Error retrieving edit charity profile', error);
-
         })
-
 })
 
 // POST       /private/charity-profile/edit/:charityid
 
-
 privateRouter.post("/charity-profile/edit", isCharityAdmin, (req, res, next) => {
 
     const { charityid } = req.query;
-    const { name, email, description } = req.body
+    const { name, email, description, building, street, city, country, postcode } = req.body
+
+    const address = {
+        building,
+        street,
+        city,
+        country,
+        postcode
+    }
 
     User.findByIdAndUpdate(charityid, {
-        name, email, description
+        name, email, description, address
     }, { new: true })
         .then(() => {
             res.redirect(`/private/charity-profile/${charityid}`);
@@ -125,16 +128,10 @@ privateRouter.post("/charity-profile/edit", isCharityAdmin, (req, res, next) => 
 privateRouter.post("/charity-profile/edit/add-job", isCharityAdmin, (req, res, next) => {
     const { charityid } = req.query;
 
-    const { title, date, description, street, city, country, postcode, skillsRequired } = req.body;
+    const { title, date, description, skillsRequired } = req.body;
 
-    const address = {
-        street,
-        city,
-        country,
-        postcode
-    }
 
-    Job.create({ title, date, description, address, skillsRequired, charity: charityid })
+    Job.create({ title, date, description, skillsRequired, charity: charityid })
         .then((createdJob) => {
             const pr = User.findByIdAndUpdate(charityid, { $push: { jobsCreated: createdJob._id } });
             return pr;

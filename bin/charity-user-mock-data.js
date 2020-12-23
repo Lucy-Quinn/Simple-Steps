@@ -18,7 +18,7 @@ const charityUserCollection = [
             postcode: "08002"
         }
     },
-    
+
 
     {
         name: 'Oxfam Intermon',
@@ -27,9 +27,9 @@ const charityUserCollection = [
         email: 'oxfam.intermon@mail.com',
         description: 'At Oxfam Intermón we work every day to reduce social and economic inequalities in the world. LET US BUILD A FUTURE WITHOUT POVERTY.',
         location: {
-                type: 'Point',
-                coordinates: [41.391655, 2.174200] //these coordinates will be reversed
-            },
+            type: 'Point',
+            coordinates: [41.391655, 2.174200] //these coordinates will be reversed
+        },
         userType: 'charity',
         photo: 'https://pbs.twimg.com/profile_images/1278991694755770368/jPCrn8dr_400x400.png',
         address: {
@@ -39,27 +39,27 @@ const charityUserCollection = [
             postcode: "08025"
         }
     },
-    
 
-    
-        // name: "Trocaire",
-        // username: "Trocaire",
-        // password: "123456",
-        // email: "trocaire@mail.com",
-        // description: "Trócaire is the official overseas development agency of the Catholic Church in Ireland.",
-        // location: {
-        //     type: 'Point',
-        //     coordinates: [41.391655, 2.174200] //these coordinates will be reversed
-        // },
-        // userType: "charity",
-        // photo: "https://www.eurac-network.org/sites/default/files/styles/logo/public/trocaire.png?itok=iAL4FXVj",
-        // address: {
-        //     building: 12,
-        // street: "Passatge de Llavallol",
-        // city: "barcelona",
 
-        // postcode: "08025",}
-  
+
+    // name: "Trocaire",
+    // username: "Trocaire",
+    // password: "123456",
+    // email: "trocaire@mail.com",
+    // description: "Trócaire is the official overseas development agency of the Catholic Church in Ireland.",
+    // location: {
+    //     type: 'Point',
+    //     coordinates: [41.391655, 2.174200] //these coordinates will be reversed
+    // },
+    // userType: "charity",
+    // photo: "https://www.eurac-network.org/sites/default/files/styles/logo/public/trocaire.png?itok=iAL4FXVj",
+    // address: {
+    //     building: 12,
+    // street: "Passatge de Llavallol",
+    // city: "barcelona",
+
+    // postcode: "08025",}
+
 
     {
         name: "Hacesfalta",
@@ -73,12 +73,12 @@ const charityUserCollection = [
         description: "Hacesfalta is a website that gathers various volunteering opportunities. You can choose between areas like Humanitarian Help; Sports; Human Rights; Children, Youth and Family; Immigration and Refuge; Senior Citizens; Environment; Women; Minorities; Animal Welfare; and Health.",
         userType: "charity",
         photo: "https://www.hacesfalta.org/images/logo-hacesfalta.png",
-        address:{
+        address: {
             building: 641,
             street: "Gran Via de les Corts Catalanes",
             city: "barcelona",
             postcode: "08010"
-        }   
+        }
     },
     {
         name: "Amics de la gent gran",
@@ -91,8 +91,8 @@ const charityUserCollection = [
             coordinates: [41.393570, 2.170123] //these coordinates will be reversed
         },
         userType: "charity",
-        photo: "https://scontent-mad1-1.xx.fbcdn.net/v/t1.0-9/106102831_3033134336741957_3724663550886371430_n.png?_nc_cat=102&ccb=2&_nc_sid=09cbfe&_nc_ohc=r75EANwlLTsAX9XW8Jc&_nc_ht=scontent-mad1-1.xx&oh=9d21a1788174c5b95954c53eeab5daa9&oe=5FE105F6",
-        address : {
+        photo: "https://pbs.twimg.com/profile_images/1313397031524798466/trPMIVbZ.jpg",
+        address: {
             building: 134,
             street: "Carrer de Mallorca",
             city: "barcelona",
@@ -139,6 +139,6 @@ const charityUserCollection = [
             postcode: "08018"
         }
     },
-    
+
 ]
 module.exports = charityUserCollection;

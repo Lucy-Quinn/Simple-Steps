@@ -35,7 +35,7 @@ mongoose
         return pr;
     })
     .then(() => {
-        // 2.  CREATE THE DOCUMENTS FROM ARRAY OF authors
+        // 2.  CREATE THE DOCUMENTS FROM ARRAY OF jobs
         const pr = Job.create(jobs);
         return pr; // forwards the promise to next `then`
     })

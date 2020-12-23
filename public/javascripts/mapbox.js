@@ -25,8 +25,8 @@ const main = () => {
     }
 
     axios
-        // .get("http://localhost:3000/api/charities")   
-        .get("https://simple-steps.herokuapp.com/api/charities")
+        .get("http://localhost:3000/api/charities")
+        // .get("https://simple-steps.herokuapp.com/api/charities")
 
         .then((result) => {
             console.log('result:', result)
