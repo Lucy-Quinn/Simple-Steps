@@ -1,7 +1,12 @@
 const React = require("react");
 
 function JobCardHomePage(props) { //props = job document and isUserTypeCharity = boolean
-    console.log(props.foundJob)
+    function convertDateToString() {
+        const day = props.foundJob.date.toDateString().split(" ").slice(0, 3).join(" ");
+        let time = props.foundJob.date.toLocaleString().split("").slice(10).join("").split('');
+        time.splice(3, 3);
+        return time.join('') + " " + day;
+    }
     return (
         <div className="home-page-card card">
 
@@ -12,7 +17,7 @@ function JobCardHomePage(props) { //props = job document and isUserTypeCharity =
             </div>
             <div className="card-body">
                 <h4 className="card-title">{props.foundJob.title}</h4>
-                <p className="card-text">Start Date/Time: <span>{props.foundJob.date.toLocaleString().slice(0, -3)}</span></p>
+                <p className="card-text">Start Date/Time: <span>{convertDateToString()}</span></p>
 
 
                 <p className="card-text">{props.foundJob.description}</p>

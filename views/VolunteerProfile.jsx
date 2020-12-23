@@ -38,6 +38,13 @@ function VolunteerProfile(props) {
                     )
                     : (
                         props.volunteer.jobsApplied.map((jobs, i) => {
+                            function convertDateToString(){
+                                const day = jobs.date.toDateString().split(" ").slice(0, 3).join(" ");
+                            let time = jobs.date.toLocaleString().split("").slice(10).join("").split('');
+                            time.splice(3,3);
+                            return time.join('') + " " + day;
+                            }
+                         
                         return (
                             <div key={i}>
                                 {/* OLD JOB CARD */}
@@ -52,7 +59,7 @@ function VolunteerProfile(props) {
 
                                     <div className="card-body">
                                     <h4 className="card-title">{jobs.title}</h4>
-                                    <p className="card-text">Start Date/Time: <span>{jobs.date.toLocaleString('en-GB').slice(0, -3)}</span></p>
+                                    <p className="card-text">Start Date/Time: <span>{convertDateToString()}</span></p>
 
                                         <p className="card-text"><span>{jobs.description}</span></p>
                                         <p>Volunteers: 
