@@ -64,16 +64,19 @@ function CharityProfile(props) {
                                                 <p className="card-text">Start Date/Time: <span>{jobs.date.toLocaleString().slice(0, -3)}</span></p>
 
                                                 <p className="card-text"><span>{jobs.description}</span></p>
-                                                <p>Volunteers:
+                                                {jobs.volunteers.length === 0
+                                                    ? <p>No volunteers yet</p>
+                                                    :
+                                                    <p>Volunteers:
+                                                        {jobs.volunteers.map((oneVolunteer, i) => {
+                                                        //put ternary in for null 
 
-                                    {jobs.volunteers.map((oneVolunteer, i) => {
-                                                    //put ternary in for null 
-
-                                                    return (
-                                                        <span> <a key={i} href={`/private/volunteer-profile/${oneVolunteer.volunteer._id}`} className="card-links card-text">{oneVolunteer.volunteer.name}</a></span>
-                                                    )
-                                                })}
-                                                </p>
+                                                        return (
+                                                            <span> <a key={i} href={`/private/volunteer-profile/${oneVolunteer.volunteer._id}`} className="card-links card-text">{oneVolunteer.volunteer.name}</a></span>
+                                                        )
+                                                    })}
+                                                    </p>
+                                                }
                                                 <br />
                                                 {/* If user logged in is usertype === 'charity' do not show join now button */}
                                                 {props.userLoggedIn.userType === 'charity'

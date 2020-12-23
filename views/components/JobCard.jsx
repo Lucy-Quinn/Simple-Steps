@@ -16,18 +16,24 @@ function JobCard(props) { //props = job document and isUserTypeCharity = boolean
         <p className="card-text"><span>{props.foundJob.description}</span></p>
 
         {/* Volunteer list */}
-        <p>Volunteers:
+        {props.foundJob.volunteers.length === 0
+          ? <p>No volunteers yet</p>
+          :
+          <p>Volunteers:
           {
-            (props.foundJob.volunteers.map((oneVolunteer, i) => {
-              return (
-                //if 'volunteer' is null (i.e. volunteer does not exist/deleted) then return null, else return the volunteer link
-                oneVolunteer.volunteer === null
-                  ? null
-                  : <span> <a key={i} href={`/private/volunteer-profile/${oneVolunteer.volunteer._id}`} className="card-links card-text">{oneVolunteer.volunteer.name}</a> </span>
-              )
-            }))
-          }
-        </p>
+              (props.foundJob.volunteers.map((oneVolunteer, i) => {
+                return (
+                  //if 'volunteer' is null (i.e. volunteer does not exist/deleted) then return null, else return the volunteer link
+                  oneVolunteer.volunteer === null
+                    ? null
+                    : <span> <a key={i} href={`/private/volunteer-profile/${oneVolunteer.volunteer._id}`} className="card-links card-text">{oneVolunteer.volunteer.name}</a> </span>
+                )
+              }))
+            }
+          </p>
+
+        }
+
 
         {/* Join now button  */}
         <br />
