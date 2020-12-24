@@ -6,4 +6,5 @@ function isLoggedIn(req, res, next) {
         res.redirect("/auth/login")
     }
 }
+
 module.exports = isLoggedIn;

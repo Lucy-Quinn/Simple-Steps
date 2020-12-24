@@ -6,7 +6,6 @@ const JobCardHomePage = require("./components/JobCardHomePage");
 function Home(props) {
   return (
     <Layout title="Home Page" isLoggedIn={false}>
-
       <div>
         <div className="header">
           <div className="header-img"></div>
@@ -57,23 +56,16 @@ function Home(props) {
               <div className="carousel-item active">
                 <div className="carousel-row">
                   <JobCardHomePage foundJob={props.foundJobs[0]}></JobCardHomePage>
-
                 </div>
               </div>
-
-
               <div className="carousel-item">
                 <div className="carousel-row">
-
                   <JobCardHomePage foundJob={props.foundJobs[1]} ></JobCardHomePage>
-
                 </div>
               </div>
               <div className="carousel-item">
                 <div className="carousel-row">
-
                   <JobCardHomePage foundJob={props.foundJobs[3]}></JobCardHomePage>
-
                 </div>
               </div>
             </div>
@@ -87,12 +79,7 @@ function Home(props) {
             </a>
           </div>
         </section>
-
       </div>
-
-
-
-      {/* The numbers  ******************/}
     </Layout>
   );
 }

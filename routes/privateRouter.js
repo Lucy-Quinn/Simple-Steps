@@ -7,54 +7,25 @@ const isCharityAdmin = require("../utils/isCharityAdmin");
 const isVolunteerAdmin = require("../utils/isVolunteerAdmin");
 const { findByIdAndDelete } = require("../models/User.model");
 
-
-
 // GET       /private/job-listing
-
 privateRouter.get('/job-listings', isLoggedIn, (req, res, next) => {
-
     const userLoggedIn = req.session.currentUser;
-
-    Job.find().populate('charity').populate('volunteers.volunteer')
+    Job
+        .find()
+        .populate('charity')
+        .populate('volunteers.volunteer')
         .then((foundJobs) => {
-            //console.log("Job Object When On Job Listing Page",foundJobs[0] )
             const props = { foundJobs: foundJobs, userLoggedIn: userLoggedIn };
             res.render('JobListings', props);
         });
 });
 
 // GET       /private/charity-profile/:charityid
-
-
-// privateRouter.get("/charity-profile/:charityid", isCharityAdmin, (req, res, next) => {
-
-//     const charityId = req.params.charityid;
-//     const userLoggedIn = req.session.currentUser;
-
-//     User.findById(charityId).populate("jobsCreated")            ///.populate('jobsCreated.charity')
-//         .then((charity) => {
-//             // console.log("Charity Object When on Charity Profile Page", charity)
-//             if (req.isAdmin) {
-//                 const props = { charity: charity, admin: true, userLoggedIn: userLoggedIn }
-//                 res.render("CharityProfile", props)
-//             } else {
-//                 const props = { charity: charity, admin: false, userLoggedIn: userLoggedIn }
-//                 res.render("CharityProfile", props)
-//             }
-//         })
-//         .catch((error) => {
-//             console.log('Error retrieving charity', error);
-//         })
-// })
-
-
-
-
 privateRouter.get("/charity-profile/:charityid", isCharityAdmin, (req, res, next) => {
     const charityId = req.params.charityid;
     const userLoggedIn = req.session.currentUser;
-
-    User.findById(charityId)
+    User
+        .findById(charityId)
         .populate({
             path: 'jobsCreated',
             model: 'Job',
@@ -74,19 +45,14 @@ privateRouter.get("/charity-profile/:charityid", isCharityAdmin, (req, res, next
         })
         .catch((error) => {
             console.log('Error retrieving edit charity profile', error);
-
         })
-
 })
 
-
-
-
 // GET       /private/charity-profile/edit/:charityid
-
 privateRouter.get("/charity-profile/edit/:charityid", isCharityAdmin, (req, res, next) => {
     const charityId = req.params.charityid;
-    User.findById(charityId)
+    User
+        .findById(charityId)
         .then((foundCharity) => {
             const props = { foundCharity };
             res.render('CharityProfileEdit', props);
@@ -96,13 +62,10 @@ privateRouter.get("/charity-profile/edit/:charityid", isCharityAdmin, (req, res,
         })
 })
 
-// POST       /private/charity-profile/edit/:charityid
-
+// POST       /private/charity-profile/edit
 privateRouter.post("/charity-profile/edit", isCharityAdmin, (req, res, next) => {
-
     const { charityid } = req.query;
     const { name, email, description, building, street, city, country, postcode } = req.body
-
     const address = {
         building,
         street,
@@ -110,50 +73,40 @@ privateRouter.post("/charity-profile/edit", isCharityAdmin, (req, res, next) => 
         country,
         postcode
     }
-
-    User.findByIdAndUpdate(charityid, {
-        name, email, description, address
-    }, { new: true })
+    User
+        .findByIdAndUpdate(charityid, {
+            name, email, description, address
+        }, { new: true })
         .then(() => {
             res.redirect(`/private/charity-profile/${charityid}`);
-
-        }).catch((error) => {
+        })
+        .catch((error) => {
             console.log('Error retrieving updated charity', error);
         })
-
 })
 
 // POST       /private/charity-profile/edit/add-job
-
 privateRouter.post("/charity-profile/edit/add-job", isCharityAdmin, (req, res, next) => {
     const { charityid } = req.query;
-
     const { title, date, description, skillsRequired } = req.body;
-
-
-    Job.create({ title, date, description, skillsRequired, charity: charityid })
+    Job
+        .create({ title, date, description, skillsRequired, charity: charityid })
         .then((createdJob) => {
             const pr = User.findByIdAndUpdate(charityid, { $push: { jobsCreated: createdJob._id } });
             return pr;
-
-        }).then(() => {
+        })
+        .then(() => {
             res.redirect(`/private/charity-profile/${charityid}`)
         })
         .catch((err) => {
-
             console.log("Job was not created", err)
         })
-
 })
-
-
 
 // GET       /private/volunteer-profile/:volunteerid
 privateRouter.get("/volunteer-profile/:volunteerid", isVolunteerAdmin, (req, res, next) => {
-
     const volunteerId = req.params.volunteerid;
     const userLoggedIn = req.session.currentUser;
-
     //populateQuery => use nested populate with an array of paths
     const populateQuery = {
         path: 'jobsApplied',
@@ -166,7 +119,8 @@ privateRouter.get("/volunteer-profile/:volunteerid", isVolunteerAdmin, (req, res
             model: 'User'
         }]
     }
-    User.findById(volunteerId)
+    User
+        .findById(volunteerId)
         .populate(populateQuery)
         .then((volunteer) => {
             if (req.isAdmin) {
@@ -180,45 +134,33 @@ privateRouter.get("/volunteer-profile/:volunteerid", isVolunteerAdmin, (req, res
         .catch((error) => {
             console.log('Error retrieving charity', error);
         });
-
 });
 
 // GET       /private/volunteer-profile/edit/:volunteerid
-
 privateRouter.get("/volunteer-profile/edit/:volunteerid", isVolunteerAdmin, (req, res, next) => {
     const volunteerid = req.params.volunteerid;
     User.findById(volunteerid)
         .then((foundVolunteer) => {
             const props = { foundVolunteer };
             res.render('VolunteerProfileEdit', props);
-
-
         })
         .catch((error) => {
             console.log('Error retrieving edit charity profile', error);
-
         })
-
 })
 
 // POST       /private/volunteer-profile/edit
 privateRouter.post("/volunteer-profile/edit", isVolunteerAdmin, (req, res, next) => {
-
     const { volunteerid } = req.query;
     const { name, email, age, skills, description } = req.body;
-
-    User.findByIdAndUpdate(volunteerid, { name, email, age, skills, description })
+    User
+        .findByIdAndUpdate(volunteerid, { name, email, age, skills, description })
         .then(() => {
-
             res.redirect(`/private/volunteer-profile/${volunteerid}`);
-
         })
         .catch((error) => {
             console.log("Could not delete job", error);
-
-
         });
-
 });
 
 
@@ -226,11 +168,12 @@ privateRouter.post("/volunteer-profile/edit", isVolunteerAdmin, (req, res, next)
 privateRouter.get("/volunteer-profile/delete/:jobid", isVolunteerAdmin, (req, res, next) => {
     const jobId = req.params.jobid;
     const userLoggedIn = req.session.currentUser._id;
-    User.findByIdAndUpdate(
-        { "_id": userLoggedIn },
-        { $pull: { jobsApplied: jobId } },
-        { new: true }
-    )
+    User
+        .findByIdAndUpdate(
+            { "_id": userLoggedIn },
+            { $pull: { jobsApplied: jobId } },
+            { new: true }
+        )
         .then((updatedUser) => {
             console.log('updatedUser', updatedUser)
             // volunteers = deletedJob.volunteers;
@@ -255,7 +198,8 @@ privateRouter.get("/charity-profile/delete/:jobid", isCharityAdmin, (req, res, n
     const jobId = req.params.jobid;
     const userLoggedIn = req.session.currentUser;
     let volunteers;
-    Job.findByIdAndDelete({ "_id": jobId })
+    Job
+        .findByIdAndDelete({ "_id": jobId })
         .then((deletedJob) => {
             console.log('deletedJob', deletedJob)
             volunteers = deletedJob.volunteers;
@@ -269,44 +213,37 @@ privateRouter.get("/charity-profile/delete/:jobid", isCharityAdmin, (req, res, n
                 const pr = User.findByIdAndUpdate(volunteerId, { $pull: { jobsApplied: jobId } }, { new: true });
                 return pr
             })
-            // console.log('removedJobId', removedJobId)
             const bigPr = Promise.all(prArray);
             return bigPr
-
         })
         .then((updatedVolunteers) => {
             console.log('updatedVolunteers', updatedVolunteers)
             res.redirect(`/private/charity-profile/${userLoggedIn._id}`)
-
         })
         .catch((error) => {
             console.log("Could not delete job", error);
-
         })
-
 })
 
 
 // GET       /private/join-job/:jobid
 
 privateRouter.get("/join-job/:jobid", isLoggedIn, (req, res, next) => {
-
     const jobId = req.params.jobid;
     const userLoggedIn = req.session.currentUser;
-
     const volunteerAddToJob = {
         volunteer: userLoggedIn._id,
         accepted: false,
     };
-
     //find all volunteers that have applied for the job
     User.find({ jobsApplied: jobId })
         .then((foundVolunteers) => {
-
             const userAlreadyJoinedJob = false;
             //check if any of the volunteers have the same id as the current user's id
             foundVolunteers.forEach((volunteer) => {
-                if (String(volunteer._id) === String(userLoggedIn._id)) {
+                if (
+                    String(volunteer._id) === String(userLoggedIn._id)
+                ) {
                     res.redirect('/private/job-listings');
                     userAlreadyJoinedJob = true;
                 };
@@ -315,10 +252,24 @@ privateRouter.get("/join-job/:jobid", isLoggedIn, (req, res, next) => {
             if (userAlreadyJoinedJob === true) {
                 return;
             }
-
-            Job.findByIdAndUpdate(jobId, { $push: { volunteers: volunteerAddToJob } })
+            //else if volunteer does not have same id then add volunteer to job collection
+            Job
+                .findByIdAndUpdate(
+                    jobId,
+                    {
+                        $push:
+                            { volunteers: volunteerAddToJob }
+                    }
+                )
                 .then(() => {
-                    const pr = User.findByIdAndUpdate(userLoggedIn._id, { $push: { jobsApplied: jobId } });
+                    const pr = User
+                        .findByIdAndUpdate(
+                            userLoggedIn._id,
+                            {
+                                $push:
+                                    { jobsApplied: jobId }
+                            }
+                        );
                     return pr;
                 })
                 .then(() => {
@@ -331,21 +282,15 @@ privateRouter.get("/join-job/:jobid", isLoggedIn, (req, res, next) => {
         .catch((error) => {
             console.log("Error for finding volunteer", error)
         })
-
 })
 
 
 // GET       /private/charity-locations
 privateRouter.get("/charity-locations", isLoggedIn, (req, res, next) => {
-
     const userLoggedIn = req.session.currentUser;
     const props = { userLoggedIn: userLoggedIn }
     res.render('CharityLocations', props);
-
 });
-
-
-
 
 module.exports = privateRouter;
 

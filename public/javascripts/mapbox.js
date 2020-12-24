@@ -29,7 +29,6 @@ const main = () => {
         .get("https://simple-steps.herokuapp.com/api/charities")
 
         .then((result) => {
-            console.log('result:', result)
             result.data.forEach((charity) => {
                 const charityPopup = `
                     <div class="map-popup">

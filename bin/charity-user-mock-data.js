@@ -18,8 +18,6 @@ const charityUserCollection = [
             postcode: "08002"
         }
     },
-
-
     {
         name: 'Oxfam Intermon',
         username: 'Oxfamintermon',
@@ -39,28 +37,6 @@ const charityUserCollection = [
             postcode: "08025"
         }
     },
-
-
-
-    // name: "Trocaire",
-    // username: "Trocaire",
-    // password: "123456",
-    // email: "trocaire@mail.com",
-    // description: "Trócaire is the official overseas development agency of the Catholic Church in Ireland.",
-    // location: {
-    //     type: 'Point',
-    //     coordinates: [41.391655, 2.174200] //these coordinates will be reversed
-    // },
-    // userType: "charity",
-    // photo: "https://www.eurac-network.org/sites/default/files/styles/logo/public/trocaire.png?itok=iAL4FXVj",
-    // address: {
-    //     building: 12,
-    // street: "Passatge de Llavallol",
-    // city: "barcelona",
-
-    // postcode: "08025",}
-
-
     {
         name: "Hacesfalta",
         username: "Hacesfalta",
@@ -111,7 +87,6 @@ const charityUserCollection = [
         },
         userType: "charity",
         photo: "https://upload.wikimedia.org/wikipedia/en/2/21/Lifeline_Australia_Logo.gif",
-        // location: { type: "Point", "coordinates": [2.153848, 41.387037] },
         address: {
             building: 134,
             street: "Carrer de Mallorca",
@@ -131,14 +106,13 @@ const charityUserCollection = [
         },
         userType: "charity",
         photo: "https://upload.wikimedia.org/wikipedia/en/thumb/5/5f/Marie_Curie_logo.png/200px-Marie_Curie_logo.png",
-        // location: { type: "Point", "coordinates": [2.190358, 41.403602] },
         address: {
             building: 205,
             street: "Avinguda Diagonal",
             city: "barcelona",
             postcode: "08018"
         }
-    },
-
+    }
 ]
+
 module.exports = charityUserCollection;

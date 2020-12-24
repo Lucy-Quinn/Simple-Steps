@@ -3,6 +3,7 @@ const React = require("react");
 function Layout(props) {
   return (
     <html lang="en">
+
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -14,13 +15,14 @@ function Layout(props) {
         {/* CSS Stylesheet */}
         <link rel="stylesheet" href="/stylesheets/style.css" />
       </head>
+
       <body>
+
+        {/**************** Navbar *********************/}
         <nav className="navbar navbar-custom navbar-expand-lg navbar-light">
           {props.isLoggedIn
             //if logged in
-            /* <p className="">Simple Steps</p> */
-
-            ? <img className="navbar-img" src="/images/logo.png" alt="navbar logo" />
+            ? (<img className="navbar-img" src="/images/logo.png" alt="navbar logo" />)
             //if logged out
             : (<a href="/"><img className="navbar-img" src="/images/logo.png" alt="navbar logo" /></a>)
           }
@@ -28,52 +30,59 @@ function Layout(props) {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-
             {props.isLoggedIn
               //if logged in as either charity or volunteer
-              ? <ul className="navbar-nav ml-auto float-right text-right">
-                <li className="nav-item">
-                  <a className="nav-link" href="/private/job-listings">Job Listings</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href={`/private/charity-locations`}>Find Charities</a>
-                </li>
-                {props.userLoggedIn.userType === 'volunteer'
-                  //if user logged is a volunteer
-                  ? <li className="nav-item">
-                    <a className="nav-link" href={`/private/volunteer-profile/${props.userLoggedIn._id}`}>{props.userLoggedIn.username}'s Profile</a>
+              ? (
+                <ul className="navbar-nav ml-auto float-right text-right">
+                  <li className="nav-item">
+                    <a className="nav-link" href="/private/job-listings">Job Listings</a>
                   </li>
-                  //if user logged is a charity
-                  : <li className="nav-item">
-                    <a className="nav-link" href={`/private/charity-profile/${props.userLoggedIn._id}`}>{props.userLoggedIn.username}'s Profile</a>
+                  <li className="nav-item">
+                    <a className="nav-link" href={`/private/charity-locations`}>Find Charities</a>
                   </li>
-                }
-                <li className="nav-item">
-                  <a className="nav-link" href="/auth/logout">Logout</a>
-                </li>
-              </ul>
-              :
+                  {props.userLoggedIn.userType === 'volunteer'
+                    //if user logged is a volunteer
+                    ? (
+                      <li className="nav-item">
+                        <a className="nav-link" href={`/private/volunteer-profile/${props.userLoggedIn._id}`}>{props.userLoggedIn.username}'s Profile</a>
+                      </li>
+                    )
+                    //if user logged is a charity
+                    : (
+                      <li className="nav-item">
+                        <a className="nav-link" href={`/private/charity-profile/${props.userLoggedIn._id}`}>{props.userLoggedIn.username}'s Profile</a>
+                      </li>
+                    )
+                  }
+                  <li className="nav-item">
+                    <a className="nav-link" href="/auth/logout">Logout</a>
+                  </li>
+                </ul>
+              ) :
               //if logged out as either charity or volunteer
-              <ul className="navbar-nav ml-auto float-right text-right">
-                <li className="nav-item">
-                  <a className="nav-link" href="/">Home</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="/auth/signup/volunteer">Sign Up as a Volunteer</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="/auth/signup/charity">Sign Up as a Charity</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="/auth/login">Login</a>
-                </li>
-
-              </ul>
+              (
+                <ul className="navbar-nav ml-auto float-right text-right">
+                  <li className="nav-item">
+                    <a className="nav-link" href="/">Home</a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="/auth/signup/volunteer">Sign Up as a Volunteer</a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="/auth/signup/charity">Sign Up as a Charity</a>
+                  </li>
+                  <li className="nav-item">
+                    <a className="nav-link" href="/auth/login">Login</a>
+                  </li>
+                </ul>
+              )
             }
           </div>
         </nav>
+
         {props.children}
 
+        {/**************** Footer *********************/}
         <footer>
           <div className="copyright">
             <p>Copyright © 2020 Simple Steps </p>
@@ -81,11 +90,6 @@ function Layout(props) {
         </footer>
 
       </body>
-
-
-
-
-
 
       {/* Bootstrap JS scripts */}
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

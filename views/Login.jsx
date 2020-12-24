@@ -18,14 +18,12 @@ function Login(props) {
 
                         <button className="action-btn btn" type="submit">Login</button>
                     </form>
-
                     {
-                        props.errorMessage ?
-                            (<div className="error-message"> {props.errorMessage}</div>)
-                            :
+                        props.errorMessage ? (
+                            <div className="error-message"> {props.errorMessage}</div>
+                        ) :
                             null
                     }
-
                     <div className="account-message">
                         <p>Don't have an account?</p>
                         <br />
@@ -33,18 +31,13 @@ function Login(props) {
                             <a href="/auth/signup/volunteer">Sign up as Volunteer</a>
                             <a href="/auth/signup/charity">Sign up as Charity</a>
                         </div>
-
                     </div>
                     <div></div>
                     <div></div>
-
                 </div>
             </section>
         </Layout>
     )
 }
-
-
-
 
 module.exports = Login;

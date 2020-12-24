@@ -6,7 +6,6 @@ function Signup(props) {
         <Layout title="Volunteer Sign Up" isLoggedIn={false}>
             <section class="signup-section signup-section-volunteer">
                 <div class="signup-card volunteer-signup-card">
-
                     <h1 className="signup-title">Volunteer Signup</h1>
                     <form class="signup-form" action="/auth/signup/volunteer" method="POST" encType="multipart/form-data">
                         <label>Name</label>
@@ -27,18 +26,11 @@ function Signup(props) {
                         <label>Skills</label>
                         <input type="text" name="skills" placeholder="Your Skills" required></input>
 
-
-
                         <label>Password</label>
                         <input type="password" name="password" placeholder="Password" required></input>
-                        {/* 
-                <label>Repeat Password</label>
-                <input type="password" name="repeat-password" placeholder="Password"></input> */}
-
 
                         <label>Upload Profile Picture</label>
                         <input type='file' name='profilepic' />
-
 
                         <button className="action-btn btn" type="submit">Sign Up</button>
 

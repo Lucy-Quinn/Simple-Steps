@@ -32,7 +32,7 @@ function JobCard(props) { //props = job document and isUserTypeCharity = boolean
                   //if 'volunteer' is null (i.e. volunteer does not exist/deleted) then return null, else return the volunteer link
                   oneVolunteer.volunteer === null
                     ? null
-                    : <span> <a key={i} href={`/private/volunteer-profile/${oneVolunteer.volunteer._id}`} className="card-links card-text">{oneVolunteer.volunteer.name}</a> </span>
+                    : <span> <a key={i} href={`/private/volunteer-profile/${oneVolunteer.volunteer._id}`} className="card-links card-text">{oneVolunteer.volunteer.name}</a></span>
                 )
               }))
             }

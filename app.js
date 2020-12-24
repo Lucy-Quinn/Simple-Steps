@@ -12,7 +12,6 @@ const Job = require('./models/Job.model');
 
 
 const authRouter = require("./routes/authRouter");
-const siteRouter = require("./routes/siteRouter");
 const privateRouter = require("./routes/privateRouter");
 const apiRouter = require("./routes/apiRouter");
 
@@ -52,14 +51,13 @@ app.use(
       mongooseConnection: mongoose.connection,
       ttl: 60 * 60 * 24 * 7,
       // `ttl` Time to live - after which the session document saved
-      // in the DB expires - 7 days (14 days is the default if the option is not explicityl set)
+      // in the DB expires - 7 days (14 days is the default if the option is not explicitly set)
     }),
   })
 );
 
 // ROUTES
 app.use("/auth", authRouter);
-app.use("/", siteRouter);
 app.use("/private", privateRouter);
 app.use("/api", apiRouter);
 
@@ -70,7 +68,6 @@ app.get("/", (req, res, next) => {
     .then((foundJobs) => {
       const props = { foundJobs: foundJobs }
       res.render("Home", props);
-
     })
 });
 

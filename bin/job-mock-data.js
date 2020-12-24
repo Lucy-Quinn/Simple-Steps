@@ -1,5 +1,5 @@
 const jobCollection = [
-      {
+    {
         title: 'Door-to-door fundraiser',
         date: new Date('2021-02-11T17:00:00.000+00:00'),
         description: "We would like someone to go door to signing people up to donate to our charity.",
@@ -24,23 +24,20 @@ const jobCollection = [
         description: "We would like someone to help with eldering people. Experience would be better but a positive attitude will do!",
         skillsRequired: ['caretaker'],
     },
-    {   
+    {
         title: 'Crisis Volunteer',
         date: new Date('2020-12-11T16:30:00.000+00:00'),
         description: "Lifeline’s volunteers give their time, energy and expertise by working on the phones and helping others.",
         skillsRequired: ['Communication'],
-
-
     },
     {
         title: 'Bucket Collection',
         date: new Date('2020-12-23T14:00:00.000+00:00'),
         description: "We would like a number of volunteers to collect money around Plasa de Catalunya. Will be for 3 days a week.",
         skillsRequired: 'Bucket Collection',
-    },
-   
- 
+    }
 ]
+
 module.exports = jobCollection;
 
 

@@ -19,37 +19,24 @@ authRouter.get('/signup/charity', (req, res, next) => {
 });
 
 
-
-
 function formatStreet(street) {
-
     const streetSplit = street.split(" ");
-
     const formatedStreet = streetSplit.reduce((result, word) => {
         return result += `%20${word}`
     }, '')
     return formatedStreet
-
 }
-
-
-
-
 
 // POST       /auth/signup/charity
 authRouter.post('/signup/charity', parser.single('profilepic'), (req, res, next) => {
     const imageUrl = req.file.secure_url;
-
     const { name, username, email, description, password, building, street, city, postcode } = req.body;
     if (username === '' || password === '') {
         const props = { errorMessage: 'Enter your username and password' };
         res.render('CharitySignup', props);
         return;
     }
-
     const formattedStreetName = formatStreet(street)
-
-
 
     //Password strength test
     // if (zxcvbn(password).score < 3) {
@@ -59,28 +46,23 @@ authRouter.post('/signup/charity', parser.single('profilepic'), (req, res, next)
     //     return;
     // }
 
-    User.findOne({ username })
+    User
+        .findOne({ username })
         .then((user) => {
             if (user) {
                 const props = { errorMessage: 'The username already exists' };
                 res.render('CharitySignup', props);
                 return;
             };
-
             const pr = axios
                 .get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${building}${formattedStreetName}%20${postcode}%20${city}.json?&access_token=pk.eyJ1IjoibHVjeWFxIiwiYSI6ImNraHRnY2MwNzA4a2wycHBobWc3NjA5d2gifQ.0e6yWmXZXeKEhKQ0fo76fg`)
-
             return pr;
         })
         .then((result) => {
-            //console.log('result:', result.data.features)
-
             const foundCoordinates = result.data.features[0].geometry.coordinates;
             const location = {
-
                 type: 'Point',
                 coordinates: foundCoordinates.reverse(),
-
             }
             const address = {
                 building: building,
@@ -88,7 +70,6 @@ authRouter.post('/signup/charity', parser.single('profilepic'), (req, res, next)
                 postcode: postcode,
                 city: city
             }
-
 
             const salt = bcrypt.genSaltSync(saltRounds);
             const hashedPassword = bcrypt.hashSync(password, salt);
@@ -103,10 +84,9 @@ authRouter.post('/signup/charity', parser.single('profilepic'), (req, res, next)
                 userType: 'charity',
                 location: location,
                 address: address
-
             }
-
-            User.create(newUser)
+            User
+                .create(newUser)
                 .then((createdUser) => {
                     createdUser.password = "******";
                     req.session.currentUser = createdUser;
@@ -117,7 +97,6 @@ authRouter.post('/signup/charity', parser.single('profilepic'), (req, res, next)
         .catch((err) => console.log(err));
 });
 
-
 // GET       /auth/signup/volunteer
 authRouter.get('/signup/volunteer', (req, res, next) => {
     res.render('VolunteerSignUp');
@@ -126,16 +105,13 @@ authRouter.get('/signup/volunteer', (req, res, next) => {
 
 // POST       /auth/signup/volunteer
 authRouter.post('/signup/volunteer', parser.single('profilepic'), (req, res, next) => {
-
     const imageUrl = req.file.secure_url;
-
     const { name, username, email, description, age, skills, password } = req.body;
     if (username === '' || password === '') {
         const props = { errorMessage: 'Enter your username and password' };
         res.render('CharitySignup', props);
         return;
     }
-
     //Password strength test
     // if (zxcvbn(password).score < 3) {
     //     const suggestions = zxcvbn(password).feedback.suggestions;
@@ -143,7 +119,6 @@ authRouter.post('/signup/volunteer', parser.single('profilepic'), (req, res, nex
     //     res.render('CharitySignup', props);
     //     return;
     // }
-
     User
         .find({ $or: [{ username }, { email }] })
         .then((user) => {
@@ -168,7 +143,6 @@ authRouter.post('/signup/volunteer', parser.single('profilepic'), (req, res, nex
                 userType: 'volunteer'
             }
 
-
             User.create(newUser)
                 .then((createdUser) => {
                     createdUser.password = "******";
@@ -177,19 +151,8 @@ authRouter.post('/signup/volunteer', parser.single('profilepic'), (req, res, nex
                 })
                 .catch((err) => console.log(err));
         })
-        .catch((err) => console.log(err))
-
-
-
-
-
-
-
-
-        ;
+        .catch((err) => console.log(err));
 });
-
-
 
 /********************* Login **********************/
 
@@ -197,7 +160,6 @@ authRouter.post('/signup/volunteer', parser.single('profilepic'), (req, res, nex
 authRouter.get('/login', (req, res, next) => {
     res.render('Login');
 });
-
 
 // POST       /auth/login
 authRouter.post('/login', (req, res, next) => {
@@ -207,7 +169,8 @@ authRouter.post('/login', (req, res, next) => {
         res.render('Login', props);
         return;
     }
-    User.findOne({ username })
+    User
+        .findOne({ username })
         .then((user) => {
             if (!user) {
                 const props = { errorMessage: "The username doesn't exist" };
@@ -215,10 +178,8 @@ authRouter.post('/login', (req, res, next) => {
                 return;
             }
             const passwordCorrect = bcrypt.compareSync(password, user.password);
-
             if (passwordCorrect) {
                 req.session.currentUser = user;
-                // console.log(req.session.currentUser)
                 if (user.userType === 'charity') {
                     res.redirect(`/private/charity-profile/${user._id}`)
                 } else {
@@ -232,7 +193,6 @@ authRouter.post('/login', (req, res, next) => {
 
 /********************* Logout **********************/
 
-
 authRouter.get("/logout", isLoggedIn, (req, res, next) => {
     req.session.destroy((err) => {
         if (err) {
@@ -241,16 +201,6 @@ authRouter.get("/logout", isLoggedIn, (req, res, next) => {
             res.redirect('/auth/login')
         }
     })
-
 })
-
-
-
-
-
-
-
-
-// Your routes
 
 module.exports = authRouter;

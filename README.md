@@ -123,6 +123,7 @@ const jobSchema = new Schema(
 - Add functionality so that user can click scroll when viewing their jobs on their profile page
 - Success and error messages when joining, adding and deleting jobs
 - Edit photos on profile page
+- show current number of volunteers and jobs on homepage
 - Add 404 and 500 page
 - Delete accounts
 
