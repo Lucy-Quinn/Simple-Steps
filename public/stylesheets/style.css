@@ -156,6 +156,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   min-height: 100vh;
+  position: relative;
 }
 h1 {
   font-size: 3rem;
@@ -365,6 +366,7 @@ footer {
   padding: 20px;
   width: 100%;
   background-color: #05386b;
+  position: relative;
 }
 footer p {
   color: var(--white);
@@ -372,6 +374,16 @@ footer p {
 }
 #carousel-section {
   margin-bottom: 40px;
+}
+
+@media (min-width: 768px) {
+  #carousel-section {
+    width: 70%;
+    margin: 0 auto 20px auto;
+  }
+  .home-page-card {
+    width: 70%;
+  }
 }
 
 @media (min-width: 1024px) {
@@ -430,7 +442,7 @@ footer p {
     width: 100px;
   }
   .home-page-card {
-    width: 80%;
+    width: 97%;
   }
   .card-body .join-now-btn {
     margin: 13px auto;
@@ -718,7 +730,7 @@ footer p {
   display: flex;
   width: 315px;
   overflow: scroll;
-  height: 520px;
+  /* height: 520px; */
 }
 .card-joblistings {
   width: 30rem;
@@ -735,7 +747,7 @@ footer p {
   font-size: 2.5rem;
 }
 .job-listing-section {
-  height: 1500px;
+  /* height: 1500px; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -747,13 +759,23 @@ footer p {
   font-size: 1.6rem;
 }
 
+@media (min-width: 768px) {
+  .job-listing-section #cards {
+    overflow: visible;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-around;
+    /* height: 1100px; */
+  }
+}
+
 @media (min-width: 1024px) {
   .job-listing-section #cards {
     overflow: visible;
     flex-wrap: wrap;
     width: 100%;
     justify-content: space-around;
-    height: 1100px;
+    /* height: 1100px; */
   }
   .card-joblistings {
     width: 32rem;
@@ -797,7 +819,7 @@ footer p {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 50%;
+  /* width: 50%; */
 }
 .profile .action-btn {
   margin: 0 auto;
@@ -854,10 +876,20 @@ span {
   margin-bottom: 20px;
 }
 
+@media (min-width: 768px) {
+  .profile-job-cards {
+    overflow: visible;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-around;
+    flex-direction: row;
+  }
+}
+
 @media (min-width: 1024px) {
   .profile {
     flex-direction: row;
-    height: 700px;
+    /* height: 700px; */
     padding: 50px 0 110px 0;
     justify-content: space-evenly;
   }
@@ -866,7 +898,7 @@ span {
   }
   .profile-info {
     width: 50%;
-    height: 526px;
+    /* height: 526px; */
   }
   .profile-job-cards {
     height: 526px;
@@ -1045,6 +1077,20 @@ span {
   width: 300px;
   margin: 30px auto 20px auto;
   font-size: 1.6rem;
+}
+
+@media (min-width: 768px) {
+  .mapboxgl-canvas {
+    position: absolute;
+    width: 550px;
+    height: 800px;
+  }
+  #charity-location {
+    height: 900px !important;
+    width: 626px !important;
+    position: relative;
+    margin: 0 auto;
+  }
 }
 
 @media (min-width: 1024px) {
