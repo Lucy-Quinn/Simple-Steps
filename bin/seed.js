@@ -4,13 +4,14 @@ const mongoose = require('mongoose');
 //requiring the schema
 const User = require('./../models/User.model');
 const Job = require('./../models/Job.model');
-const saltRounds = 10;
-const bcrypt = require('bcrypt');
 
 //requiring the 'fake' objects
 const userVolunteers = require('./volunteer-user-mock-data');
 const userCharities = require('./charity-user-mock-data');
 const jobs = require('./job-mock-data');
+
+const saltRounds = 10;
+const bcrypt = require('bcrypt');
 
 const DB_NAME = "simple-steps";
 
