@@ -1,11 +1,10 @@
 const express = require("express");
-const User = require("../models/User.model");
-const isLoggedIn = require("../utils/isLoggedIn");
 const privateRouter = express.Router();
-const Job = require('./../models/Job.model');
+const isLoggedIn = require("../utils/isLoggedIn");
 const isCharityAdmin = require("../utils/isCharityAdmin");
 const isVolunteerAdmin = require("../utils/isVolunteerAdmin");
-const { findByIdAndDelete } = require("../models/User.model");
+const User = require("../models/User.model");
+const Job = require('./../models/Job.model');
 
 // GET       /private/job-listing
 privateRouter.get('/job-listings', isLoggedIn, (req, res, next) => {
@@ -192,7 +191,6 @@ privateRouter.get("/volunteer-profile/delete/:jobid", isVolunteerAdmin, (req, re
         })
 })
 
-
 // GET       /private/charity-profile/delete/:jobid
 privateRouter.get("/charity-profile/delete/:jobid", isCharityAdmin, (req, res, next) => {
     const jobId = req.params.jobid;
@@ -224,7 +222,6 @@ privateRouter.get("/charity-profile/delete/:jobid", isCharityAdmin, (req, res, n
             console.log("Could not delete job", error);
         })
 })
-
 
 // GET       /private/join-job/:jobid
 

@@ -1,9 +1,8 @@
 const express = require('express');
 const apiRouter = express.Router();
-
 const User = require('./../models/User.model');
 
-// GET  /api/restaurants     -  Get restaurants listings.
+// GET  /api/charities     -  Get charity listings.
 apiRouter.get('/charities', (req, res, next) => {
     User
         .find({ userType: 'charity' })

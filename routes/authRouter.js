@@ -1,15 +1,12 @@
 const express = require("express");
 const authRouter = express.Router();
-
 const bcrypt = require('bcrypt');
-const User = require('./../models/User.model');
+const saltRounds = 10;
 const zxcvbn = require('zxcvbn');
 const parser = require('./../config/cloudinary');
 const axios = require("axios")
-
 const isLoggedIn = require('./../utils/isLoggedIn')
-const saltRounds = 10;
-
+const User = require('./../models/User.model');
 
 /********************* Signup **********************/
 
@@ -18,7 +15,7 @@ authRouter.get('/signup/charity', (req, res, next) => {
     res.render('CharitySignup');
 });
 
-
+//function to format street name for the axios call to the mapbox
 function formatStreet(street) {
     const streetSplit = street.split(" ");
     const formatedStreet = streetSplit.reduce((result, word) => {
@@ -101,7 +98,6 @@ authRouter.post('/signup/charity', parser.single('profilepic'), (req, res, next)
 authRouter.get('/signup/volunteer', (req, res, next) => {
     res.render('VolunteerSignUp');
 })
-
 
 // POST       /auth/signup/volunteer
 authRouter.post('/signup/volunteer', parser.single('profilepic'), (req, res, next) => {

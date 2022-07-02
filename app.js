@@ -10,12 +10,9 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const Job = require('./models/Job.model');
 
-
 const authRouter = require("./routes/authRouter");
 const privateRouter = require("./routes/privateRouter");
 const apiRouter = require("./routes/apiRouter");
-
-
 
 const app = express();
 
@@ -60,7 +57,6 @@ app.use(
 app.use("/auth", authRouter);
 app.use("/private", privateRouter);
 app.use("/api", apiRouter);
-
 
 /* GET home page. */
 app.get("/", (req, res, next) => {

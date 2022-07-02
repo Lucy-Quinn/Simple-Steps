@@ -1,6 +1,7 @@
 const React = require("react");
 
 function JobCardHomePage(props) {
+    console.log(props)
     //props = job document and isUserTypeCharity = boolean
     function convertDateToString() {
         const day = props.foundJob.date.toDateString().split(" ").slice(0, 3).join(" ");
