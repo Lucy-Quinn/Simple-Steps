@@ -29,7 +29,7 @@ const charityUserCollection = [
             coordinates: [41.391655, 2.174200] //these coordinates will be reversed
         },
         userType: 'charity',
-        photo: 'https://pbs.twimg.com/profile_images/1278991694755770368/jPCrn8dr_400x400.png',
+        photo: 'http://sas.usal.es/wp-content/uploads/2015/01/Oxfam.jpg',
         address: {
             building: 12,
             street: "Passatge de Llavallol",
@@ -67,7 +67,7 @@ const charityUserCollection = [
             coordinates: [41.393570, 2.170123] //these coordinates will be reversed
         },
         userType: "charity",
-        photo: "https://pbs.twimg.com/profile_images/1313397031524798466/trPMIVbZ.jpg",
+        photo: "https://amigosdelosmayores.org/themes/agg/images/logo_ca.svg",
         address: {
             building: 134,
             street: "Carrer de Mallorca",

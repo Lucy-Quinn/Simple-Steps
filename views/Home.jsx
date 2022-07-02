@@ -53,21 +53,16 @@ function Home(props) {
           <h2>Volunteer Projects Near You</h2>
           <div id="carouselExampleControls" className="carousel slide" data-ride="carousel">
             <div className="carousel-inner">
-              <div className="carousel-item active">
-                <div className="carousel-row">
-                  <JobCardHomePage foundJob={props.foundJobs[0]}></JobCardHomePage>
+            {props.foundJobs.map((foundJob, index) => {
+              return (
+                <div className={`carousel-item ${index === 0 ?"active" : ""}`}>
+                  <div className="carousel-row">
+                    <JobCardHomePage foundJob={foundJob}/>
+                  </div>
                 </div>
-              </div>
-              <div className="carousel-item">
-                <div className="carousel-row">
-                  <JobCardHomePage foundJob={props.foundJobs[1]} ></JobCardHomePage>
-                </div>
-              </div>
-              <div className="carousel-item">
-                <div className="carousel-row">
-                  <JobCardHomePage foundJob={props.foundJobs[3]}></JobCardHomePage>
-                </div>
-              </div>
+              )
+            }
+            )}
             </div>
             <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
               <span className="carousel-control-prev-icon" aria-hidden="true"></span>
