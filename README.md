@@ -139,7 +139,7 @@ The URL to the repository and the deployed project
 
 [Repository Link](https://github.com/Lucy-Quinn/Simple-Steps)
 
-[Deploy Link](https://simple-steps.herokuapp.com/) 
+[Deploy Link](https://simple-steps.herokuapp.com/) (Deployed via [Render](https://render.com/))
 
 ### Wireframes
 
